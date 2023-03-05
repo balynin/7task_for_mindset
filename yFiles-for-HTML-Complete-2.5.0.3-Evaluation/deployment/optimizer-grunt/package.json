@@ -1,0 +1,16 @@
+{
+  "name": "optimizer-with-grunt-example-for-yfiles-for-html",
+  "version": "1.0.0",
+  "author": "yWorks GmbH <yfileshtml@yworks.com>",
+  "private": true,
+  "scripts": {
+    "unpack-library-files": "cd ../../tools/unpack-library-files && npm run unpack-library-files",
+    "build": "npm run unpack-library-files && grunt build"
+  },
+  "devDependencies": {
+    "@yworks/optimizer": "^1.7.1",
+    "grunt": "^1.0.3",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0"
+  }
+}

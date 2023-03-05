@@ -1,0 +1,14 @@
+{
+  "name": "yfiles-umd-to-es-modules",
+  "description": "Script to convert source code from AMD imports to ES module imports",
+  "version": "25.0.3+eval",
+  "author": "yFiles for HTML Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "transform": "jscodeshift"
+  },
+  "dependencies": {
+    "jscodeshift": "0.6.4"
+  }
+}

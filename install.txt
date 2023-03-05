@@ -1,0 +1,4 @@
+docker load -i /path-to/memgraph-<version>-docker.tar.gz
+docker run -p 7687:7687 -p 7444:7444 -v mg_lib:/var/lib/memgraph memgraph/memgraph
+You are running Memgraph vX.X.X
+To get started with Memgraph, visit https://memgr.ph/start

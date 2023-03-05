@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <script>
+    function parseParams(str) {
+      var ret = Object.create(null);
+      if (typeof str !== 'string') {
+        return ret;
+      }
+      str.replace(/[?&]+([^=&]+)=([^&]+)/gi, function (match, key, value) {
+        ret[key] = value;
+      });
+      return ret;
+    }
+
+    window.addEventListener('load', function() {
+      var message = parseParams(window.location.toString());
+      window.location.hash = '';
+
+      var opener = window.opener;
+      if (window.parent != window.top) {
+        opener = opener || window.parent
+      }
+
+      opener.postMessage(message, window.location.origin);
+      window.close();
+    })
+  </script>
+
+</head>
+<body>
+</body>
+</html>

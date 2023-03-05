@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- ////////////////////////////////////////////////////////////////////////
+     // @license
+     // This demo file is part of yFiles for HTML 2.5.0.3.
+     // Copyright (c) 2000-2023 by yWorks GmbH, Vor dem Kreuzberg 28,
+     // 72070 Tuebingen, Germany. All rights reserved.
+     //
+     // yFiles demo files exhibit yFiles for HTML functionalities. Any redistribution
+     // of demo files in source code or binary form, with or without
+     // modification, is not permitted.
+     //
+     // Owners of a valid software license for a yFiles for HTML version that this
+     // demo is shipped with are allowed to use the demo source code as basis
+     // for their own yFiles for HTML powered applications. Use of such programs is
+     // governed by the rights and conditions as set out in the yFiles for HTML
+     // license agreement.
+     //
+     // THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
+     // WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+     // NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     // TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+     // PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     // 
+     ////////////////////////////////////////////////////////////////////////-->
+
+    <title>Optimizer With Grunt Example [yFiles for HTML]</title>
+    <link rel="stylesheet" type="text/css" href="../../doc/readme-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+    <div id="header" class="simple-header">Optimizer (Grunt)</div>
+    <main>
+      <div class="content-centered">
+        <div class="content">
+          <div class="breadcrumbs">
+            <a href="../../README.html">yFiles for HTML</a> <span class="angle-right"></span>
+            <a href="../README.html">Deployment </a> <span class="angle-right"></span> Optimizer
+            (Grunt)
+          </div>
+
+          <h1>yFiles for HTML Optimizer - Grunt Example</h1>
+
+          <div>
+            <p>
+              This examples shows how to use the yFiles for HTML Optimizer with the
+              <a href="https://gruntjs.com/">Grunt Task Runner</a>.
+            </p>
+            <div>
+              <p>To run the optimizer sample:</p>
+              <pre>
+> npm install
+> npm run build
+</pre
+              >
+              <p>
+                The sample Gruntfile optimizes the Organization Chart demo, but it can be used to
+                optimize any demo by replacing the
+                <code>const demoName = "complete/orgchart"</code> declaration at the top of the
+                Gruntfile.
+              </p>
+              <p>
+                The output will be placed in the <code>dist/</code> subfolder of this project
+                directory. The resulting directory structure will match the yFiles for HTML package
+                structure, so relative paths still work. For example, if the orgchart demo was
+                optimized, the optimized demo can be found at
+                <a href="./dist/demos-js/complete/orgchart/index.html"
+                  ><code>./dist/demos-js/complete/orgchart/index.html</code></a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- populated by readme-style.js -->
+        <div id="footer-detailed"></div>
+      </div>
+    </main>
+    <script src="../../doc/readme-style.js"></script>
+  </body>
+</html>

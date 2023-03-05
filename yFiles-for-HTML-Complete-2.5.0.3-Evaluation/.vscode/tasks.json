@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Demo Server",
+      "type": "npm",
+      "script": "start",
+      "path": "",
+      "problemMatcher": [],
+      "isBackground": true,
+      "dependsOn": ["npm: install"],
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "options": {
+        "env": {
+          "NO_OPEN": ""
+        }
+      }
+    },
+    {
+      "label": "Compile and Watch TypeScript Demos",
+      "type": "npm",
+      "script": "watch",
+      "path": "demos-ts/",
+      "problemMatcher": ["$tsc-watch"]
+    },
+    {
+      "label": "Install Package",
+      "type": "npm",
+      "script": "install",
+      "problemMatcher": [],
+      "detail": "install dependencies from package"
+    },
+    {
+      "label": "Build ES5 compatible demos",
+      "type": "npm",
+      "script": "install-and-run",
+      "path": "deployment/demos-es5/",
+      "problemMatcher": []
+    },
+    {
+      "label": "Open README",
+      "type": "shell",
+      "command": "open",
+      "windows": {
+        "command": "start"
+      },
+      "args": ["README.html"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Open Documentation",
+      "type": "shell",
+      "command": "open",
+      "windows": {
+        "command": "start"
+      },
+      "args": ["doc/api/index.html"],
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- ////////////////////////////////////////////////////////////////////////
+     // @license
+     // This demo file is part of yFiles for HTML 2.5.0.3.
+     // Copyright (c) 2000-2023 by yWorks GmbH, Vor dem Kreuzberg 28,
+     // 72070 Tuebingen, Germany. All rights reserved.
+     //
+     // yFiles demo files exhibit yFiles for HTML functionalities. Any redistribution
+     // of demo files in source code or binary form, with or without
+     // modification, is not permitted.
+     //
+     // Owners of a valid software license for a yFiles for HTML version that this
+     // demo is shipped with are allowed to use the demo source code as basis
+     // for their own yFiles for HTML powered applications. Use of such programs is
+     // governed by the rights and conditions as set out in the yFiles for HTML
+     // license agreement.
+     //
+     // THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
+     // WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+     // NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     // TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+     // PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     // 
+     ////////////////////////////////////////////////////////////////////////-->
+
+    <title>yFiles for HTML First time setup</title>
+    <link rel="stylesheet" type="text/css" href="../readme-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+    <div id="no-ie">
+      <h2>Your browser does not support modern CSS</h2>
+      <p>This page will be displayed incorrectly. We recommend using a more recent browser.</p>
+      <p>Note that yFiles for HTML itself does not rely on these features.</p>
+    </div>
+
+    <!-- populated by readme-style.js -->
+    <div id="header"></div>
+    <main>
+      <!-- populated by readme-style.js -->
+      <div id="readme-sidebar"></div>
+
+      <div class="content-centered">
+        <div class="content">
+          <div class="note"><span class="icon-timer icon-small"></span> 5 to 10 minutes</div>
+          <div class="section-header">
+            <h1>First-time setup</h1>
+            <span class="icon-rocket section-icon"></span>
+          </div>
+
+          <div class="double-column">
+            <div>
+              <p>
+                In the Developer’s Guide,
+                <a href="../api/index.html#/dguide/getting_started" target="_blank"
+                  >Getting Started</a
+                >
+                offers an in-depth explanation of the following steps.
+              </p>
+              <div class="paragraph">
+                <h2><span class="icon-first h2-icon"></span>Prerequisites</h2>
+                <p>The demos need an installed Node.js to run properly.</p>
+                <ul>
+                  <li>
+                    <div class="header">Install Node.js 12 or newer</div>
+                    <a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <iframe
+              src="https://player.vimeo.com/video/566931119"
+              allow="fullscreen"
+              allowfullscreen
+              class="video"
+              id="getting-started-video"
+              style="border: none"
+            >
+            </iframe>
+          </div>
+
+          <h2><span class="icon-second h2-icon"></span>Running the demos locally</h2>
+          <div class="double-column">
+            <div>
+              <div class="paragraph">
+                <p>
+                  To run the demos locally, a
+                  <a href="../api/index.html#/dguide/demos-server#top" target="_blank"
+                    >demo server</a
+                  >
+                  has to be started.
+                </p>
+                <ul>
+                  <li>
+                    <div class="header">
+                      Run the start_demos script in the <code>yFiles-for-HTML-Complete-2.5.0.3-Evaluation</code> directory:
+                    </div>
+
+                    <ul>
+                      <li>start_demos.cmd (Windows)</li>
+                      <li>start_demos.sh (Linux)</li>
+                      <li>start_demos.command (MacOS)</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <div class="header">Open the demos</div>
+                    You can explore them at
+                    <a href="../../demos-ts/README.html" target="_blank">/demos-ts</a> or
+                    <a href="../../demos-js/README.html" target="_blank">/demos-js</a>.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-box troubleshooting">
+              <h2>Troubleshooting</h2>
+              <div class="expandable-group">
+                <div class="expandable-item">
+                  <div class="expandable-item-title">
+                    <span class="icon-chevron-right expandable-item-icon"></span> I can't run the
+                    start_demos script
+                  </div>
+                  <div class="expandable-item-content">
+                    Try to start the demos manually. First install the required libraries using
+                    <code>npm install</code> in the demo directory, then run the demos with
+                    <code>npm start</code>.
+                  </div>
+                </div>
+                <div class="expandable-item">
+                  <div class="expandable-item-title">
+                    <span class="icon-chevron-right expandable-item-icon"></span> WebStorm says
+                    'Port 4242 already in use'
+                  </div>
+                  <div class="expandable-item-content">
+                    The demo server is already running. You can cancel this script with
+                    <code>CTRL+C</code> inside Webstorm's terminal. Then browse the demos on the
+                    <a href="../../demos-ts/README.html" target="_blank"> demo page</a>.
+                  </div>
+                </div>
+                <div class="expandable-item">
+                  <div class="expandable-item-title">
+                    <span class="icon-chevron-right expandable-item-icon"></span>
+                    <span>My changes in TypeScript are not visible</span>
+                  </div>
+                  <div class="expandable-item-content">
+                    After changing the TypeScript files you need to run the TypeScript compiler
+                    <code>tsc</code>. To automatically compile the code, start a watch task with
+                    <code>npm run watch</code>.
+                  </div>
+                </div>
+                <div class="expandable-item">
+                  <div class="expandable-item-title">
+                    <span class="icon-chevron-right expandable-item-icon"></span>
+                    <span>I get a license error when I start a demo</span>
+                  </div>
+                  <div class="expandable-item-content">
+                    Make sure the license is located in
+                    <code>&lt;yfiles-directory&gt;/lib</code> and its version matches the library
+                    version. A non-evaluation license cannot be used to activate an evaluation
+                    version of yFiles for HTML and vice versa.
+                  </div>
+                </div>
+              </div>
+              <div class="link-container">
+                <span class="icon-support-orange icon"></span>
+                <a href="support.html" target="_blank">Support Request</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="paragraph">
+            <h2><span class="icon-third h2-icon"></span>Working with yFiles</h2>
+            <ul>
+              <li>
+                <div class="header">Install an IDE</div>
+                We recommend
+                <a href="https://www.jetbrains.com/webstorm/" target="_blank"
+                  >WebStorm (30 days free)</a
+                >. You can also use
+                <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> as a
+                free alternative.
+              </li>
+              <li>
+                <div class="header">Open the project</div>
+                Open the <code>yFiles-for-HTML-Complete-2.5.0.3-Evaluation</code> directory as project in your IDE.
+                <div class="info-box">
+                  WebStorm will automatically start the demo server in the background. So you don't
+                  have to start the server manually each time.
+                </div>
+              </li>
+              <li>
+                <div class="header">Modify the demo code and observe changes</div>
+                If you refresh the demos in the browser, changes in the source code will be visible.
+                Tutorials are served just like regular demos, you will find their sources at:
+                <div class="info-message">
+                  <img
+                    src="https://www.yworks.com/external/typescript.svg"
+                    alt="TypeScript icon"
+                    class="icon"
+                  />
+                  <code> demos-ts/01-tutorial-getting-started </code>
+                </div>
+                <div class="info-message">
+                  <img
+                    src="https://www.yworks.com/external/javascript.svg"
+                    alt="JavaScript icon"
+                    class="icon"
+                  />
+                  <code> demos-js/01-tutorial-getting-started </code>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="section" id="navigation-cards">
+            <h2>Keep going!</h2>
+            <div class="cards">
+              <a href="./learn-yfiles.html" class="card large-card">
+                <span class="icon-school icon-top-right"></span>
+                <span class="icon-forward icon-link-arrow"></span>
+                <h2>Intro to yFiles</h2>
+                Learn yFiles basics and find good entry points to start working on your project.
+              </a>
+              <a href="./your-own-yfiles-app.html" class="card large-card">
+                <span class="icon-devices icon-top-right"></span>
+                <span class="icon-forward icon-link-arrow"></span>
+                <h2>Your own yFiles app</h2>
+                Create your own yFiles project from scratch, or learn how to integrate yFiles into
+                your existing project.</a
+              >
+            </div>
+          </div>
+
+          <div id="sidebar-overlay" class="overlay collapsed"></div>
+        </div>
+
+        <div id="yfiles-ui-banner"></div>
+
+        <!-- populated by readme-style.js -->
+        <div id="footer"></div>
+      </div>
+    </main>
+
+    <script src="../readme-style.js"></script>
+  </body>
+</html>

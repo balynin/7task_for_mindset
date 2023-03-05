@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "../dist/out-tsc",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es6",
+    "module": "esnext",
+    "types": [],
+    "lib": ["es2018", "dom"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/environments/**", "src/**/*.worker.ts"]
+}

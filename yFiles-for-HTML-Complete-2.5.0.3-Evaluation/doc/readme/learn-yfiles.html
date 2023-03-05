@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- ////////////////////////////////////////////////////////////////////////
+     // @license
+     // This demo file is part of yFiles for HTML 2.5.0.3.
+     // Copyright (c) 2000-2023 by yWorks GmbH, Vor dem Kreuzberg 28,
+     // 72070 Tuebingen, Germany. All rights reserved.
+     //
+     // yFiles demo files exhibit yFiles for HTML functionalities. Any redistribution
+     // of demo files in source code or binary form, with or without
+     // modification, is not permitted.
+     //
+     // Owners of a valid software license for a yFiles for HTML version that this
+     // demo is shipped with are allowed to use the demo source code as basis
+     // for their own yFiles for HTML powered applications. Use of such programs is
+     // governed by the rights and conditions as set out in the yFiles for HTML
+     // license agreement.
+     //
+     // THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
+     // WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+     // NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     // TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+     // PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     // 
+     ////////////////////////////////////////////////////////////////////////-->
+
+    <title>yFiles for HTML Learn yFiles</title>
+    <link rel="stylesheet" type="text/css" href="../readme-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+    <div id="no-ie">
+      <h2>Your browser does not support modern CSS</h2>
+      <p>This page will be displayed incorrectly. We recommend using a more recent browser.</p>
+      <p>Note that yFiles for HTML itself does not rely on these features.</p>
+    </div>
+
+    <!-- populated by readme-style.js -->
+    <div id="header"></div>
+
+    <main>
+      <!-- populated by readme-style.js -->
+      <div id="readme-sidebar"></div>
+
+      <div class="content-centered">
+        <div class="content">
+          <div class="section-header">
+            <h1>Intro to yFiles</h1>
+            <span class="icon-school section-icon"></span>
+          </div>
+          <p>
+            There are three approaches to learning the yFiles basics. You can choose any of them,
+            according to your personal preference.
+          </p>
+
+          <div class="paragraph">
+            <h2>
+              <span class="icon-learning-beginners h2-icon"></span>Work through the interactive
+              beginners tutorials
+            </h2>
+            <p>
+              If you prefer to learn by exploring and experimenting, check out the live tutorials
+              included in this package.
+            </p>
+
+            <p>There are several tutorials for the complete beginner:</p>
+            <ul>
+              <li>Getting started</li>
+              <li>Creating a custom node style</li>
+            </ul>
+
+            <p>
+              As a prerequisite for this tutorial, you need to have opened the packages' project in
+              an IDE (i.e. WebStorm or VSCode), as described in
+              <a href="first-time-setup.html">First-time setup</a>. The first tutorial step can be
+              found relative to the package root, at
+              <span class="info-message">
+                <img
+                  src="https://www.yworks.com/external/typescript.svg"
+                  alt="TypeScript icon"
+                  class="icon"
+                />
+                <code>demos-ts/01-tutorial-getting-started</code>
+              </span>
+              <span class="info-message">
+                <img
+                  src="https://www.yworks.com/external/javascript.svg"
+                  alt="JavaScript icon"
+                  class="icon"
+                />
+                <code>demos-js/01-tutorial-getting-started</code>
+              </span>
+            </p>
+          </div>
+
+          <div class="paragraph">
+            <h2>
+              <span class="icon-written-tutorial h2-icon"></span>Read and work through the written
+              tutorial
+            </h2>
+            <p>
+              The written tutorial takes you through the basic concepts of working with yFiles in a
+              step-by-step manner. Links to detailed documentation are provided throughout this
+              tutorial.
+            </p>
+            <p>
+              As a prerequisite for this tutorial, you need to have opened the package's project in
+              an IDE (i.e. WebStorm or VSCode), as described in
+              <a href="first-time-setup.html">First-time setup</a>.
+            </p>
+
+            <div class="link-button-container">
+              <a
+                href="../api/index.html#/dguide/getting_started-application"
+                class="link-button"
+                target="_blank"
+                >Open tutorial</a
+              >
+            </div>
+          </div>
+
+          <div class="paragraph">
+            <h2><span class="icon-videos h2-icon"></span>Watch introductory videos</h2>
+            <p>
+              The yWorks YouTube channel provides several helpful videos introducing the most
+              important steps and concepts. Start your journey to becoming a proficient yFiles
+              developer.
+            </p>
+
+            <div class="link-button-container">
+              <a
+                href="https://www.youtube.com/playlist?list=PLpIlEtPgrZsU4icTnBORqSV23tLVvPObd"
+                class="link-button"
+                target="_blank"
+                >Watch videos</a
+              >
+            </div>
+          </div>
+
+          <h1>Next steps</h1>
+
+          <div class="paragraph">
+            <h2><span class="icon-experiment h2-icon"></span>Experiment with demos</h2>
+            <p>
+              The yFiles package contains over 100 demos presenting the various features of the
+              library and how to use them in your own code. We invite you to open the various demos
+              in the IDE and experiment with them.
+              <span class="info-message"
+                ><img
+                  src="https://www.yworks.com/external/typescript.svg"
+                  alt="TypeScript icon"
+                  class="icon"
+                /><code>demos-ts</code></span
+              >
+              <span class="info-message"
+                ><img
+                  src="https://www.yworks.com/external/javascript.svg"
+                  alt="JavaScript icon"
+                  class="icon"
+                /><code>demos-js</code></span
+              >
+            </p>
+          </div>
+
+          <div class="paragraph">
+            <h2>
+              <span class="icon-learning-advanced h2-icon"></span>Work through the interactive
+              advanced tutorials
+            </h2>
+            <p>
+              In addition to the tutorials for beginners, you'll find tutorials that deal with
+              specific topics:
+            </p>
+            <ul>
+              <li>Application features</li>
+              <li>Creating custom styles for edges</li>
+              <li>Creating custom styles for labels</li>
+              <li>Creating custom styles for ports</li>
+              <li>Layout tutorials</li>
+            </ul>
+          </div>
+
+          <div class="paragraph">
+            <h2><span class="icon-further-reading h2-icon"></span>Further reading</h2>
+            <p>
+              The yFiles library includes comprehensive documentation about its concepts, features
+              and API. Some entry points for beginners are:
+            </p>
+            <ul class="arrow-list">
+              <li>
+                <a href="../api/index.html#/dguide/graph" target="_blank"
+                  >The graph model: learn the very basic concepts of graphs</a
+                >
+              </li>
+              <li>
+                <a href="../api/index.html#/dguide/view" target="_blank"
+                  >Displaying the graph: learn how a graph is displayed on the screen</a
+                >
+              </li>
+              <li>
+                <a href="../api/index.html#/dguide/interaction" target="_blank"
+                  >User interaction: learn how to configure and implement basic as well as
+                  sophisticated user interactions with the graph</a
+                >
+              </li>
+              <li>
+                <a href="../api/index.html#/dguide/customizing_styles" target="_blank"
+                  >Customizing styles: learn to tweak the look and feel of the various graph
+                  elements</a
+                >
+              </li>
+              <li>
+                <a href="../api/index.html#/dguide/layout" target="_blank"
+                  >How to use the various automatic layout algorithms provided by yFiles</a
+                >
+              </li>
+            </ul>
+            <div id="sidebar-overlay" class="overlay collapsed"></div>
+          </div>
+        </div>
+
+        <div id="yfiles-ui-banner"></div>
+
+        <!-- populated by readme-style.js -->
+        <div id="footer"></div>
+      </div>
+    </main>
+
+    <script src="../readme-style.js"></script>
+  </body>
+</html>

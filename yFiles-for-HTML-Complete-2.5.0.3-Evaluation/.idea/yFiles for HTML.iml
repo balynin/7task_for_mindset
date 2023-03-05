@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.vscode" />
+      <excludeFolder url="file://$MODULE_DIR$/compatibility" />
+      <excludeFolder url="file://$MODULE_DIR$/deployment" />
+      <excludeFolder url="file://$MODULE_DIR$/doc/api" />
+      <excludeFolder url="file://$MODULE_DIR$/es5" />
+      <excludeFolder url="file://$MODULE_DIR$/ide-support" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/es-modules" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/umd" />
+      <excludeFolder url="file://$MODULE_DIR$/lib-dev/es-modules" />
+      <excludeFolder url="file://$MODULE_DIR$/lib-dev/umd" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/tools" />
+    </content>
+    <content url="file://$MODULE_DIR$/lib/es-modules/typings" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

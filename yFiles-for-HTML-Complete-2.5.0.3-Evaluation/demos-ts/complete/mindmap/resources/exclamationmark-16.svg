@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  version="1.1"
+  id="svg2"
+  viewBox="0 0 16 16"
+  height="16"
+  width="16">
+  <g transform="matrix(1.2262546,0,0,1.2972613,-50.227534,-606.34108)">
+    <g transform="translate(0.08141415,-0.07730325)">
+      <ellipse
+        ry="5.6098533"
+        rx="5.9645357"
+        cy="473.64734"
+        cx="47.429546"
+        style="fill:#ff6c00;fill-opacity:1;stroke:#db3a34;stroke-width:1.03071666;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.8745098"/>
+    </g>
+    <rect
+      style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.79285896;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.8745098"
+      width="1.6309826"
+      height="5.7814102"
+      x="46.632679"
+      y="469.27716"/>
+    <rect
+      style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.8745098"
+      width="1.6309826"
+      height="1.5417094"
+      x="46.632679"
+      y="476.29886"/>
+  </g>
+</svg>

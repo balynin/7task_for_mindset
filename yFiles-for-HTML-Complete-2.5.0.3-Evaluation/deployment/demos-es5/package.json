@@ -1,0 +1,30 @@
+{
+  "name": "transpile-yfiles-for-html-demos",
+  "version": "1.0.0",
+  "author": "yWorks GmbH <yfileshtml@yworks.com>",
+  "license": "https://www.yworks.com/products/yfiles-for-html/sla",
+  "private": true,
+  "scripts": {
+    "unpack-library-files": "cd ../../tools/unpack-library-files && npm run unpack-library-files",
+    "demos-es5": "grunt demos-es5",
+    "install-and-run": "npm install && npm run unpack-library-files && npm run demos-es5"
+  },
+  "browserslist": [
+    "ie >= 9",
+    "defaults"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-instanceof": "^7.14.5",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.15.8",
+    "grunt": "~1.0.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-clean": "~2.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-text-replace": "~0.4.0",
+    "load-grunt-tasks": "~4.0.0",
+    "unfetch": "^4.0.1"
+  }
+}

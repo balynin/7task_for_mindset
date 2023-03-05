@@ -1,0 +1,13 @@
+{
+  "name": "unpack-library-files-for-yfiles-for-html",
+  "version": "25.0.3+eval",
+  "author": "yFiles for HTML Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "unpack-library-files": "npm install && node ./unpack-library-files.js"
+  },
+  "dependencies": {
+    "tar": "^6.1.11"
+  }
+}

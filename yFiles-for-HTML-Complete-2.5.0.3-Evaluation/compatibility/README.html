@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>yFiles for HTML Backward Compatibility</title>
+    <link rel="stylesheet" type="text/css" href="../doc/readme-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+    <!-- populated by readme-style.js -->
+    <div id="header" class="simple-header">Backward Compatibility</div>
+    <main>
+      <div class="content-centered">
+        <div class="content">
+          <div class="breadcrumbs">
+            <a href="../README.html">yFiles for HTML</a> <span class="angle-right"></span>Backward
+            Compatibility
+          </div>
+
+          <div>
+            <h1>Backward Compatibility</h1>
+            <p>
+              The files in this directory provide a backward compatibility layer that restores parts
+              of the yFiles for HTML API of previous releases.
+            </p>
+          </div>
+
+          <div>
+            <h2>Description</h2>
+
+            <p>
+              The compatibility layer consists of JavaScript scripts that can be loaded as any other
+              yFiles for HTML library module file. Each provides a function which when called enables the
+              compatibility layer. Since most of the compatibility layer modifies the prototypes of
+              the yFiles classes, these functions need to be called after all affected yFiles
+              library classes are loaded.
+            </p>
+
+            <p>
+              In the ES module variant of the compatibility layer, each script exports the function
+              while in the UMD variant, the script installs the function in the
+              <code>yfiles</code> namespace.
+            </p>
+
+            <div class="info-box">
+              <ul>
+                <li>
+                  Both the scripts and the functions can be called safely multiple times from your
+                  application code.
+                </li>
+                <li>
+                  It is <b>not</b> necessary to use the compatibility scripts as a whole. You can
+                  use the scripts as a reference on how to change your client code to become
+                  compatible with current yFiles for HTML releases.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h2>Usage Example with ES Modules</h2>
+
+            <p>
+              The ES module variant of the compatibility layer of yFiles for HTML 2.2 for
+              applications build for version 2.1 consists of a single module file
+              <code>compatibility/es-modules/compatibility-2.1.js</code> which exports the
+              <code>enable_2_1_compatibility</code> function. You can use it as follows:
+            </p>
+
+            <div class="example">
+              <p class="title"><b>Example: enable backward compatibility (ES modules)</b></p>
+              <pre class="programlisting">
+import {enable_2_1_compatibility} from 'compatibility/es-modules/compatibility-2.1.js'
+
+enable_2_1_compatibility()
+...other startup code...
+</pre
+              >
+            </div>
+
+            <h2>Usage Example with UMD Loading</h2>
+
+            <p>
+              The UMD loading variant of the compatibility layer of yFiles for HTML 2.2 for
+              applications build for version 2.1 consists of a single module file
+              <code>compatibility/umd/compatibility-2.1.js</code> and the function
+              <code>yfiles.enable_2_1_compatibility</code>. You can use it as follows:
+            </p>
+
+            <div class="example">
+              <p class="title"><b>Example: enable backward compatibility (UMD)</b></p>
+              <pre class="programlisting">
+require([
+    ...yfiles library modules...,
+    ...application scripts...,
+    'compatibility/umd/compatibility-2.1.js'
+  ], (yfiles, ...) => {
+    yfiles.enable_2_1_compatibility();
+    ...other startup code...;
+  });
+</pre
+              >
+            </div>
+
+            <p>
+              Please note that in case you afterwards require any other yFiles modules, you also
+              have to call <code>yfiles.enable_2_1_compatibility</code> again to ensure
+              compatibility for the lazily loaded modules.
+            </p>
+
+            <p>
+              <code>compatibility-2..js</code> provides a convenience function
+              <code>yfiles.enable_2_1_compatibility_wrap_require</code> that takes care of this
+              automatically. It enables compatibility and wraps <code>require</code>, so
+              <code>yfiles.enable_2_1_compatibility</code> is called implicitly for every further
+              <code>require</code> call. This function can be used instead of
+              <code>yfiles.enable_2_1_compatibility</code>, if yFiles modules are loaded lazily.
+            </p>
+
+            <div class="example">
+              <p class="title">
+                <b>Example: enable backward compatibility and wrap require calls</b>
+              </p>
+              <pre class="programlisting">
+require([
+    ...yfiles library modules...,
+    ...application scripts...,
+    'compatibility/compatibility-2.1.js'],
+  (yfiles, ...) => {
+    yfiles.enable_2_1_compatibility_wrap_require();
+    ...other startup code...;
+  });
+    </pre
+              >
+            </div>
+          </div>
+
+          <div>
+            <h2>Older Releases</h2>
+
+            <p>
+              Similar to the compatibility layer for the current release, previous releases came
+              with a compatibility layer, too. All these files are part of this package and can be
+              combined with the current compatibility file to restore parts of the API of older
+              releases.
+            </p>
+
+            <div class="example">
+              <p class="title"><b>Example: enable backward compatibility of 2.1 with 2.0</b></p>
+              <pre class="programlisting">
+require([
+    ...yfiles library modules...,
+    ...application scripts...,
+    'compatibility/compatibility-2.0.1.js',
+    'compatibility/compatibility-2.0.js'
+  ], (yfiles, ...) => {
+    yfiles.enable_2_0_1_compatibility();
+    yfiles.enable_2_0_compatibility();
+    ...other startup code...;
+  });
+</pre
+              >
+            </div>
+
+            <p>In detail, the following compatibility files are included</p>
+            <ul>
+              <li>
+                <code>compatibility-2.0.1.js</code> restores parts of the yFiles for HTML 2.0.1 API that
+                were changed in 2.1
+              </li>
+              <li>
+                <code>compatibility-2.0.js</code> restores parts of the yFiles for HTML 2.0 API that were
+                changed in 2.0.1
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- populated by readme-style.js -->
+        <div id="footer-detailed"></div>
+      </div>
+    </main>
+    <script src="../doc/readme-style.js"></script>
+  </body>
+</html>

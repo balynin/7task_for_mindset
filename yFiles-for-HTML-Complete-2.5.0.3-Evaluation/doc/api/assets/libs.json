@@ -1,0 +1,16 @@
+{
+  "js": [
+    "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js",
+    "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js",
+    "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js",
+    "https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/languages/typescript.min.js",
+    "https://cdn.jsdelivr.net/opentip/2.4.6/opentip-native.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
+  ],
+  "css": [
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
+    "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic"
+  ]
+}

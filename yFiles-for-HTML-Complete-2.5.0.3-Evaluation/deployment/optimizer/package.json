@@ -1,0 +1,14 @@
+{
+  "name": "optimizer-example-for-yfiles-for-html",
+  "version": "1.0.0",
+  "author": "yWorks GmbH <yfileshtml@yworks.com>",
+  "private": true,
+  "scripts": {
+    "unpack-library-files": "cd ../../tools/unpack-library-files && npm run unpack-library-files",
+    "optimize": "npm run unpack-library-files && node index.js complete/flowchart"
+  },
+  "devDependencies": {
+    "fs-extra": "^7.0.1",
+    "@yworks/optimizer": "^1.7.1"
+  }
+}

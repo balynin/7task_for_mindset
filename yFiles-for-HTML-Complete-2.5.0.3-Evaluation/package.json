@@ -1,0 +1,18 @@
+{
+  "name": "yfiles-for-html",
+  "description": "yFiles for HTML 2.5.0.3 Complete Evaluation",
+  "version": "25.0.3+eval",
+  "author": "yWorks GmbH <yfileshtml@yworks.com>",
+  "license": "https://www.yworks.com/products/yfiles-for-html/sla",
+  "private": true,
+  "yFilesDevSuiteCompatibility": "2.0.0",
+  "scripts": {
+    "start": "cd demos-js/demo-server && npm start",
+    "postinstall": "npm run install-js-demos && npm run install-ts-demos",
+    "install-js-demos": "cd demos-js && npm i",
+    "install-ts-demos": "cd demos-ts && npm i"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
+}

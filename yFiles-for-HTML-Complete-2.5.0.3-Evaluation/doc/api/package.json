@@ -1,0 +1,8 @@
+{
+  "name": "yfiles-documentation-viewer",
+  "version": "2.0.0",
+  "description": "Offline installation of the yFiles Documentation Viewer",
+  "scripts": {
+    "start": "node assets/fetchLibs.js"
+  }
+}

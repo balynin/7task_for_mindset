@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- ////////////////////////////////////////////////////////////////////////
+     // @license
+     // This demo file is part of yFiles for HTML 2.5.0.3.
+     // Copyright (c) 2000-2023 by yWorks GmbH, Vor dem Kreuzberg 28,
+     // 72070 Tuebingen, Germany. All rights reserved.
+     //
+     // yFiles demo files exhibit yFiles for HTML functionalities. Any redistribution
+     // of demo files in source code or binary form, with or without
+     // modification, is not permitted.
+     //
+     // Owners of a valid software license for a yFiles for HTML version that this
+     // demo is shipped with are allowed to use the demo source code as basis
+     // for their own yFiles for HTML powered applications. Use of such programs is
+     // governed by the rights and conditions as set out in the yFiles for HTML
+     // license agreement.
+     //
+     // THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
+     // WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+     // NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     // TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+     // PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     // 
+     ////////////////////////////////////////////////////////////////////////-->
+
+    <title>yFiles for HTML Your own yFiles app</title>
+    <link rel="stylesheet" type="text/css" href="../readme-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+    <div id="no-ie">
+      <h2>Your browser does not support modern CSS</h2>
+      <p>This page will be displayed incorrectly. We recommend using a more recent browser.</p>
+      <p>Note that yFiles for HTML itself does not rely on these features.</p>
+    </div>
+
+    <!-- populated by readme-style.js -->
+    <div id="header"></div>
+
+    <main>
+      <!-- populated by readme-style.js -->
+      <div id="readme-sidebar"></div>
+
+      <div class="content-centered">
+        <div class="content">
+          <div class="section-header">
+            <h1>Your own yFiles app</h1>
+            <span class="icon-devices section-icon"></span>
+          </div>
+
+          <div class="double-column">
+            <p>
+              yFiles integrates easily into most JavaScript or TypeScript-based projects. Start a
+              new yFiles-powered app from scratch – or include yFiles into your existing application
+              to add sophisticated diagramming functionality.
+            </p>
+            <div id="dev-mode-card" class="info-box">
+              <span
+                >Learn about the
+                <a href="../api/index.html#/dguide/yfiles_development_mode" target="_blank"
+                  >Development Mode</a
+                >
+                to improve your development process:</span
+              >
+              <ul>
+                <li>meaningful error messages</li>
+                <li>type information</li>
+                <li>graph inspection</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="paragraph">
+            <h2><span class="icon-new h2-icon"></span>Creating a new app using yFiles</h2>
+            <p>
+              There are several ways to create a yFiles-enabled web app from scratch. Choose the one
+              that suits you best.
+            </p>
+          </div>
+
+          <div class="double-column create-app-block">
+            <div class="paragraph extra-bottom-margin">
+              <h2 class="smaller-h2">
+                <span class="icon-templates icon h2-icon"></span>Templates on GitHub
+              </h2>
+              <div class="limited-width">
+                Our template apps for
+                <a href="https://github.com/yWorks/yfiles-vue-integration-basic" target="_blank"
+                  >Vue.js</a
+                >,
+                <a href="https://github.com/yWorks/yfiles-react-integration-basic" target="_blank"
+                  >React</a
+                >
+                and
+                <a href="https://github.com/yWorks/yfiles-angular-integration-basic" target="_blank"
+                  >Angular</a
+                >
+                provide a starting point for development. You can clone the repositories from GitHub
+                manually, or use the Yeoman Generator.
+              </div>
+              <div class="link-button-container">
+                <a
+                  href="https://www.npmjs.com/package/generator-yfiles-app/"
+                  class="link-button"
+                  target="_blank"
+                  >Install Yeoman Generator</a
+                >
+              </div>
+            </div>
+            <iframe
+              src="https://player.vimeo.com/video/567478929"
+              allow="fullscreen"
+              allowfullscreen
+              class="create-app-video"
+              style="border: none"
+            >
+            </iframe>
+          </div>
+
+          <div class="double-column create-app-block">
+            <div class="paragraph extra-bottom-margin">
+              <h2 class="smaller-h2">
+                <span class="icon-app-generator icon h2-icon"></span>App Generator
+              </h2>
+              <div class="limited-width">
+                The yFiles App Generator is an ETL tool that lets you rapidly prototype yFiles
+                applications with custom data, styling, and graph layout.
+              </div>
+              <div class="link-button-container">
+                <a href="https://www.yworks.com/app-generator/" class="link-button" target="_blank"
+                  >Open App Generator</a
+                >
+              </div>
+            </div>
+            <iframe
+              src="https://player.vimeo.com/video/469822675"
+              allow="fullscreen"
+              allowfullscreen
+              class="create-app-video"
+              style="border: none"
+            >
+            </iframe>
+          </div>
+
+          <div class="double-column create-app-block">
+            <div class="paragraph">
+              <h2 class="smaller-h2">
+                <span class="icon-manual-setup icon h2-icon"></span>Manual setup
+              </h2>
+              <div class="limited-width">Create your app manually in JavaScript or TypeScript.</div>
+              <div class="link-button-container">
+                <a
+                  href="../api/index.html#/dguide/getting_started-application"
+                  class="link-button"
+                  target="_blank"
+                  >Open instructions</a
+                >
+              </div>
+            </div>
+            <iframe
+              src="https://player.vimeo.com/video/567476869"
+              allow="fullscreen"
+              allowfullscreen
+              class="create-app-video"
+              style="border: none"
+            >
+            </iframe>
+          </div>
+
+          <h2 class="extra-top-margin">
+            <span class="icon-integration h2-icon"></span>Integrate yFiles into an existing project
+          </h2>
+          <div class="paragraph">
+            <p>
+              yFiles is compatible with all modern web application frameworks, so it can be easily
+              integrated into your existing application. After including the library, there are
+              multiple demos show you how to add graphs to your application.
+            </p>
+            <h2 class="smaller-h2">General integration</h2>
+            <p>
+              The easiest way to include the yFiles for HTML library into your project is to use it as a
+              local npm module. Find
+              <code>lib-dev/yfiles-25.0.3+eval-dev.tgz</code> in your yFiles package and add it as a
+              dependency to your package.json.
+            </p>
+            <p id="code-container">
+              <code
+                >npm install --save
+                <span class="yfiles-package-path">&lt;yFiles package path&gt;</span
+                >/lib-dev/yfiles-25.0.3+eval-dev.tgz</code
+              >
+            </p>
+            <p>
+              The npm module comes with support of code completion for both JavaScript and
+              TypeScript. If necessary, these typings can be generated and included in existing
+              projects at any time.
+            </p>
+            <p>
+              For more information on how to set up this module, see the
+              <a href="../api/index.html#/dguide/yfiles_npm_module" target="_blank"
+                >Working with the yFiles npm module</a
+              >
+              chapter in the Developer's Guide.
+            </p>
+            <p>
+              Before you can start developing, register the yFiles for HTML license.
+              <a href="../api/index.html#/dguide/license_registering" target="_blank"
+                >Import License and set the value to the license's content</a
+              >.
+            </p>
+          </div>
+          <div class="paragraph indented">
+            <h2 class="smaller-h2">Using yFiles in a framework-specific project</h2>
+            <p>
+              Each framework comes with special requirements. We provide
+              <a href="../api/index.html#/dguide/deployment_toolkits#top" target="_blank"
+                >specific advice</a
+              >
+              for most common toolkits.
+            </p>
+
+            <p>Several demos showcase yFiles integration with different frameworks.</p>
+            <ul class="arrow-list">
+              <li>
+                <a href="../../demos-js/toolkit/vue2-cli/README.html" target="_blank"
+                  >Vue.js Demo</a
+                >
+              </li>
+              <li>
+                <a href="../../demos-ts/toolkit/angular/README.html" target="_blank"
+                  >Angular CLI Demo</a
+                >
+              </li>
+              <li>
+                <a href="../../demos-js/toolkit/react/README.html" target="_blank">React Demo</a>
+              </li>
+            </ul>
+          </div>
+
+          <h2 class="extra-top-margin">
+            <span class="icon-distribution h2-icon"></span>Distributing your application
+          </h2>
+          <div class="paragraph">
+            <p>
+              Before distributing your application, we highly recommend that you obfuscate and
+              minify the resulting application. This reduces the download size of the library files
+              for your end-users and protects your intellectual property by making the application
+              source code harder to read.
+            </p>
+            <p>
+              The top-level <code>deployment</code> directory contains the yFiles deployment tool
+              that provides name obfuscation and minification, especially for the yFiles for HTML library,
+              amongst others. For more details, see the
+              <a href="../../deployment/README.html" target="_blank"
+                >description in the deployment directory</a
+              >
+              or the respective
+              <a href="../api/index.html#/dguide/deployment" target="_blank"
+                >section in the Developer's Guide</a
+              >.
+            </p>
+
+            <div class="info-box warning indented">
+              <span>
+                Please make sure that you do not distribute any of the files included in the
+                evaluation version of yFiles for HTML as part of your software or publish them in any way.
+                Find out more about which parts of yFiles for HTML are redistributable in the
+                <a href="license-info.html">License and redistribution information</a> page.
+              </span>
+            </div>
+          </div>
+          <div id="sidebar-overlay" class="overlay collapsed"></div>
+        </div>
+
+        <div id="yfiles-ui-banner"></div>
+
+        <!-- populated by readme-style.js -->
+        <div id="footer"></div>
+      </div>
+    </main>
+
+    <script src="../readme-style.js"></script>
+  </body>
+</html>

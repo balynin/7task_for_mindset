@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<!-- ////////////////////////////////////////////////////////////////////////
+     // @license
+     // This demo file is part of yFiles for HTML 2.5.0.3.
+     // Copyright (c) 2000-2023 by yWorks GmbH, Vor dem Kreuzberg 28,
+     // 72070 Tuebingen, Germany. All rights reserved.
+     //
+     // yFiles demo files exhibit yFiles for HTML functionalities. Any redistribution
+     // of demo files in source code or binary form, with or without
+     // modification, is not permitted.
+     //
+     // Owners of a valid software license for a yFiles for HTML version that this
+     // demo is shipped with are allowed to use the demo source code as basis
+     // for their own yFiles for HTML powered applications. Use of such programs is
+     // governed by the rights and conditions as set out in the yFiles for HTML
+     // license agreement.
+     //
+     // THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
+     // WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+     // NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     // TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+     // PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     // 
+     ////////////////////////////////////////////////////////////////////////-->
+
+  <title>yFiles for HTML 2.5.0.3 Documentation</title>
+
+  
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/languages/typescript.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/opentip/2.4.6/opentip-native.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic" rel="stylesheet">
+
+  <script src="assets/app.min.f71660f3.js"></script>
+  <link rel="stylesheet" href="assets/style.min.b1e797b9.css">
+
+  <style id="custom-style-container"></style>
+</head>
+<body leave-page="" ng-class="{
+    &apos;tree-visible&apos;: $root.docOptions.treeVisible,
+    &apos;theme-default&apos;: !$root.docOptions.darkTheme,
+    &apos;theme-dark&apos;: $root.docOptions.darkTheme
+    }">
+
+<!-- Begin Templates -->
+<script type="text/ng-template" id="./components/api-inheritance/api-inheritance-box.html">
+<aside class="api-inheritance-box" data-ng-hide="::apiInheritanceBoxController.type.group == 'enum' || (apiInheritanceBoxController.nodes.length == 0 && !apiInheritanceBoxController.type.implements)">
+  <div class="api-inheritance-tree" data-ng-if="::apiInheritanceBoxController.nodes.length > 0">
+    <h4>Inheritance Hierarchy</h4>
+    <api-inheritance-node data-type="::apiInheritanceBoxController.type" data-nodes="::apiInheritanceBoxController.nodes"></api-inheritance-node>
+  </div>
+  <div class="api-inheritance-interfaces" data-ng-if="::apiInheritanceBoxController.type.implements">
+    <h4>Implemented Interfaces</h4>
+    <ul>
+      <li data-ng-repeat="interface in ::apiInheritanceBoxController.type.implements">
+        <span class="tree-icon tree-icon-interface">I</span>
+        <api-link data-type="{{::interface}}" fqn="true"></api-link>
+      </li>
+    </ul>
+  </div>
+</aside>
+
+</script>
+
+<script type="text/ng-template" id="./components/api-inheritance/api-inheritance-node.html">
+<li data-ng-repeat="node in ::apiInheritanceNodeController.nodes">
+  <div class="api-inheritance-line">
+    <div data-ng-click="node.collapsible && (node.expanded = !node.expanded)" ng-class="{'api-inheritance-expandable':node.collapsible}"
+        class="{{'api-inheritance-switch ' + (node.collapsible && (node.expanded ? 'fa fa-caret-down' : 'fa fa-caret-right'))}}"></div>
+    <div class="{{::'tree-icon tree-icon-' + node.group}}">
+      {{::apiInheritanceNodeController.groupLetter(node.group)}}
+    </div>
+    <div class="api-inheritance-selected" data-ng-if="::node.current">{{::node.name}}</div>
+    <api-link data-type="{{::node.id}}" data-ng-if="::!node.current"></api-link>
+  </div>
+  <api-inheritance-node data-type="::apiInheritanceNodeController.type" data-nodes="node.children" ng-if="node.expanded"></api-inheritance-node>
+</li>
+
+</script>
+
+<script type="text/ng-template" id="./components/api-tree/api-tree-section-children.html">
+<api-tree-section data-ng-repeat='item in children' data-item="::item" data-current-id="currentId"></api-tree-section>
+
+</script>
+
+<script type="text/ng-template" id="./components/api-tree/api-tree-section.html">
+<div class="api-tree-section">
+  <a ng-href="#/dguide/{{::item.section.id}}" class="api-tree-section-line" ng-class="{selected: item.section.id === currentId}" data-ref="{{::item.ref}}">
+    <span ng-click="$event.preventDefault(); $event.stopPropagation(); item.expanded = !item.expanded;" class="fa fa-fw fa-{{item.children.length ? item.expanded ? 'caret-down' : 'caret-right' : 'circle'}}"></span>
+    {{::item.section.title}}
+  </a>
+  <div ng-if="item.children.length && item.expanded" class="api-tree-section-children">
+    <api-tree-section-children data-children="::item.children" data-current-id="currentId"></api-tree-section-children>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/api-tree/api-tree.html">
+<div class="tree-switcher">
+  <div
+    ng-class="{'selected':apiTreeController.dguideMode}"
+    ng-click="apiTreeController.dguideMode = true"
+    class="tree-switcher-button"
+    >Developer's Guide</div>
+  <div
+    ng-class="{'selected':!apiTreeController.dguideMode}"
+    ng-click="apiTreeController.dguideMode = false"
+    class="tree-switcher-button"
+    >API</div>
+</div>
+
+<div id="apiTreeContent" class="{{'api-tree-type-' + apiTreeController.treeType}}">
+  <div ng-if="!apiTreeController.dguideMode">
+    <div data-ng-repeat='category in apiTreeController.categories' class="api-tree-category">
+      <div ng-if="::category.name" class="api-tree-category-header">{{::category.name}}</div>
+
+      <div data-ng-repeat='namespace in category.namespaces' class="api-tree-namespace">
+        <a ng-href="#/api/{{::namespace.id}}#top" class="api-tree-namespace-line">
+          <span class='fa fa-caret-{{namespace.expanded ? "down" : "right"}}' ng-click="$event.preventDefault(); $event.stopPropagation(); namespace.expanded = !namespace.expanded;"></span>
+          {{::namespace.name}}
+        </a>
+        <div ng-if="namespace.expanded" class="api-tree-types">
+          <div data-ng-repeat='typeEntry in namespace.types'
+               class="api-tree-type"
+               ng-class="{expert: typeEntry.type.modifiers && typeEntry.type.modifiers.indexOf('expert') > -1, interface: typeEntry.type.group === 'interface', selected: typeEntry.type.id === apiTreeController.currentItemId}"
+               data-ref="{{::typeEntry.ref}}"
+          >
+            <a ng-href="#/api/{{::typeEntry.type.id}}#top" class="api-tree-type-line" ng-mouseenter="apiTreeController.mouseEnteredTypeLink($event, typeEntry.type)">
+              <span class="group-icon" data-group="{{::typeEntry.type.group}}"></span>
+              {{::typeEntry.type.es6name || typeEntry.type.name}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-if="apiTreeController.dguideMode">
+    <api-tree-section data-ng-repeat='item in apiTreeController.dguideNodes' data-item="::item" data-current-id="apiTreeController.currentItemId"></api-tree-section>
+  </div>
+<!--  <api-tree-subtree data-item="apiTreeController.tree.viewModel" id="rootList"></api-tree-subtree>-->
+</div>
+<div ng-click="apiTreeController.collapseAll()" class="btn tree-collapse-button" title="Collapse All">
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="-99.5 100.5 16 16">
+    <g fill="currentColor">
+      <rect x="-98.5" y="109.5" width="14" height="1"></rect>
+      <rect x="-98.5" y="106.5" width="14" height="1"></rect>
+      <polygon points="-88.615,101.5 -91.5,105.5 -94.384,101.5"></polygon>
+      <polygon points="-94.385,115.5 -91.5,111.5 -88.615,115.5"></polygon>
+    </g>
+  </svg>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/common/api-parameter-list.html">
+{{openingBracket}}<!--
+--><span data-ng-repeat="parameter in ::member.parameters | filter:apiParamListController.artificialFilter"><!--
+--><span data-ng-if="::parameter.ref && displayStyle == 'csharp'" class="api-tag-ref"></span><!--
+--><span data-ng-if="::parameter.out && displayStyle == 'csharp'" class="api-tag-out"></span><!--
+--><span data-ng-if="::parameter.varargs && displayStyle == 'csharp'" class="api-tag-varargs"></span><!--
+--><span ng-if="::displayStyle != 'javascript'"><api-type data-item="::parameter" data-no-link="::!showLinks"></api-type><span ng-if="::parameter.dimension">{{::parameter.dimension}}</span><span ng-if="::parameter.varargs && !parameter.dimension && displayStyle == 'csharp'">[]</span><span ng-if="::showNames"> </span></span><!--
+--><span ng-if="::showNames">{{::parameter.name}}<span ng-if="::apiParamListController.isOptionalParam(parameter)" class="optional-parameter-indicator">?</span></span><!--
+--><span ng-if="::displayStyle == 'javascript'"><span ng-if="::showNames">: </span><api-type data-item="::parameter" data-no-link="::!showLinks"></api-type><span ng-if="::parameter.dimension">{{::parameter.dimension}}</span><span ng-if="::apiParamListController.isOptionalParam(parameter) && !showNames" class="optional-parameter-indicator">?</span><span ng-if="::parameter.varargs">&hellip;</span></span><!--
+--><span data-ng-if="!$last">, </span><!--
+--></span><!--
+-->{{closingBracket}}
+
+</script>
+
+<script type="text/ng-template" id="./components/common/y-block.html">
+<div class="{{::yBlockController.class}}" data-bind-compiled="yBlockController.content">
+
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/common/y-dataacceptor-doc.html">
+<span>A DataProvider key <span><ng-transclude></ng-transclude></span> <span>The DataProvider should also implement the DataAcceptor interface.</span></span>
+</script>
+
+<script type="text/ng-template" id="./components/common/y-dataprovider-doc.html">
+<span>A DataProvider key <span><ng-transclude></ng-transclude></span></span>
+</script>
+
+<script type="text/ng-template" id="./components/common/y-dp-data.html">
+<div>
+  <table class="y-dp">
+    <tr class="y-dp-domain">
+      <td>Domain</td>
+      <td><api-link data-type="{{::dpData.domain.type}}" data-text="{{::dpData.domain.label}}"></api-link></td>
+      <td><span bind-compiled="::dpData.domain.summary"></span></td>
+    </tr>
+    <tr class="y-dp-values">
+      <td>Values</td>
+      <td><api-link data-type="{{::dpData.values.type}}" data-text="{{::dpData.values.label}}"></api-link></td>
+      <td><span bind-compiled="::dpData.values.summary"></span></td>
+    </tr>
+  </table>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/dguide/background-info.html">
+<div class="dguide-background-info y-block-note" ng-class="{opened: opened}">
+  <span class="title" ng-click="toggle()"><span class="fa fa-caret-right"></span>Background Information</span>
+  <div ng-transclude class="content"></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-example.html">
+<figure class="example" id="{{::item.id}}">
+  <figcaption data-bind-compiled="::item.title"></figcaption>
+  <span data-bind-compiled="::item.content"></span>
+</figure>
+
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-figure.html">
+<figure class="image" id="{{::item.id}}">
+  <figcaption class="link-button-container"><span data-bind-compiled="::item.title"></span><link-button data-href="::anchor"></link-button></figcaption>
+  <div class="dguide-figure-overflow">
+    <figure data-ng-repeat='child in ::item.children'>
+      <img data-ng-src="{{::child.src}}" alt="{{::child.alt}}" data-ng-if="::child.tagname=='img'" >
+      <img data-ng-repeat="figureChild in ::child.children" data-ng-src="{{::figureChild.src}}" alt="{{::figureChild.alt}}" >
+      <figcaption data-ng-if="::child.title" data-bind-compiled="::child.title"></figcaption>
+    </figure>
+  </div>
+</figure>
+
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-glossary-section.html">
+<section>
+  <h2 id="{{::item.id}}" data-bind-compiled="::item.title"></h2>
+  <p data-bind-compiled="::item.content" class="{{::item.class}}"></p>
+</section>
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-heading.html">
+<h1 id="{{::item.id}}" class="link-button-container" ><a href="{{::anchor}}" class="no-deco" data-bind-compiled="::item.content"></a> <link-button data-href="::anchor"></link-button></h1>
+
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-para.html">
+<p class="{{::item.class}}" id="{{::item.id}}">
+  <span data-bind-compiled="::item.content"></span>
+</p>
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-section-children.html">
+<div data-ng-repeat='child in ::section.children'>
+  <!--{{child.tagname}}-->
+  <section>
+    <div data-ng-switch data-on="child.tagname">
+      <dguide-section data-ng-switch-when="section" ng-if="::!isChapter || dguideOnlyChapters" data-item="::child" data-is-chapter="false" data-depth="::depth+1"></dguide-section>
+      <dguide-para data-item="::child" data-ng-switch-when="para"></dguide-para>
+      <dguide-table data-item="::child" data-ng-switch-when="table"></dguide-table>
+      <dguide-figure data-item="::child" data-ng-switch-when="figure"></dguide-figure>
+      <dguide-example data-item="::child" data-ng-switch-when="example"></dguide-example>
+      <dguide-heading data-item="::child" data-ng-switch-when="heading" data-depth="::depth+1"></dguide-heading>
+      <dguide-glossary-section data-item="::child" data-ng-switch-when="glossary-section" data-depth="::depth+1"></dguide-glossary-section>
+      <dguide-fallback data-item="::child" data-ng-switch-default></dguide-fallback>
+    </div>
+  </section>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-section.html">
+<div id="{{::item.id}}">
+  <h1 class="link-button-container"><a href="{{::anchor}}" class="no-deco"><span data-bind-compiled="::item.title"></span></a> <link-button data-href="::anchor"></link-button></h1>
+  <dguide-section ng-if="isEmptyChapter" data-item="firstSectionChild" data-depth="depth+1" data-is-chapter="false"></dguide-section>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide-table.html">
+<figure class="table" id="{{::item.id}}">
+  <figcaption>{{::item.title}}</figcaption>
+  <table data-bind-compiled="::item.content" class="{{::item.class}}" cellpadding="0" cellspacing="0"></table>
+</figure>
+</script>
+
+<script type="text/ng-template" id="./components/dguide/dguide.html">
+<div id="dguideContent" class="content-max-width-box content-box">
+  <section-buttons data-section="::dguideController.dguide.viewModel"></section-buttons>
+  <dguide-section data-item="::dguideController.dguide.viewModel" data-depth="0" data-is-chapter="::dguideController.dguide.depth==1"></dguide-section>
+  <section-buttons data-section="::dguideController.dguide.viewModel"></section-buttons>
+  <p>&nbsp;</p>
+</div>
+
+
+</script>
+
+<script type="text/ng-template" id="./components/dguide/section-buttons.html">
+<div class="section-button-container">
+  <span ng-if="::sectionButtonsController.section.prevSection" ng-click="sectionButtonsController.gotoPrevSection()" class="section-button">
+    <i class="fa fa-arrow-left" style="margin-right: 8px;"></i>{{::sectionButtonsController.section.prevSection.title}}
+  </span>
+  <span ng-if="::sectionButtonsController.section.nextSection" ng-click="sectionButtonsController.gotoNextSection()" class="section-button">
+    {{::sectionButtonsController.section.nextSection.title}}<i class="fa fa-arrow-right" style="margin-left: 8px;"></i>
+  </span>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/knowledge-base/kb-ref.html">
+<span></span>
+</script>
+
+<script type="text/ng-template" id="./components/knowledge-base/message-box.html">
+<div>
+  <ng-transclude></ng-transclude>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/knowledge-base/sample-code.html">
+<div>
+  <pre class="programlisting"><code></code></pre>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/member-filter/linktable.html">
+<div class="member-links link-table" ng-style="{'height': linktableController.cssHeight}">
+  <div data-ng-repeat="member in linktableController.memberArray"
+       class="linktable-member {{::member.expert ? 'api-mod-expert' : ''}}"
+      data-ng-click="linktableController.itemClicked(member)">
+    <api-link type="{{::linktableController.typeString}}" member="{{::member.overloads ? member.id.substring(0, (member.id.indexOf('(') == -1 ? member.id.length : member.id.indexOf('('))) : member.id}}" name="{{::linktableController.getMemberName(member)}}"></api-link><!--
+        --><api-parameter-list ng-if="::(linktableController.paramList && member.hasOwnProperty('parameters') && !memberItemController.paramObject) || member.isIndexer" data-member="::member" data-show-names="::!member.isIndexer" data-show-links="false" data-display-style="{{::linktableController.type.language}}"></api-parameter-list>
+    <span ng-if="::!linktableController.paramList && member.overloads && member.overloads.length > 1">({{::member.overloads.length}} overloads)</span><span ng-if="::member.prop" class="api-tag-javafx" title="This property is a JavaFX property and can be used with JavaFX bindings."></span>
+    <span ng-if="::member.ro" class="linktable-api-tag api-tag-readonly" title="This member is read only. A value cannot be set."></span>
+    <span ng-if="::member.wo" class="linktable-api-tag api-tag-writeonly" title="This member is write only. A value can only be written to it."></span>
+    <span ng-if="::member.protected" class="linktable-api-tag api-tag-protected" title="This member is considered protected, meaning that it should only be accessed by other members of the same type and the members in the implementations of sub types."></span>
+    <span ng-if="::member.abstract" class="linktable-api-tag api-tag-abstract" title="The implementation of this member is defined in a sub type."></span>
+    <span ng-if="::member.static" class="linktable-api-tag api-tag-static" title="This member is available on the type itself, only, rather than on instances of the type."></span>
+    <span ng-if="::member.final" class="linktable-api-tag api-tag-final" title="{{::'This member is considered '+(LinktableController.type.language == 'csharp' ? 'sealed' : 'final')+', meaning that it cannot be overwritten by sub types.'}}"></span>
+    <span ng-if="::member.expert || linktableController.type.expert" class="linktable-api-tag api-tag-expert"></span>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/member-filter/member-filter.html">
+<div class="member-link-and-filter-bar">
+  <div class="member-search-button" ng-click="memberFilterController.memberSearchClicked()"
+  title="Open member lookup (Ctrl+F12)">
+    <i class="fa fa-search"></i>
+  </div>
+  <div class="member-link-buttons">
+    <div id="constructorsMenuButton" data-ng-click="showConstructorLinks=!showConstructorLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showConstructorLinks}"
+        data-ng-show="memberFilterController.hasConstructors"></div>
+    <div id="propertiesMenuButton" data-ng-click="showPropertyLinks=!showPropertyLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showPropertyLinks}"
+        data-ng-show="memberFilterController.hasProperties"></div>
+    <div id="defaultPropertiesMenuButton" data-ng-click="showDefaultPropertyLinks=!showDefaultPropertyLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showDefaultPropertyLinks}"
+        data-ng-show="memberFilterController.hasDefaultProperties"></div>
+    <div id="methodsMenuButton" data-ng-click="showMethodLinks=!showMethodLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showMethodLinks}"
+        data-ng-show="memberFilterController.hasMethods"></div>
+    <div id="defaultMethodsMenuButton" data-ng-click="showDefaultMethodLinks=!showDefaultMethodLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showDefaultMethodLinks}"
+        data-ng-show="memberFilterController.hasDefaultMethods"></div>
+    <div id="fieldsMenuButton" data-ng-click="showFieldLinks=!showFieldLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showFieldLinks}"
+        data-ng-show="memberFilterController.hasFields"></div>
+    <div id="eventsMenuButton" data-ng-click="showEventLinks=!showEventLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showEventLinks}"
+        data-ng-show="memberFilterController.hasEvents"></div>
+    <div id="constantsMenuButton" data-ng-click="showConstantLinks=!showConstantLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showConstantLinks}"
+        data-ng-show="memberFilterController.hasConstants"></div>
+    <div id="staticPropertiesMenuButton" data-ng-click="showStaticPropertiesLinks=!showStaticPropertiesLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showStaticPropertiesLinks}"
+        data-ng-show="memberFilterController.hasStaticProperties"></div>
+    <div id="staticMethodsMenuButton" data-ng-click="showStaticMethodsLinks=!showStaticMethodsLinks;"
+        class="member-link-button" ng-class="{'member-link-button-selected': showStaticMethodsLinks}"
+        data-ng-show="memberFilterController.hasStaticMethods"></div>
+  </div>
+
+  <linktable id="constructorsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showConstructorLinks" members="constructors" param-list="true"></linktable>
+  <linktable id="propertiesLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showPropertyLinks" members="properties"></linktable>
+  <linktable id="defaultPropertiesLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showDefaultPropertyLinks" members="defaultProperties"></linktable>
+  <linktable id="methodsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showMethodLinks" members="{{memberFilterController.type.overloadedMethods ? 'overloadedMethods' : 'methods'}}"></linktable>
+  <linktable id="defaultMethodsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showDefaultMethodLinks" members="{{memberFilterController.type.overloadedDefaultMethods ? 'overloadedDefaultMethods' : 'defaultMethods'}}"></linktable>
+  <linktable id="fieldsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showFieldLinks" members="fields"></linktable>
+  <linktable id="eventsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showEventLinks" members="events"></linktable>
+  <linktable id="constantsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showConstantLinks" members="constants"></linktable>
+  <linktable id="staticPropertiesLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showStaticPropertiesLinks" members="staticProperties"></linktable>
+  <linktable id="staticMethodsLinkTable" class="angular-animate expand-linktable-animation" close-on-click="true" type="memberFilterController.type" data-ng-show="showStaticMethodsLinks" members="staticMethods"></linktable>
+
+  <div class="member-filter-box">
+    <i class="fa fa-filter" aria-hidden="true"></i>
+    <input type="search" placeholder="Filter the members" id="memberfilter" data-ng-model="memberFilterController.memberfilter.search.name">
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/member-filter/namespace-linktable.html">
+<div class="member-links link-table" ng-style="{'height': namespaceLinktableController.cssHeight}">
+  <div data-ng-repeat="namespace in namespaceLinktableController.namespaces" class="linktable-member">
+    <a href="{{::'#' + namespaceLinktableController.currentPath + '#' + namespace.id}}">{{::namespace.id}}</a>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/sample-graphs/sample-graph-lightbox.html">
+<div id="sampleGraphLightboxContainer" ng-class="{lightboxVisible: isLightboxVisible.value}">
+  <div class="lightbox">
+    <div id="sampleGraphLightBoxControls" ng-if="getCount() > 1">
+      <div class="lightboxLeftSwitch fadeIn preventSelection" ng-click="prevSample()"></div>
+      <div class="lightboxRightSwitch fadeIn preventSelection" ng-click="nextSample()"></div>
+    </div>
+    <div class="lightboxClose fadeIn preventSelection" ng-click="closeLightbox()">
+      <div><i class="fa fa-times"></i>Close image</div>
+    </div>
+    <canvas id="lightboxCanvas"></canvas>
+  </div>
+  <div class="lightboxVicinity" ng-click="closeLightbox()"></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/sample-graphs/sample-graphs.html">
+<div>
+  <div class="canvasContainer">
+    <div class="canvasOverlay preventSelection" ng-class="{canvasDefSize: !isEnlarged, canvasEnlargedSize: isEnlarged}" ng-click="toggleEnlarged(); $event.stopPropagation()">
+
+      <div class="leftSwitchOverlay fadeIn" ng-if="count > 1" ng-click="prevSample(); $event.stopPropagation();" ng-dblclick="$event.stopPropagation();">
+        <a class="leftButtonOverlay" href=""></a>
+      </div>
+      <div class="rightSwitchOverlay fadeIn" ng-if="count > 1" ng-click="nextSample(); $event.stopPropagation();" ng-dblclick="$event.stopPropagation();">
+        <a class="rightButtonOverlay" href=""></a>
+      </div>
+
+      <i class="fa fa-arrows-alt lightboxButton fadeIn" ng-click="showInLightbox(); $event.stopPropagation();"></i>
+
+    </div>
+    <canvas class="sampleGraphCanvas" ng-class="{canvasDefSize: !isEnlarged, canvasEnlargedSize: isEnlarged}"></canvas>
+  </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/search/member-lookup.html">
+<div class="member-lookup-container" data-close-on-click="external" data-close-property="memberLookupController.isVisible" ng-show="memberLookupController.isVisible">
+  <div class="member-lookup-title">Member Lookup</div>
+  <input type="search" class="api-search-input member-lookup-input"
+         ng-model="memberLookupController.searchStr" ng-keydown="memberLookupController.keyDownHandler($event)"
+   placeholder="Start typing to filter, navigate with arrow keys">
+  <div class="member-lookup-results-scroll-wrapper">
+    <div class="member-lookup-results-container">
+      <div ng-repeat="result in memberLookupController.results" ng-click="memberLookupController.resultSelected(result)"
+          class="member-lookup-result"
+          ng-class="{
+            'member-lookup-result-selected': $index == memberLookupController.selectedIndex,
+            'api-mod-expert': result.isExpert==true}">
+        <span class="search-result-icon search-result-icon-{{::result.kind}}">{{::result.kind.charAt(0).toUpperCase()}}</span>
+        <span>{{result.name}}</span><api-parameter-list ng-if="::result.parameters" data-member="::result" data-show-names="false" data-display-style="{{::memberLookupController.type.language}}"></api-parameter-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/search/search.html">
+<div id="searchControllerDiv" class="search-box" data-ng-keydown="searchController.onKeyDown($event)">
+
+  <div id="searchIcon" class="fa fa-search search-icon" data-ng-click="searchController.openSearchView()"></div>
+  <input id="searchInput" type="search" class="search-input"
+         data-ng-model="searchController.searchStr"
+         data-ng-keydown="searchController.onTextFieldKeyDown($event)" data-ng-click="searchController.inputClicked()"
+         ng-blur="searchController.inputBlurred()" data-ng-focus="searchController.inputFocused()" placeholder="Search (Alt+N)" autofocus autocomplete="off">
+
+  <div class="search-hint" data-ng-show="searchController.showResults">Press enter for more results</div>
+
+  <div onmouseenter="this.parentElement.parentElement.classList.add('no-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('no-hover')"
+    data-close-on-click="external" data-close-property="searchController.showResults" data-ng-show="searchController.showResults" class="search-results angular-animate ngFade-Animation" id="{{::searchController.searchBoxId}}" tabindex="1">
+    <h2 data-ng-if="searchController.result.types.length>0" class="search-results-section-header"><span>Types</span></h2>
+    <ul data-ng-if="searchController.result.types.length>0">
+      <li data-ng-repeat="hit in searchController.result.types" ng-class="{'search-result-focused': $index == searchController.currentIndex}">
+        <search-result data-hit="hit" data-current-index="searchController.currentIndex" data-index="{{::$index}}"></search-result>
+      </li>
+    </ul>
+    <h2 data-ng-if="searchController.result.members.length>0" class="search-results-section-header"><span>Members</span></h2>
+    <ul data-ng-if="searchController.result.members.length>0">
+      <li data-ng-repeat="hit in searchController.result.members" ng-class="{'search-result-focused': searchController.result.types.length + $index == searchController.currentIndex}">
+        <search-result data-hit="hit" data-current-index="searchController.currentIndex" data-index="{{::searchController.result.types.length + $index}}"></search-result>
+      </li>
+    </ul>
+    <h2 data-ng-if="searchController.result.sections.length>0" class="search-results-section-header"><span>Developer's Guide</span></h2>
+    <ul data-ng-if="searchController.result.sections.length>0">
+      <li data-ng-repeat="hit in searchController.result.sections" ng-class="{'search-result-focused': searchController.result.types.length + searchController.result.members.length + $index == searchController.currentIndex}">
+        <search-result data-hit="hit" data-current-index="searchController.currentIndex" data-index="{{::searchController.result.types.length + searchController.result.members.length + $index}}"></search-result>
+      </li>
+    </ul>
+    <h2 data-ng-if="searchController.result.demos.length>0" class="search-results-section-header"><span>Demos</span></h2>
+    <ul data-ng-if="searchController.result.demos.length>0">
+      <li data-ng-repeat="hit in searchController.result.demos" ng-class="{'search-result-focused': searchController.result.types.length + searchController.result.members.length + searchController.result.sections.length + $index == searchController.currentIndex}">
+        <search-result data-hit="hit" data-current-index="searchController.currentIndex" data-index="{{::searchController.result.types.length + searchController.result.members.length + searchController.result.sections.length + $index}}"></search-result>
+      </li>
+    </ul>
+    <h2 data-ng-if="searchController.result.articles.length>0" class="search-results-section-header"><span>Knowledge Base</span></h2>
+    <ul data-ng-if="searchController.result.articles.length>0">
+      <li data-ng-repeat="hit in searchController.result.articles | limitTo : 20" ng-class="{'search-result-focused': searchController.result.types.length + searchController.result.members.length + searchController.result.sections.length + searchController.result.demos.length + $index == searchController.currentIndex}">
+        <search-result data-hit="hit" data-current-index="searchController.currentIndex" data-index="{{::searchController.result.types.length + searchController.result.members.length + searchController.result.sections.length + searchController.result.demos.length + $index}}"></search-result>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/search/searchResult.html">
+<div class="search-result {{::searchResultController.hit.isExpert ? 'api-mod-expert' : '' }}"
+     data-kind="{{::searchResultController.hit.kind}}">
+    <span class="hit-name">
+        <span class="search-result-icon search-result-icon-{{::searchResultController.hit.kind}}">{{::searchResultController.iconLetter}}</span>
+        <api-link ng-if="::!searchResultController.hit.isSection && searchResultController.hit.type"
+                  data-type="{{::searchResultController.hit.type.id}}"
+                  data-name="{{::DocConfig.es6Modules ? searchResultController.hit.item.es6name || searchResultController.hit.item.name : searchResultController.hit.item.name}}"
+                  data-member="{{::searchResultController.hit.isType?null:searchResultController.hit.item.id}}"></api-link><!--
+    -->
+        <dguide-link ng-if="::searchResultController.hit.isSection"
+                     data-section-id="{{::searchResultController.hit.item.id}}"
+                     data-name="{{::searchResultController.hit.item.title}}" data-breadcrumbs=">"
+                     data-breadcrumb-limit="1"></dguide-link><!--
+    --><a ng-if="::searchResultController.hit.item.articleID"
+          ng-href="{{'#/kb/article/' + searchResultController.hit.item.articleID}}">{{::searchResultController.hit.item.name}}</a><!--
+    --><a ng-if="::searchResultController.hit.kind==='demo'"
+          ng-href="{{'https://live.yworks.com/demos/' + searchResultController.hit.item.demoPath}}">{{::searchResultController.hit.item.name}}</a><!--
+    -->
+        <api-parameter-list
+                ng-if="::searchResultController.hit.kind == 'method' || searchResultController.hit.kind == 'constructor'"
+                data-member="::searchResultController.hit.item" data-show-names="false"
+                data-display-style="{{::searchResultController.hit.type.language}}"></api-parameter-list><!--
+    </span>
+--><span class="search-result-detail"
+         data-ng-if="::!searchResultController.hit.isType && !searchResultController.hit.isSection && searchResultController.hit.type">({{::DocConfig.es6Modules ? searchResultController.hit.type.es6name || searchResultController.hit.type.name : searchResultController.hit.type.id}})</span>
+    <span class="search-result-detail"
+          data-ng-if="::searchResultController.hit.isType && !searchResultController.hit.isSection && !DocConfig.es6Modules">({{::searchResultController.ns}})</span>
+    <span class="search-result-detail" data-ng-if="::searchResultController.hit.kind==='demo'">({{::searchResultController.hit.item.demoPath.substring(0, searchResultController.hit.item.demoPath.lastIndexOf("/") + 1)}})</span>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/side-nav/side-nav.html">
+<div id="y-side-nav">
+  <div class="side-nav-toggle" ng-click="open = true"><i class="fa fa-ellipsis-v"></i></div>
+  <div class="side-nav-container" data-close-on-click="external" data-stop-click-propagation ng-show="open">
+    <div class="side-nav-line clickable" ng-click="closeOtherTabs()">
+      <div class="side-nav-left"><i class="fa fa-th-list"></i></div>
+      <div class="side-nav-line-content">Close other tabs <span class="side-nav-key-hint">(Alt+X)</span></div>
+    </div>
+    <div class="side-nav-line clickable" ng-if="iceEnabled" ng-click="showICE()">
+      <div class="side-nav-left"><i class="fa fa-pen"></i></div>
+      <div class="side-nav-line-content">Code Editor</div>
+    </div>
+    <div class="side-nav-line clickable" ng-click="showAboutDialog()">
+      <div class="side-nav-left"><i class="fa fa-info-circle"></i></div>
+      <div class="side-nav-line-content">About</div>
+    </div>
+
+  </div>
+    <div ng-if="showAbout" class="about-dialog">
+        <div class="about-dialog-backdrop" ng-click="closeAboutDialog()"></div>
+        <div class="about-dialog-content">
+            <div class="about-dialog-header">About the yFiles Documentation <i class="fa fa-close" ng-click="closeAboutDialog()" style="margin-left: auto; cursor: pointer;"></i></div>
+            <div class="about-dialog-content-text">
+                <p>
+                    The <a href="https://www.yworks.com/yfileshtml/">yFiles for HTML</a> Documentation
+                    was designed to quickly find
+                    relevant documentation while working on a yFiles for HTML project.</p>
+                <p>Please feel free to provide feedback to <feedback-link ></feedback-link></p>
+                <p>
+                    See the <a href="Credits.html">credits</a> for details about the open-source software used in this project.
+                </p>
+                <div style="text-align: center;">
+                    <a href="https://www.yworks.com">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 1000 394.64" xml:space="preserve" style="width: 200px;">
+                            <g class="logo-blue">
+                                <path d="M645.91,196.91c0-28.63,20.54-48.75,49.59-48.75c29.04,0,49.78,20.12,49.78,48.75
+          c0,28.63-20.75,48.96-49.78,48.96C666.45,245.87,645.91,225.54,645.91,196.91 M722.25,196.91c0-17.01-10.78-28.83-26.75-28.83
+          c-15.78,0-26.77,11.82-26.77,28.83s10.99,28.84,26.77,28.84C711.48,225.76,722.25,213.92,722.25,196.91"/>
+                                <path d="M822.42,152.52l-5.81,19.09c-3.52-1.25-7.26-2.08-12.03-2.08c-13.07,0-21.99,8.51-21.99,23.24v50.4h-22.61
+          v-92.52h15.35l4.36,13.69c5.4-10.37,14.73-15.77,26.76-15.77C812.88,148.57,818.07,150.03,822.42,152.52"/>
+                                <path d="M622.06,150.65l-14.31,41.07c-1.25,3.53-2.49,7.26-3.53,11.42c-1.66-4.15-3.32-7.89-5.4-11.62l-18.05-36.31
+          h-4.77l-18.05,36.31c-1.87,3.73-3.53,7.26-5.18,11.41c-1.04-3.94-2.08-7.47-3.32-11.21l-10.72-30.76l-12.37,31.25l19.35,51.79h6.85
+          l25.93-51.66l25.73,51.66h7.05l34.64-92.73v-0.62H622.06z"/>
+                                <path d="M947.74,188.2c-9.96-3.53-16.81-7.05-16.81-13.07c0-5.81,6.02-7.88,13.08-7.88c6.21,0,13.69,1.87,20.53,5.4
+          l7.88-15.14c-9.95-5.81-19.7-8.3-30.28-8.3c-17.63,0-32.77,8.92-32.77,25.93c0,15.15,11.41,22.82,26.14,28.42
+          c9.12,3.53,17.84,6.85,17.84,13.7c0,5.81-5.4,9.54-13.69,9.54c-8.72,0-17.42-2.7-25.32-7.68l-1.49-1.04v21.05
+          c8.64,4.08,17.86,6.13,28.46,6.13c20.33,0,34.23-10.78,34.23-28C975.53,201.89,963.92,194.21,947.74,188.2"/>
+                                <polygon points="902.33,230.65 872.17,195.46 902.33,159.51 902.33,150.65 883.37,150.65 852.65,187.37 852.65,118.7
+          830.05,118.7 830.05,243.18 852.65,243.18 852.65,203.76 885.85,243.18 902.33,243.18"/>
+
+                                <path d="M25.53,160.28l0.35,75.41c0.17,38.31,20.78,73.61,54.04,92.62l65.49,37.4c33.26,19,74.14,18.8,107.22-0.5
+          l65.14-38.02c33.08-19.31,53.35-54.79,53.17-93.1l-0.35-75.42c-0.18-38.31-20.78-73.61-54.04-92.59l-65.49-37.42
+          c-33.27-19-74.13-18.8-107.21,0.5L78.7,67.17C45.62,86.47,25.35,121.97,25.53,160.28"/>
+                            </g>
+                            <g class="logo-orange">
+                                <path d="M534.72,150.66v0.63l-48.57,122.8h-24.06v-0.41l14.54-32.77L437,151.28v-0.63h24.48L487.42,216
+              c2.29,5.6-1.87-6.85,0,0c1.86-6.85,3.74-12.45,5.6-18.05l18.05-47.3H534.72z"/>
+                                <path class="logo-inner" d="M127.22,172.34c-5.16,0.01-9.91,0.26-14.54-0.96c-9.12-2.41-15.26-7.94-17.54-17.26
+          c-2.6-10.63,4.26-21.93,14.8-24.81c7.84-2.14,14.66-0.12,20.85,4.76c4.26,3.36,6.99,7.92,9.63,12.54c2.45,4.29,4.78,8.67,7.77,12.61
+          c3.66,4.82,8.22,8.66,13.36,11.89c5.18,3.25,10.43,6.37,15.88,9.09c7.91,3.95,16.23,6.01,25.25,5.03c8.42-0.92,15.81-4.3,22.93-8.54
+          c3.14-1.87,6.34-3.64,9.46-5.57c7.3-4.53,12.97-10.57,17.3-17.91c2.73-4.62,5.15-9.42,8.31-13.77c3.81-5.25,8.71-8.96,15.11-10.46
+          c9.47-2.21,20.6,2.66,24.57,12.71c4.51,11.41-1.19,23.79-12.75,28.41c-3.9,1.56-7.94,2.28-12.13,2.27c-3.67-0.01-7.34-0.02-11.01,0
+          c-6.15,0.04-12.17,0.91-17.99,2.93c-4.13,1.43-7.92,3.6-11.71,5.74c-3.69,2.09-7.35,4.23-10.94,6.5
+          c-6.27,3.97-11.53,8.98-15.21,15.52c-3.17,5.62-5.22,11.62-5.81,18.06c-0.51,5.51-0.41,11.04-0.38,16.56
+          c0.03,5.85,0.42,11.66,2.16,17.31c1.33,4.34,3.3,8.38,5.5,12.33c2.94,5.28,6.45,10.25,8.28,16.12c1.9,6.08,1.93,12.08-0.84,17.85
+          c-3.35,6.99-8.92,11.17-16.72,12.15c-6.98,0.88-13-1.38-17.78-6.29c-5.01-5.15-6.85-11.6-5.92-18.78
+          c0.87-6.78,4.29-12.47,7.74-18.16c3.55-5.88,6.77-11.92,8.11-18.77c0.47-2.4,0.68-4.82,0.89-7.25c0.44-5.25,0.44-10.52,0.26-15.77
+          c-0.24-6.79-0.65-13.57-3.48-19.94c-2.2-4.94-4.89-9.51-8.7-13.41c-4.11-4.21-8.87-7.5-13.94-10.46c-4.13-2.41-8.22-4.88-12.51-6.98
+          c-5.88-2.87-12.09-4.49-18.64-5C133.46,172.34,130.12,172.5,127.22,172.34z"/>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./components/tab-control/tab-control.html">
+<div class="tab-bar">
+  <div class="tab-scroll-button-left noselect" ng-click="tabCtrl.scrollTabsLeft()"><span class="fa fa-lg fa-angle-double-left"></span></div>
+  <div class="tab-bar-outer">
+    <div class="tab-bar-inner">
+      <div ng-repeat="tab in tabCtrl.tabs" class="tab-container">
+        <tab data-tab="tab"></tab>
+      </div>
+    </div>
+  </div>
+  <div class="tab-scroll-button-right noselect" ng-click="tabCtrl.scrollTabsRight()"><span class="fa fa-lg fa-angle-double-right"></span></div>
+</div>
+</script>
+
+<script type="text/ng-template" id="./components/tab-control/tab.html">
+<div class="tab-item-outer" ng-class="{'selected':tabCtrl.tab.url==tabCtrl.getCurrentTabUrl()}"
+    ng-click="tabCtrl.tabClicked($event);" ng-mousedown="tabCtrl.tabDown($event)" ng-mouseup="tabCtrl.tabUp($event, tabCtrl.tab.url)">
+  <div class="tab-item-inner">
+    <a class="tab-item-link" ng-href="#{{tabCtrl.createTabUrl(tabCtrl.tab.url, tabCtrl.tab.hash)}}">
+      <div class="tab-item-content tab tab-{{::tabCtrl.getTabType(tabCtrl.tab.url)}}">
+        <span>{{tabCtrl.tab.title}}</span>
+      </div>
+    </a>
+    <div class="tab-item-ellipsis">
+      <div ng-click="tabCtrl.closeTab(tabCtrl.tab.url); $event.stopPropagation()" class="tab-item-close-image noselect">&times;</div>
+    </div>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/defaultValueTable.html">
+<div ng-if="defaults.length" id="{{::type.id + '-defaultValueTable'}}">
+  <h4>Default Values of Properties</h4>
+  <table class="default-value-table">
+    <tr ng-repeat="def in ::defaults | filter:{'important': true}" ng-class="{'even-row':$odd}">
+      <td><a href="{{::LinkService.makeApiUrl(type, def.propertyName)}}">{{::def.propertyName}}</a></td>
+      <td><api-link ng-if="::def.ref" data-type="{{::def.ref.type}}" data-member="{{::def.ref.member}}"></api-link><code>{{::def.value}}</code></td>
+      <td><span data-bind-compiled="::def.summary"></span></td>
+    </tr>
+  </table>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/functionSignature.html">
+<div class="member-body expanded signature-details">
+  <h5 class="doc-header">Signature Details</h5>
+  <p>
+  <code>
+    <span class="member-title">function</span><span data-ng-if="::item.typeparameters"> &lt;<span ng-repeat="param in ::item.typeparameters"><api-link data-type="{{::param.name}}"></api-link><span ng-if="!$last">, </span></span>&gt; </span>( <span data-ng-repeat="parameter in ::item.parameters"><span>{{::parameter.name}}</span>: <api-link data-type="{{::parameter.type}}"></api-link><span data-ng-if="!$last">, </span></span> )<span data-ng-if="::item.returns.type">: <api-link data-type="{{::item.returns.type}}"></api-link></span>
+  </code>
+  </p>
+  <p class="summary" data-ng-if="::item.summary" data-bind-compiled="::item.summary"></p>
+
+  <div class="remarks" data-ng-if="::item.remarks">
+    <p data-bind-compiled="::item.remarks"></p>
+  </div>
+  <h5 class="doc-header">Parameters</h5>
+  <dl class="api-parameter-list">
+    <dt data-ng-repeat-start="parameter in ::item.parameters">
+      <span class="api-parameter-name">{{::parameter.name}}</span> -
+      <api-type data-item="::parameter"></api-type>
+    </dt>
+    <dd data-ng-repeat-end data-ng-if="::parameter.summary" data-bind-compiled="::parameter.summary"></dd>
+  </dl>
+  <div data-ng-if="::item.returns">
+    <h5 class="doc-header">Returns</h5>
+    <dl class="api-parameter-list">
+      <dt>
+        <api-type data-item="::item.returns"></api-type>
+      </dt>
+      <dd data-ng-repeat-end data-bind-compiled="::item.returns.doc"></dd>
+    </dl>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/member-annotations-csharp.html">
+<div data-ng-if="::item.annotations && item.annotations.length>0">
+  <h4>Attributes</h4>
+  <ul>
+    <li data-ng-repeat="attribute in ::item.annotations">{{::attribute.type}}<span data-ng-if="::attribute.elementValuePairs">(<span
+        data-ng-repeat="pair in ::attribute.elementValuePairs">{{::pair.element}} = {{pair.value}}<span
+        data-ng-if="!$last">, </span></span>)</span><span data-ng-if="::attribute.arguments">(<span
+        data-ng-repeat="argument in ::attribute.arguments">{{::argument}}<span
+        data-ng-if="!$last">, </span></span>)</span>
+    </li>
+  </ul>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/member-annotations-java.html">
+<div ng-repeat="annotation in ::item.annotations">
+  <h4 class="doc-header">@{{::annotation.type}}</h4>
+  <div ng-if="::annotation.elementValuePairs" class="api-parameter-list">
+    <div ng-repeat="pair in ::annotation.elementValuePairs">
+      <span ng-if="::pair.element != 'summary'">{{::pair.element}} - </span><span bind-compiled="::pair.value"></span>
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/ng-template" id="./templates/memberContainer.html">
+  <div class="member-container">
+      <h2 class="link-button-container"><a href="{{::anchor}}" class="no-deco">{{::heading}}</a> <link-button data-href="::anchor"></link-button></h2>
+      <div ng-repeat="item in items | limitTo:getMemberLimit()">
+          <div id="{{::item.id}}"
+               class="member-section {{::!!item.expert ? 'api-mod-expert' : ''}}"
+               data-member-item data-type="::type" data-member-type="{{::memberType}}" data-item="::item"
+               data-is-collapsed="isCollapsed" data-inheritance-data="::inheritanceData"></div>
+
+      </div>
+  </div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/memberItem.html">
+<div class="side-expandable highlight-element noselect" data-ng-click="$parent.isCollapsed = !$parent.isCollapsed"
+    data-ng-if="::hasExpandableInformation">
+  <span class="fa fa-caret-{{isCollapsed && hasExpandableInformation ? 'down' : 'right'}}"></span>
+</div>
+
+<div class="member-header link-button-container" ng-class="{'expandable':hasExpandableInformation}">
+  <span data-ng-if="::type.language != 'javascript' && item.type"><api-link data-type="{{::item.type}}"></api-link><span ng-if="::item.dimension">{{::item.dimension}}</span></span>
+  <h3 class="member-title"><a href="{{::linkHref}}" class="no-deco" ng-click="$event.preventDefault(); $parent.isCollapsed = !$parent.isCollapsed">{{::displayName}}</a></h3><!--
+--><span data-ng-if="::item.typeparameters">
+    &lt;
+      <span ng-repeat="param in ::item.typeparameters">
+        <api-link data-type="{{::param.name}}"></api-link>
+        <span ng-if="::param.bounds">extends <span ng-repeat="bound in ::param.bounds"><api-link data-type="{{::bound}}"></api-link><span ng-if="!$last">,</span></span></span>
+        <span ng-if="!$last">,</span>
+      </span>
+    &gt;
+  </span>
+  <span ng-if="::(isMethod || isConstructor || isDefaultMethod || isIndexer)"><api-parameter-list ng-if="!memberItemController.paramObject" data-member="::item" data-show-names="true" data-display-style="{{::type.language}}"></api-parameter-list><span data-ng-if="memberItemController.paramObject">(options: Object)</span></span>
+  <span data-ng-if="::item.returns && type.language == 'javascript'">: <api-type data-item="::item.returns"></api-type><span ng-if="::item.returns.dimension">{{::item.returns.dimension}}</span></span><span data-ng-if="::item.type && type.language == 'javascript'">: <api-type data-item="::item"/><span ng-if="::item.dimension">{{::item.dimension}}</span></span>
+  <span class="signature">
+    <span ng-if="::item.notnull" class="api-tag-notnull" title="The value of this element may never be null."></span>
+    <span ng-if="::item.canbenull" class="api-tag-canbenull" title="The value of this element may be null."></span>
+    <span ng-if="::item.ro" class="api-tag-readonly" title="This member is read only. A value cannot be set."></span>
+    <span ng-if="::item.conversion" class="api-tag-conversion" title="There is an automatic conversion available for this element."></span>
+    <span ng-if="::item.protected" class="api-tag-protected" title="This member is considered protected, meaning that it should only be accessed by other members of the same type and the members in the implementations of sub types."></span>
+    <span ng-if="::item.static" class="api-tag-static" title="This member is available on the type itself, only, rather than on instances of the type."></span>
+    <span ng-if="::item.final" class="api-tag-final" title="{{::'This member is considered '+(type.language == 'csharp' ? 'sealed' : 'final')+', meaning that it cannot be overwritten by sub types.'}}"></span>
+    <span ng-if="::item.wo" class="api-tag-writeonly" title="This member is write only. A value can only be written to it."></span>
+    <span ng-if="::item.abstract" class="api-tag-abstract" title="The implementation of this member is defined in a sub type."></span>
+    <span ng-if="::item.prop" class="api-tag-javafx" title="This property is a JavaFX property and can be used with JavaFX bindings."></span>
+    <span ng-if="::item.expert || type.expert" class="api-tag-expert"></span>
+    <span ng-if="::item.annotations">
+      <span ng-repeat="annotation in ::item.annotations" class="{{::annotation.type == 'Deprecated' ? 'api-tag-deprecated' : 'annotation-' + annotation.type.toLowerCase()}}">{{::annotation.type}}</span>
+    </span>
+  </span>
+  <link-button data-href="::linkHref"></link-button>
+</div>
+<div class="member-body" ng-class="{'expanded':isCollapsed && hasExpandableInformation}">
+  <span data-ng-if="type.language != 'javascript' && item.returns && item.returns.type != 'void' && (!(isCollapsed && hasExpandableInformation) || !item.returns.doc)">&#8618; <api-link data-type="{{::item.returns.type}}"></api-link><span data-ng-if="::item.returns.dimension">{{::item.returns.dimension}}</span></span>
+  <p class="summary"></p>
+  <div class="remarks angular-animate expand-member-animation" data-ng-if="isCollapsed && hasExpandableInformation">
+
+    <p data-ng-if="::item.remarks" data-bind-compiled="::item.remarks"></p>
+
+    <div ng-if="::item.blockTags">
+      <div ng-repeat="blockTag in ::item.blockTags">
+        <y-block data-name="{{::blockTag.name}}" data-content="blockTag.summary"></y-block>
+      </div>
+    </div>
+
+    <type-parameter-list data-item="::item"></type-parameter-list>
+
+    <div ng-if="::isEvent && hasEventAddRemove">
+      <h4 class="doc-header">Event Registration</h4>
+      <p>
+        <code> <span>{{::item.add.name}}</span>(
+        <span ng-repeat="parameter in ::item.add ? item.add.parameters : item.parameters">
+          <span ng-if="!$first">,</span>
+          <api-link data-type="{{::parameter.type}}"></api-link>
+        </span>) </code>
+      </p>
+
+      <h4 class="doc-header">Event Deregistration</h4>
+      <p>
+      <code> <span>{{::item.remove.name}}</span>(
+        <span ng-repeat="parameter in ::item.remove ? item.remove.parameters : item.parameters">
+          <span ng-if="!$first">,</span>
+          <api-link data-type="{{::parameter.type}}"></api-link>
+        </span>) </code>
+      </p>
+      <div data-ng-if="::item.add && item.add.parameters && item.add.parameters.length === 1 && item.add.parameters[0].signatureDetails">
+        <function-signature data-item="::item.add.parameters[0].signatureDetails"></function-signature>
+      </div>
+    </div>
+
+    <div ng-if="::(isProperty || isDefaultProperty) && type.language != 'javascript'" class="api-property-method">
+      <div data-ng-if="::item.get" id="{{::item.get.id}}">
+        <div><h4 class="doc-header">Property Getter</h4></div>
+        <code><span>{{::item.get.name}}()</span></code>
+        <div>&#8618; <api-link data-fqn="true" data-type="{{::item.get.returns.type}}"></api-link><span ng-if="::item.get.returns.dimension">{{::item.get.returns.dimension}}</span><span ng-if="::item.get.returns.doc"> - <span data-bind-compiled="::item.get.returns.doc"></span></span></div>
+        <div data-ng-if="::item.get.throws.length">
+          <div><strong class="api-parameter-list">Throws</strong></div>
+          <div class="api-parameter-list">
+            <div ng-repeat="throw in ::item.get.throws">
+              <api-link data-fqn="true" data-type="{{::throw.type}}"></api-link><span ng-if="::throw.name">({ name: '{{::throw.name}}' })</span> - <span data-bind-compiled="::throw.summary"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="::item.set" id="{{::item.set.id}}" class="api-property-method">
+        <div><h4 class="doc-header">Property Setter</h4></div>
+        <code><span>{{::item.set.name}}</span>(<span ng-repeat="parameter in ::item.set.parameters"><span ng-if="!$first">,</span><api-link data-type="{{::parameter.type}}"></api-link><span ng-if="::parameter.dimension">{{::parameter.dimension}}</span> {{::parameter.name}}</span>)</code>
+        <div ng-if="::item.set.parameters[0].summary" class="api-parameter-list">
+          <span class="api-parameter-name">{{::item.set.parameters[0].name}}</span> -
+          <span data-bind-compiled="::item.set.parameters[0].summary"></span>
+        </div>
+        <div data-ng-if="::item.set.throws.length">
+          <div><h4 class="doc-header">Throws</h4></div>
+          <div class="api-parameter-list">
+            <div ng-repeat="throw in ::item.set.throws">
+              <api-link data-fqn="true" data-type="{{::throw.type}}"></api-link><span ng-if="::throw.name">({ name: '{{::throw.name}}' })</span> - <span data-bind-compiled="::throw.summary"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="::item.prop" id="{{::item.prop.id}}" class="api-property-method">
+        <div><strong class="doc-header">JavaFX Property</strong></div>
+        <code><span>{{::item.prop.name}}()</span></code><br>
+        &#8618; <api-link data-fqn="true" data-type="{{::item.prop.returns.type}}"></api-link><span ng-if="::item.prop.returns.dimension">{{::item.prop.returns.dimension}}</span><span ng-if="::item.prop.returns.doc"> - <span data-bind-compiled="::item.prop.returns.doc"></span></span>
+      </div>
+    </div>
+
+    <function-signature data-ng-if="::item.signatureDetails" data-item="::item.signatureDetails"></function-signature>
+
+    <div data-ng-if="::hasParameterDescriptions && item.parameters.length && (isMethod || isDefaultMethod || isConstructor || isIndexer)">
+      <h4 class="doc-header">Parameters<label class="parameter-switch" ng-if="::paramObjectSupported"><input type="checkbox" data-ng-model="memberItemController.paramObject">Options Overload</label><span ng-if="::artificialParamsAvailable" class="artificial-params-available-indicator" title="Extra parameters available.">!</span></h4>
+      <div data-ng-if="memberItemController.paramObject" class="parameter-object-preamble api-parameter-list"><b><span class="api-parameter-name">options</span> - Object</b><br><span class="parameter-object-preamble-text">A map of options to pass to the method.</span></div>
+      <dl class="api-parameter-list">
+        <dt data-ng-repeat-start="parameter in ::item.parameters" data-ng-if="!parameter.artificial || memberItemController.paramObject">
+          <span class="api-parameter-name"><span ng-if="memberItemController.paramObject">.</span>{{::parameter.name}}</span> -
+          <api-type data-item="::parameter"></api-type><span ng-if="::parameter.dimension">{{::parameter.dimension}}</span><span ng-if="::parameter.varargs && type.language==='csharp' && !parameter.dimension">[]</span>
+          <span data-ng-if="::parameter.notnull" class="api-tag-notnull" title="The value of this element may never be null."></span>
+          <span data-ng-if="::parameter.canbenull" class="api-tag-canbenull" title="The value of this element may be null."></span>
+          <span data-ng-if="::parameter.optional || parameter.artificial" class="api-tag-optional" title="This parameter is optional and may be omitted when calling this function."></span>
+          <span data-ng-if="::parameter.artificial" class="api-tag-artificial" title="Only available as extra parameter in option overload."></span>
+          <span data-ng-if="::parameter.conversion" class="api-tag-conversion" title="There is an automatic conversion available for this element."></span>
+          <span data-ng-if="::parameter.ref" class="api-tag-ref"></span>
+          <span data-ng-if="::parameter.out" class="api-tag-out"></span>
+          <span data-ng-if="::parameter.varargs" class="api-tag-varargs"></span>
+        </dt>
+        <dd data-ng-repeat-end data-ng-if="!parameter.artificial || memberItemController.paramObject"><div data-ng-if="::parameter.summary" data-bind-compiled="::parameter.summary"></div>
+          <function-signature data-ng-if="::parameter.signatureDetails" data-item="::parameter.signatureDetails"></function-signature>
+          <div ng-if="::parameter.dpdata">
+            <y-dp-data data-dp-data="::parameter.dpdata"></y-dp-data>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div data-ng-if="::item.returns && item.returns.doc && (isMethod || isDefaultMethod)">
+      <h4 class="doc-header">Returns</h4>
+      <dl class="api-parameter-list">
+        <dt>
+          &#8618; <api-type data-item="::item.returns"></api-type><span ng-if="::item.returns.dimension">{{::item.returns.dimension}}</span><span ng-if="::item.notnull" class="api-tag-notnull" title="The value of this element may never be null."></span><span ng-if="::item.canbenull" class="api-tag-canbenull" title="The value of this element may be null."></span>
+        </dt>
+        <dd data-ng-repeat-end><div data-bind-compiled="::item.returns.doc"></div>
+          <function-signature data-ng-if="::item.returns.signatureDetails" data-item="::item.returns.signatureDetails"></function-signature>
+        </dd>
+      </dl>
+    </div>
+    <div data-ng-if="::item.throws.length">
+      <h4 class="doc-header">Throws</h4>
+      <dl class="api-parameter-list">
+        <dt data-ng-repeat-start="throw in ::item.throws">
+          <api-link data-fqn="true" data-type="{{::throw.type}}"></api-link><span ng-if="::throw.name">({ name: '{{::throw.name}}' })</span>
+        </dt>
+        <dd data-ng-repeat-end data-bind-compiled="::throw.summary"></dd>
+      </dl>
+    </div>
+
+    <div ng-if="::item['y.figures']">
+      <h4 class="doc-header">Sample Graphs</h4>
+      <div class="sampleGraphContainer">
+        <div class="sampleGraphControls" ng-if="item['y.figures'].length > 1">
+          <span class="samplegraph-leftButton preventSelection" ng-click="state.graphIndex = ((state.graphIndex - 1 % item['y.figures'].length) + item['y.figures'].length) % item['y.figures'].length">
+            <i class="fa fa-lg fa-angle-left"></i>
+            Previous
+          </span>
+          <span class="samplegraph-rightButton preventSelection" ng-click="state.graphIndex = ((state.graphIndex + 1 % item['y.figures'].length) + item['y.figures'].length) % item['y.figures'].length">
+            Next
+            <i class="fa fa-lg fa-angle-right"></i>
+          </span>
+        </div>
+        <y-graph data-from-ref="state.prevGraphRef" data-ref="state.currentGraphRef" data-count="item['y.figures'].length" data-summary="item['y.figures'][state.graphIndex].summary"></y-graph>
+      </div>
+      <div class="sampleGraphDescription" ng-if="item['y.figures'][state.graphIndex].summary">
+        <h5>Shown setting:</h5>
+        <div ng-repeat="fig in item['y.figures']" ng-if="$index == state.graphIndex" data-bind-compiled="fig.summary"></div>
+      </div>
+    </div>
+
+    <div data-ng-if="::item.examples">
+      <h4>Examples</h4>
+      <p data-ng-repeat="example in ::item.examples" data-bind-compiled="::example"></p>
+    </div>
+
+    <div ng-if="::defaultValue">
+      <h4 class="doc-header">Default Value<strong ng-if="::defaultValue.override"> (Overrides the default value defined in <api-link data-type="{{::defaultValue.override}}" data-member="{{::item.name}}" data-name="{{::defaultValue.override.substring(defaultValue.override.lastIndexOf('.') + 1)}}"></api-link>)</strong></h4>
+      <p>The default value is <code>{{::defaultValue.value}}</code><api-link ng-if="::defaultValue.ref" data-type="{{::defaultValue.ref.type}}" data-member="{{::defaultValue.ref.member}}"></api-link>.</p>
+      <p ng-if="::defaultValue.summary" data-bind-compiled="::defaultValue.summary"></p>
+    </div>
+
+    <div ng-if="::item.complexity">
+      <h4 class="doc-header">Complexity</h4>
+      <p data-bind-compiled="::item.complexity"></p>
+    </div>
+
+    <div ng-if="::item.preconditions.length">
+      <h4 class="doc-header">Preconditions</h4>
+      <ul>
+        <li data-ng-repeat="precondition in ::item.preconditions" data-bind-compiled="precondition"></li>
+      </ul>
+    </div>
+
+    <div ng-if="::item.postconditions.length">
+      <h4 class="doc-header">Postconditions</h4>
+      <ul>
+        <li data-ng-repeat="postcondition in ::item.postconditions" data-bind-compiled="postcondition"></li>
+      </ul>
+    </div>
+
+    <div ng-if="::item.dpdata">
+      <y-dp-data data-dp-data="::item.dpdata"></y-dp-data>
+    </div>
+
+    <ng-include src="'./templates/member-annotations-java.html'" data-ng-if="::type.language!=='csharp'"></ng-include>
+    <ng-include src="'./templates/member-annotations-csharp.html'" data-ng-if="::type.language==='csharp'"></ng-include>
+
+    <related-demos data-item="::item"></related-demos>
+
+    <div data-ng-if="::item.seeAlso.length">
+      <h4 class="doc-header">See Also</h4>
+      <div class="api-parameter-list">
+        <span data-ng-repeat="also in ::item.seeAlso">
+          <dguide-link data-ng-if="::also.section" data-section-id="{{::also.section}}" data-name="{{::also.name}}"></dguide-link><!--
+          --><api-link data-ng-if="::also.type" data-fqn="true" data-type="{{::also.type}}" data-member="{{::also.member}}"></api-link><!--
+          --><span data-ng-if="::(also.summary && !also.type)" data-bind-compiled="::also.summary"></span><!--
+          --><span ng-if="!$last">, </span>
+        </span>
+      </div>
+    </div>
+
+    <div data-ng-if="::declarationTitle">
+      <h4 class="doc-header">{{::declarationTitle}}</h4>
+      <span class="api-parameter-list"><api-link data-type="{{::item.declaration}}" data-member="{{::item.declarationMember}}" data-text="{{::declarationText}}"></api-link></span>
+    </div>
+
+    <div ng-if="::implementations.length>0">
+      <h4 class="doc-header">Implemented/overridden in</h4>
+      <div class="api-parameter-list">
+        <span ng-repeat="m in implementations">
+          <a href="{{::m.link}}">{{::m.typeName}}</a><span ng-if="!$last">, </span>
+        </span>
+        <span ng-if="!implementations.length">No implementations/overrides found.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/relatedDemos.html">
+<div data-ng-if="item.relatedDemos.length > 0">
+  <h4 class="doc-header">Related Programming Samples</h4>
+  <dl class="api-parameter-list">
+    <dt data-ng-repeat-start="demo in ::item.relatedDemos">
+      <a target="_blank" rel="noopener" class="demo-link" href="{{::demo.path}}">{{::demo.text}}</a>
+    </dt>
+    <dd data-ng-if="::demo.summary" data-ng-repeat-end data-bind-compiled="::demo.summary"></dd>
+  </dl>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./templates/type-annotations-csharp.html">
+<div data-ng-if="::type.annotations">
+  <h4>Attributes</h4>
+  <ul>
+    <li data-ng-repeat="attribute in ::type.annotations">{{::attribute.type}}<span data-ng-if="::attribute.elementValuePairs">(<span
+          data-ng-repeat="pair in ::attribute.elementValuePairs">{{::pair.element}} = {{pair.value}}<span
+          data-ng-if="!$last">, </span></span>)</span><span data-ng-if="::attribute.arguments">(<span
+          data-ng-repeat="argument in ::attribute.arguments">{{::argument}}<span
+          data-ng-if="!$last">, </span></span>)</span>
+    </li>
+  </ul>
+</div>
+</script>
+
+<script type="text/ng-template" id="./templates/type-annotations-java.html">
+<div data-ng-if="::type.annotations">
+  <h4>Annotations</h4>
+  <table class="api-annotations">
+    <tr>
+      <th>Name</th>
+      <th>Values</th>
+    </tr>
+    <tr ng-repeat="annotation in ::type.annotations">
+      <td>{{::annotation.type}}</td>
+      <td>
+        <div ng-repeat="pair in ::annotation.elementValuePairs">
+          {{::pair.element + ' = ' + pair.value}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+</script>
+
+<script type="text/ng-template" id="./templates/typeParameterList.html">
+<div data-ng-if="item.typeparameters.length > 0">
+  <h4 class="doc-header">Type Parameters</h4>
+  <dl class="api-parameter-list">
+    <dt data-ng-repeat-start="parameter in item.typeparameters">
+      <!--<span class="api-typeparameter-name" data-bind-compiled="::parameter.name"></span>-->
+      <api-link data-fqn="true" data-type="{{::parameter.name}}"></api-link>
+      <span data-ng-if="::parameter.bounds"> {{::item.language != 'javascript' ? 'extends' : ':'}} </span>
+      <span data-ng-repeat="constraint in parameter.bounds">
+        <api-link data-fqn="true" data-type="{{::constraint}}"></api-link>
+        <span data-ng-if="!$last">, </span>
+      </span>
+    </dt>
+    <dd data-ng-if="::parameter.summary" data-ng-repeat-end data-bind-compiled="::parameter.summary"></dd>
+  </dl>
+</div>
+</script>
+
+<script type="text/ng-template" id="./views/api.html">
+<!--div ng-if="::itemType == 'namespace'" id="docsContainer"-->
+<div ng-if="::itemType == 'unavailable'">
+  <div ng-include="'./views/unavailable.html'"></div>
+</div>
+
+<div ng-if="::itemType == 'namespace'" class="namespace-container-container">
+  <div ng-include="'./views/api_namespace.html'" class="namespace-container"></div>
+</div>
+
+<div ng-if="::itemType == 'type' || itemType == 'member'" class="type-container">
+<div id="docsHeader">
+  <div id="docsHeaderTitle" class="header-content type-header">
+    <h1 class="link-button-container {{::!!type.expert ? 'api-mod-expert' : ''}}">
+      <span data-ng-if="::type.group == 'interface'" class="tree-icon tree-icon-interface"
+            tooltip="Interface">I</span>
+      <span data-ng-if="::type.group == 'class'" class="tree-icon tree-icon-class" tooltip="Class">C</span>
+      <span data-ng-if="::type.group == 'enum'" class="tree-icon tree-icon-enum" tooltip="Enumeration">E</span>
+      <span data-ng-if="::type.group == 'structure'" class="tree-icon tree-icon-structure"
+            tooltip="Structure">S</span>
+      <span data-ng-if="::type.group == 'annotation'" class="tree-icon tree-icon-annotation"
+            tooltip="{{::type.language === 'csharp' ? 'Attribute' : 'Annotation'}}">A</span>
+      <span data-ng-if="::type.group == 'delegate'" class="tree-icon tree-icon-delegate" tooltip="Delegate">D</span>
+
+      <a href="#{{::currentPath}}" class="no-deco">{{::DocConfig.es6Modules ? type.es6name || type.name :
+        type.name}}</a>
+
+      <span ng-if="::type.typeparameters" class="type-parameter-list">
+        <span ng-if="::type.language === 'csharp'">
+          &lt;<span ng-repeat="param in type.typeparameters"><api-link data-type="{{::param.name}}"></api-link><span
+                ng-if="!$last">, </span></span>&gt;
+          <span ng-if="typeparameterBounds">
+            where
+            <span ng-repeat="param in type.typeparameters">
+              {{::param.name}} : <span ng-repeat="bound in ::param.bounds"><api-link
+                    data-type="{{bound}}"></api-link><span ng-if="!$last"> & </span></span>
+              <span ng-if="!$last">,</span>
+            </span>
+          </span>
+        </span>
+        <span ng-if="::type.language !== 'csharp'">
+          &lt;
+          <span ng-repeat="param in type.typeparameters">
+            <api-link data-type="{{::param.name}}"></api-link>
+            <span ng-if="::param.bounds">extends <span ng-repeat="bound in ::param.bounds"><api-link
+                    data-type="{{bound}}"></api-link><span ng-if="!$last">,</span></span></span>
+            <span ng-if="!$last">,</span>
+          </span>
+          &gt;
+        </span>
+      </span>
+      <span class="api-tags" ng-if="::hasAnnotations">
+        <span ng-if="::type.annotations">
+          <!-- these are currently not displayed (display: none rule for annotation- classes) -->
+          <span ng-repeat="annotation in ::type.annotations"><span
+                  class="{{::'annotation-' + annotation.type.toLowerCase()}}">{{::annotation.type}}</span></span>
+        </span>
+        <span ng-if="::type.protected" class="api-tag-protected"
+              title="This member is considered protected, meaning that it should only be accessed by other members of the same type and the members in the implementations of sub types."></span>
+        <span ng-if="::type.abstract" class="api-tag-abstract"
+              title="The implementation of this member is defined in a sub type."></span>
+        <span ng-if="::type.static" class="api-tag-static"
+              title="This class only contains static utility methods and can neither be instantiated nor inherited from."></span>
+        <span ng-if="::type.final" class="api-tag-final"
+              title="{{::'This class is '+(LinktableController.type.language == 'csharp' ? 'sealed' : 'final')+', so it cannot be inherited from.'}}"></span>
+        <span ng-if="::type.flags" class="api-tag-flags"></span>
+        <span ng-if="::type.expert" class="api-tag-expert"></span>
+      </span>
+      <link-button data-href="::'#'+currentPath"></link-button>
+    </h1>
+    <div class="show-usages-link">
+      <a href="{{::LinkService.fixUrl('#/usages/' + type.id)}}"
+         title="Show usages (Alt+F7)">Show usages</a>
+    </div>
+  </div>
+
+  <member-filter ng-if="!hideMemberFilter" data-type="type" data-memberfilter="memberfilter" data-member-search-clicked="memberSearchClicked" class="member-navigation"></member-filter>
+</div>
+
+<div id="docsContentContainer">
+<div id="docsContent">
+<div class="content-box">
+  <div class="type-description" ng-hide="memberfilter.search.name">
+    <p data-ng-if="::type.summary" class="type-summary" data-bind-compiled="::type.summary" ></p>
+
+    <api-inheritance-box ng-if="!hideInheritanceBox" data-type="type" data-inheritance-data="::inheritanceData"></api-inheritance-box>
+
+    <h2 data-ng-if="::type.remarks" class="doc-header">Remarks</h2>
+    <p data-ng-if="::type.remarks" data-bind-compiled="::type.remarks"></p>
+
+    <div ng-if="::type.blockTags">
+      <div ng-repeat="blockTag in ::type.blockTags">
+        <y-block data-name="{{::blockTag.name}}" data-content="blockTag.summary"></y-block>
+      </div>
+    </div>
+
+    <div class="type-details">
+      <h4 class="doc-header">Type Details</h4>
+
+      <dl class="indented inline-list">
+        <dt data-ng-if="::rawTypeName">
+          Raw
+        </dt>
+        <dd data-ng-if="::rawTypeName">
+          <api-link data-type="{{::rawTypeName}}">Raw type</api-link>
+        </dd>
+        <dt data-ng-if="::!DocConfig.es6Modules">
+          {{::type.language == 'java' ? 'Package' : 'Namespace'}}
+        </dt>
+        <dd data-ng-if="::!DocConfig.es6Modules">
+          <a href="{{::'#/api/' + namespace.id}}">{{::namespace.id}}</a>
+        </dd>
+        <dt data-ng-if="::type.es6Module && DocConfig.es6Modules">
+          yfiles Module
+        </dt>
+        <dd data-ng-if="::type.es6Module && DocConfig.es6Modules">
+          {{::type.es6Module}}
+        </dd>
+        <dt data-ng-if="::type.language === 'csharp'">
+          {{::type.modules.length > 1 ? 'Assemblies' : 'Assembly'}}
+        </dt>
+        <dt data-ng-if="::type.language === 'javascript'">
+          yfiles-umd {{::type.modules.length > 1 ? 'Modules' : 'Module'}}
+        </dt>
+        <dd>
+        <span data-ng-repeat="module in ::type.modules"><!--
+      --><a data-ng-if="::module.moduleId" href="{{::'#/module/' + module.moduleId}}">{{::module.moduleId}}</a><!--
+      --><span data-ng-if="::module.text">{{::module.text}}</span><span ng-if="!$last">, </span></span>
+        </dd>
+        <dt data-ng-if="::DocConfig.es6Modules">
+          Legacy UMD Name
+        </dt>
+        <dd data-ng-if="::DocConfig.es6Modules">
+          {{::type.id}}
+        </dd>
+      </dl>
+    </div>
+
+    <type-parameter-list data-item="::type"></type-parameter-list>
+
+    <div ng-if="::type['y.figures']">
+      <h4 class="doc-header">Sample Graphs</h4>
+      <div class="sampleGraphContainer">
+        <div class="sampleGraphControls" ng-if="type['y.figures'].length > 1">
+        <span class="samplegraph-leftButton preventSelection" ng-click="state.graphIndex = ((state.graphIndex - 1 % type['y.figures'].length) + type['y.figures'].length) % type['y.figures'].length">
+          <i class="fa fa-lg fa-angle-left"></i>
+          Previous
+        </span>
+          <span class="samplegraph-rightButton preventSelection" ng-click="state.graphIndex = ((state.graphIndex + 1 % type['y.figures'].length) + type['y.figures'].length) % type['y.figures'].length">
+          Next
+          <i class="fa fa-lg fa-angle-right"></i>
+        </span>
+        </div>
+        <y-graph data-from-ref="state.prevGraphRef" data-ref="state.currentGraphRef" data-count="type['y.figures'].length" data-summary="type['y.figures'][state.graphIndex].summary"></y-graph>
+      </div>
+      <div class="sampleGraphDescription" ng-if="type['y.figures'][state.graphIndex].summary">
+        <h5>Shown setting:</h5>
+        <div ng-repeat="fig in type['y.figures']" ng-if="$index == state.graphIndex" data-bind-compiled="fig.summary"></div>
+      </div>
+    </div>
+
+    <div data-ng-if="::type.examples">
+      <h4>Examples</h4>
+      <p data-ng-repeat="example in ::type.examples" data-bind-compiled="::example"></p>
+    </div>
+
+    <ng-include src="'./templates/type-annotations-java.html'" data-ng-if="::type.language !== 'csharp'"></ng-include>
+    <ng-include src="'./templates/type-annotations-csharp.html'" data-ng-if="::type.language === 'csharp'"></ng-include>
+
+    <default-value-table data-type="::type"></default-value-table>
+
+    <related-demos data-item="::type"></related-demos>
+
+    <div data-ng-if="::type.relatedDguide" class="related-dguide">
+      <h4>Related Reading in the Developer's Guide</h4>
+      <span data-bind-compiled="::type.relatedDguide"></span>
+    </div>
+
+    <div data-ng-if="::type.seeAlso.length">
+      <h4>See Also</h4>
+      <div class="indented">
+      <span data-ng-repeat="also in ::type.seeAlso">
+        <dguide-link data-ng-if="::also.section" data-section-id="{{::also.section}}" data-name="{{::also.name}}"></dguide-link><!--
+        --><api-link data-ng-if="::also.type" data-fqn="true" data-type="{{::also.type}}" data-member="{{::also.member}}"></api-link><!--
+        --><span data-ng-if="!also.type && also.summary" data-bind-trusted-html="::also.summary"></span><!--
+        --><span ng-if="!$last">, </span>
+      </span>
+      </div>
+    </div>
+
+    <div data-ng-if="::type.group === 'delegate'">
+      <h2>Parameters</h2>
+      <dl class="api-parameter-list indented">
+        <dt data-ng-repeat-start="parameter in ::type.parameters">
+          <span class="api-parameter-name">{{::parameter.name}}</span> -
+          <api-link data-fqn="true" data-type="{{::parameter.type}}"></api-link><span ng-if="::parameter.dimension">{{::parameter.dimension}}</span>
+          <span data-ng-if="::parameter.artificial" class="api-tag-artificial" title="Only available as extra parameter in option overload."></span>
+          <span data-ng-if="::parameter.optional || parameter.artificial" class="api-tag-optional" title="This parameter is optional and may be omitted when calling this function."></span>
+        </dt>
+        <dd data-ng-repeat-end data-ng-if="!parameter.artificial"><div data-ng-if="::parameter.summary" data-bind-compiled="::parameter.summary"></div>
+          <function-signature data-ng-if="::parameter.signatureDetails" data-item="::parameter.signatureDetails"></function-signature>
+          <div ng-if="::parameter.dpdata">
+            <y-dp-data data-dp-data="::parameter.dpdata"></y-dp-data>
+          </div>
+        </dd>
+      </dl>
+
+      <div data-ng-if="::type.returns">
+        <h2 class="doc-header">Returns</h2>
+        <dl class="indented">
+          <dt>
+            &#8618; <api-link data-fqn="true" data-type="{{::type.returns.type}}"></api-link><span ng-if="::type.returns.dimension">{{::type.returns.dimension}}</span>
+          </dt>
+          <dd data-bind-compiled="::type.returns.doc"></dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+
+  <member-container id="constructors" data-type="type" data-member-type="constructor" data-memberfilter="memberfilter" ng-if="::type.constructors && type.constructors.length"></member-container>
+  <member-container id="properties" data-type="type" data-member-type="property" data-memberfilter="memberfilter" ng-if="::type.properties && type.properties.length"></member-container>
+  <member-container id="methods" data-type="type" data-inheritance-data="::inheritanceData" data-member-type="method" data-memberfilter="memberfilter" ng-if="::type.methods && type.methods.length"></member-container>
+  <member-container id="fields" data-type="type" data-member-type="field" data-memberfilter="memberfilter" ng-if="::type.fields && type.fields.length"></member-container>
+  <member-container id="defaultProperties" data-type="type" data-member-type="defaultProperty" data-memberfilter="memberfilter" ng-if="::type.defaultProperties && type.defaultProperties.length"></member-container>
+  <member-container id="defaultMethods" data-type="type" data-member-type="defaultMethod" data-memberfilter="memberfilter" ng-if="::type.defaultMethods && type.defaultMethods.length"></member-container>
+  <member-container id="events" data-type="type" data-member-type="event" data-memberfilter="memberfilter" ng-if="::type.events && type.events.length"></member-container>
+  <member-container id="constants" data-type="type" data-member-type="constant" data-memberfilter="memberfilter" ng-if="::type.constants && type.constants.length"></member-container>
+  <member-container id="staticProperties" data-type="type" data-member-type="staticProperty" data-memberfilter="memberfilter" ng-if="::type.staticProperties && type.staticProperties.length"></member-container>
+  <member-container id="staticMethods" data-type="type" data-member-type="staticMethod" data-memberfilter="memberfilter" ng-if="::type.staticMethods && type.staticMethods.length"></member-container>
+  <member-lookup data-type="type"></member-lookup>
+</div>
+</div>
+</div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/api_namespace.html">
+<div id="namespaceHeader">
+  <div id="docsHeaderTitle" class="header-content">
+    <h1>
+      <span data-ng-if="::namespace.displayName == null">{{::namespace.language == 'java' ? 'Package' : 'Namespace'}} '{{::namespace.id}}'</span>
+      <span data-ng-if="::namespace.displayName != null">'{{::namespace.displayName}}' API</span>
+    </h1>
+  </div>
+
+  <div class="member-link-and-filter-bar">
+    <div class="filter-bar-buttons">
+      <div ng-if="::classCount > 0" ng-click="scrollTo('class-summary')" class="filter-bar-button"
+           id="classesMenuButton"></div>
+      <div ng-if="::delegateCount > 0" ng-click="scrollTo('delegate-summary')" class="filter-bar-button"
+           id="delegatesMenuButton"></div>
+      <div ng-if="::interfaceCount > 0" ng-click="scrollTo('interface-summary')" class="filter-bar-button"
+           id="interfacesMenuButton"></div>
+      <div ng-if="::structureCount > 0" ng-click="scrollTo('structure-summary')" class="filter-bar-button"
+           id="structuresMenuButton"></div>
+      <div ng-if="::annotationCount > 0" ng-click="scrollTo('annotation-summary')" class="filter-bar-button"
+           id="annotationMenuButton"></div>
+      <div ng-if="::enumerationCount > 0" ng-click="scrollTo('enumeration-summary')" class="filter-bar-button"
+           id="enumerationsMenuButton"></div>
+      <div ng-if="::structCount > 0" ng-click="scrollTo('struct-summary')" class="filter-bar-button"
+           id="structsMenuButton"></div>
+      <div ng-if="namespace.namespaces && namespace.namespaces.length > 0" ng-click="scrollTo('namespace-summary')"
+           class="filter-bar-button" id="namespacesMenuButton"></div>
+    </div>
+    <div class="member-filter-box">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+      <input type="search" id="memberfilter" data-ng-model="search" placeholder="Filter">
+    </div>
+  </div>
+</div>
+
+<div id="namespaceContentContainer">
+  <div class="namespaceSummary" ng-if="::namespace.summary" data-bind-compiled="namespace.summary"></div>
+  <div class="namespaceRemarks" ng-if="::namespace.remarks" data-bind-compiled="namespace.remarks"></div>
+  <div class="namespaceContent">
+
+    <span ng-if="::classCount > 0" id="class-summary">
+      <h2 id="classes">Classes</h2>
+      <dl>
+        <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'class'} |orderBy:'name'">
+          <span class="tree-icon tree-icon-class">C</span>
+          <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+        </dt>
+        <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled="::type.summary"></dd>
+      </dl>
+    </span>
+
+    <span ng-if="::delegateCount > 0" id="delegate-summary">
+      <h2 id="delegates">Delegates</h2>
+      <dl>
+        <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'delegate'} |orderBy:'name'">
+          <span class="tree-icon tree-icon-delegate">D</span>
+          <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+        </dt>
+        <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled="::type.summary"></dd>
+      </dl>
+    </span>
+
+    <span ng-if="interfaceCount > 0" id="interface-summary">
+      <h2 id="interfaces">Interfaces</h2>
+      <dl>
+        <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'interface'} | orderBy:'name'">
+          <span class="tree-icon tree-icon-interface">I</span>
+          <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+        </dt>
+        <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled="::type.summary"></dd>
+      </dl>
+    </span>
+
+    <span ng-if="::structureCount > 0" id="structure-summary">
+    <h2 id="structures">Structures</h2>
+    <dl>
+      <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'structure'} |orderBy:'name'">
+        <span class="tree-icon tree-icon-structure">S</span>
+        <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+      </dt>
+      <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled='::type.summary'></dd>
+    </dl>
+    </span>
+
+    <span ng-if="::structCount > 0" id="struct-summary">
+    <h2 id="structs">Structures</h2>
+    <dl>
+      <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'struct'} |orderBy:'name'">
+        <span class="tree-icon tree-icon-struct">S</span>
+        <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+      </dt>
+      <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled='::type.summary'></dd>
+    </dl>
+    </span>
+
+    <span ng-if="::annotationCount > 0" id="annotation-summary">
+    <h2 id="annotations">{{::namespace.language==='csharp'?'Attributes':'Annotations'}}</h2>
+    <dl>
+      <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'annotation'} |orderBy:'name'">
+        <span class="tree-icon tree-icon-annotation">A</span>
+        <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+      </dt>
+      <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled='::type.summary'></dd>
+    </dl>
+    </span>
+
+    <span ng-if="::enumerationCount > 0" id="enumeration-summary">
+    <h2 id="enumerations">Enumerations</h2>
+    <dl>
+      <dt ng-repeat-start="type in namespace.types | filter:{name:search,group:'enum'} |orderBy:'name'">
+        <span class="tree-icon tree-icon-enum">E</span>
+        <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{::type.name}}</a>
+      </dt>
+      <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled='::type.summary'></dd>
+    </dl>
+    </span>
+
+    <span ng-if="namespace.namespaces && namespace.namespaces.length > 0" id="namespace-summary">
+    <h2 id="namespaces">Nested {{::namespace.language == 'java' ? 'Packages' : 'Namespaces'}}:</h2>
+    <dl>
+      <dt ng-repeat-start="type in namespace.namespaces | filter:{id:search} |orderBy:'id'">
+        <a ng-href="{{::LinkService.makeApiUrl(namespace.id + '.' + type.name)}}">{{type.id}}</a>
+      </dt>
+      <dd ng-repeat-end data-ng-if="::type.summary" data-bind-compiled='::type.summary'></dd>
+    </dl>
+    </span>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/dguide.html">
+<div ng-switch="::dguideOptions.nodeId">
+  <div ng-switch-when="null">
+    <div ng-include="'./views/unavailable.html'"></div>
+  </div>
+  <div id="dguideContainer" ng-switch-default>
+    <dguide data-dguide-options="dguideOptions"></dguide>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/home.html">
+<div id="home-info-content">
+<div class="content-max-width-box content-box">
+  <h2 class="home-title">Welcome to the yFiles for HTML Documentation</h2>
+
+  <search id="home-search"></search>
+
+  <p>
+    This documentation
+    was designed to quickly find
+    relevant documentation in the <a href="https://www.yworks.com/yfileshtml/">yFiles for HTML</a>
+    <a href="{{'#/api/index'}}">API</a> and <a href="#/dguide/index">Developer's Guide</a> while working on a yFiles for HTML project.
+  </p>
+  <p>Please feel free to provide feedback about this tool to <feedback-link></feedback-link></p>
+
+  <div ng-if="::hasGettingStartedChapter">
+    <h2 id="getting-started">Getting Started</h2>
+    <p>Please follow the steps of the <a href="#/dguide/getting_started">Getting Started chapter</a> to learn the basic
+    concepts of yFiles for HTML quickly.</p>
+  </div>
+
+  <h2 id="using-this-tool">Using this Tool</h2>
+
+  <p>This page is shown when no other tabs are open. It can also be accessed by clicking on the heading of the Documentation Viewer.</p>
+
+  <h3 id="the-search-box">The Search Box</h3>
+  <p>
+    The search box in the top right corner is a powerful tool.
+    It provides various ways for quickly finding APIs and documentation.
+    You can focus the search box by hitting <key-map-chooser data-for-id="focus_search_input" data-read-only="true"></key-map-chooser>.
+  </p>
+  <figure class="image">
+    <div class="dguide-figure-overflow">
+      <img src="assets/search.76b75e2d.png" />
+    </div>
+    <figcaption>Camel-case search</figcaption>
+  </figure>
+  <p>
+    Entering text in the search box <em>without pressing enter</em> will search the public API member names, as well as the developers' guide topics.
+    This type of search supports <em>camel-case</em> searching.
+  </p>
+  <figure id="example-searches">
+    <figcaption><h4>Examples of Smart Search</h4></figcaption>
+    <dl>
+      <dt><a href="#/search/Graph"><code>Graph</code></a></dt>
+      <dd>will show the type "<code>Graph</code>", but also the main interface "<code>IGraph</code>", as well as members (properties, constructors, methods, events) containing the
+        word "graph" in the search preview. In addition, developer's guide topics like "Graph Structure" are shown.</dd>
+      <dt><a href="#/search/*InputMode"><code>*InputMode</code></a></dt>
+      <dd>will show types and members that contain the word "InputMode", like "<code>IInputMode</code>", "<code>ClickInputMode</code>", but also "<code>IInputModeContext</code>".</dd>
+      <dt><a href="#/search/GEIM"><code>GEIM</code></a></dt>
+      <dd>will show matching types based on camel-casing, so "<code><b>G</b>raph<b>E</b>ditor<b>I</b>nput<b>M</b>ode</code>" will be shown</dd>
+      <dt><a href="#/search/*ItemDC"><code>*ItemDC</code></a></li></dt>
+      <dd>will show matching members like "<code>on<b>ItemD</b>ouble<b>C</b>licked</code>".</dd>
+    </dl>
+  </figure>
+  <p>Just enter the search string and use the up and down keys to select the desired match. Hit enter to directly switch to that entry.</p>
+  <p>Hitting enter in the search box will open the search results page. Here, a full-text search is performed. Words can be put in double quotes for exact matches, otherwise fuzzy matches are made.
+    Camel-case matches are performed for single-word searches, only.</p>
+  <p>
+    The search results are categorized into the following categories:
+  </p>
+  <ul>
+    <li>types that have the search term in their description or name</li>
+    <li>type members that have the terms in their name and description</li>
+    <li>chapters in the developer's guide that have the terms in their text</li>
+  </ul>
+
+  <h3 id="api-tree">The API and Guide Tree</h3>
+  <p>
+    The tree view on the left hand side shows the complete API member tree.
+    In the drop down at the top, member types (Interfaces, Enumerations, Classes, etc.) can be filtered.
+  </p>
+  <p>
+    Hovering over types shows the summary description of the item. Clicking an element opens the API for that element
+    in a new inline container tab.
+  </p>
+
+  <h3 id="tabs">The Tabs</h3>
+  <p>The API for various members and developer guide pages opens in inline tabs. They will be persisted across sessions, so that you can always see the last pages
+    that you visited. Use the control button on the far right side to see all tabs or close all but the current tab. Each tab can be closed individually using the close button on
+    the tabs' right hand side.</p>
+
+  <h3 id="the-content">The Content</h3>
+  <p>
+  Note that most links in the various content pages that point to other documented members show the summary of those members if the mouse hovers over them.
+  </p>
+  <figure class="image">
+    <figcaption>API link tooltip</figcaption>
+    <div class="dguide-figure-overflow">
+      <img src="assets/tooltip.39e48e35.png" />
+    </div>
+  </figure>
+  <p>
+  Next to API members and developer guide sections, there is a link symbol <i class="fa fa-link"></i> that can be clicked to obtain an URL pointing to that member.
+  </p>
+  <h4 id="api-content">API Content</h4>
+  <h5>API Pages</h5>
+  <p>API member pages show the list of the members of the API type. Detailed information about parameters, exceptions, return types,
+    type parameters, etc. can be shown after the contents have been expanded by clicking on the item's name, or using the small triangle at the far left of the item.</p>
+  <h5>Member Navigation and Filtering</h5>
+  <p>
+    You can quickly find members by hitting <kbd>Ctrl+12</kbd> to open the member lookup.
+    For constructors, methods, default methods, properties, and events, there are alphabetically sorted drop downs at the top of the API page.
+    The filter in the right hand side of that bar can be used to conveniently filter member elements by name.
+  </p>
+
+  <h5 id="inheritance-view">Inheritance View</h5>
+  <p>At the top of each class or interface documentation, a hierarchy view shows the inheritance chain, as well as all implemented interfaces.
+  The expand buttons can be used to find all known subclasses or implementing subtypes.</p>
+
+  <figure class="image">
+    <figcaption>The Inheritance View</figcaption>
+    <div class="dguide-figure-overflow">
+      <img src="assets/inheritance-view.8ad4091f.png" />
+    </div>
+  </figure>
+
+  <h5 id="parameterized-types" ng-if="::nodesHref">Parameterized Types</h5>
+  <p ng-if="::nodesHref">For parameterized types, there is a "raw" link at the very top that shows the same type without a given substitution. E.g. if the link
+  to the type of the <a href="{{::nodesHref}}">graph's node collection</a> is used, the
+    <a href="{{::collectionModelHref}}">corresponding interface</a> is displayed with the generic type parameter substituted for nodes.
+  Pressing the raw link shows the documentation for the same interface, but with a generic type parameter instead.</p>
+
+  <h5 id="type-usages">Type Usages</h5>
+  <p>
+    Each type has a "Show usages" link at the top right that lists the various usages of that type in the API.
+    In detail, the usages page lists the following references:
+  </p>
+  <ul>
+    <li>Properties that are of that type</li>
+    <li>Fields that are of that type</li>
+    <li>Methods that return that type</li>
+    <li>Methods that have that type in their parameter list</li>
+    <li>Methods that potentially throw that type if it is an exception</li>
+    <li>Other types that implement or inherit from that type</li>
+    <li>Other types that have that type in their type parameter list</li>
+  </ul>
+
+  <h4 id="dguide-content">Developer's Guide Content</h4>
+  <p>
+    Each page of the developer's guide has links to the next and previous sections at both the top and the bottom.
+  </p>
+
+  <div ng-if="iceEnabled">
+  <h3 id="the-code-editor">The Code Editor</h3>
+  <p>
+    The integrated code editor is a powerful tool that lets you quickly draft, observe and share code snippets. It comes
+    with great features like auto completion, rich type inference, inline documentation and the ability to share the content
+    with fellow programmers. The editor opens by clicking on the editor icon <span class="fa fa-pencil"></span> in the side navigation at
+    the far right side.
+  </p>
+
+  <h4>Auto Completion</h4>
+  <p>
+    Hitting <key-map-chooser data-for-id="ice_complete" data-read-only="true"></key-map-chooser> at any time provides
+    you with a list of valid completions of the current expression. <em>Camel-case</em> completion is supported. E.g.
+    <code>GrContr</code> will complete to <code>GraphControl</code>.
+  </p>
+  <p>
+    Hitting <key-map-chooser data-for-id="ice_complete_yfiles_type" data-read-only="true"></key-map-chooser> instead
+    will automatically prepend the namespace to a yFiles type.
+  </p>
+  <figure class="image">
+    <figcaption>Automatic completion of yFiles types</figcaption>
+    <img src="assets/auto-completion.0c7ea77e.gif" />
+  </figure>
+
+  <h4>Type Info</h4>
+  <p>
+    The editor comes with great type inference mechanics allowing detailed information about the types of expressions and
+    sub-expressions. Press <key-map-chooser data-for-id="ice_show_type" data-read-only="true"></key-map-chooser>
+    to open a tooltip that shows the documentation of the object under the cursor.
+    When the auto completion list is currently showing, hitting <key-map-chooser data-for-id="ice_show_type" data-read-only="true"></key-map-chooser>
+    will instead expand the current tooltip to show more information.
+    Clicking on links will open the respective page in the API viewer.
+  </p>
+  <figure class="image">
+    <figcaption>Type Info</figcaption>
+    <img src="assets/type-info.4c56cfa0.gif" />
+  </figure>
+
+  <h4>Content Sharing</h4>
+  <p>
+    You can share the editor content by pressing the <span class="fa fa-cloud-upload"></span>-button in the
+    toolbar. This will upload the file contents to a public server and show a link that can later be opened elsewhere. Use this feature to quickly share code snippets
+    with others over the internet. Sensitive data should not be submitted since the data will be stored as an <a href="https://help.github.com/articles/about-gists/" target="_blank">anonymous gist</a>.
+  </p>
+  <figure class="image">
+    <figcaption>Upload</figcaption>
+    <img src="assets/upload-to-gist.a2a2fd55.gif" />
+  </figure>
+
+  <h4>More</h4>
+  <p>Save <span class="fa fa-download"></span> and open <span class="fa fa-upload"></span> files from
+    the local file system.</p>
+  <p>Click <span class="fa fa-file"></span> to open a new tab.</p>
+  <p>
+    Customize the editor using the settings menu. Keyboard shortcuts can be changed in the respective section in the
+    global settings menu.
+  </p>
+  </div>
+</div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/kb.html">
+<div id="kbContent" class="content-max-width-box content-box">
+  <div ng-if="article">
+    <h1 id="kb-name">{{::article.name}} <span class="kb-article-type {{kbTypeToClass(article.type)}}" >{{::article.type}}</span></h1>
+
+    <div ng-if="::article.draft" class="y-block-warning">This article is in DRAFT state.</div>
+
+    <div ng-if="::!isArticleForProduct" class="y-block-warning">This article does not apply to {{::product}}.</div>
+
+    <div id="kb-summary">
+      <h2>Summary</h2>
+      <div data-bind-compiled="::article.summary"></div>
+    </div>
+
+    <div id="kb-description">
+      <h2>Description</h2>
+      <div data-bind-compiled="::article.description" class="kb-description"></div>
+    </div>
+
+    <div ng-if="article.attachments && article.attachments.length>0" id="kb-resources">
+      <h2>Resources</h2>
+      <div class="kb-resources-container">
+        <div ng-repeat="filename in article.attachments" class="kb-resource">
+          <a href="{{::resolveAttachmentLink(filename)}}" rel="nofollow" target="_blank"><i class="fa fa-download"></i>{{::filename}}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="kb-footer-details" id="kb-footer">
+      <div ng-if="::article.products" class="kb-header-detail">
+        <strong class="docsHeaderDetail">Applies to:</strong>
+        <div ng-repeat="(name, verArray) in ::article.products">
+          {{::name}}:
+          <span ng-repeat="ver in ::verArray">
+              {{::ver}}
+            <span ng-if="!$last">, </span>
+          </span>
+        </div>
+      </div>
+      <div ng-if="article.keywords" class="kb-header-detail">
+        <strong class="docsHeaderDetail">Keywords: </strong>
+        <div>
+          <span ng-repeat="key in article.keywords">
+            <a class="kb-tag" href="{{::'#/kb/keyword/' + key}}">
+              {{::key}}
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="kb-failed-to-load=container" ng-if="error">
+    <h2>There was a problem loading the article from the server.</h2>
+  </div>
+
+  <div id="kb-laoding-container" ng-if="!article && !error">
+    <h2>Loading article...</h2>
+  </div>
+</div>
+
+
+</script>
+
+<script type="text/ng-template" id="./views/kbOverview.html">
+<div id="kbOverviewContent">
+  <div ng-if="articles" class="kb-articles">
+    <h2>Articles
+      <span ng-if="keyword"> tagged '{{::keyword}}'</span>
+      <span ng-if="product"> that apply to '{{::product + ' ' + version}}'</span>
+      <span ng-if="type"> of type '{{::type}}'</span>
+    </h2>
+    <div ng-repeat="art in articles">
+      <div class="kb-article">
+        <div class="article-icon {{::kbTypeToClass(art.type)}}">{{::art.type}}</div>
+        <a href="{{::'#/kb/article/' + art.articleID}}">
+          <div class="article-title">{{::art.name}}</div>
+          <div class="article-summary"><span data-bind-compiled="art.summary"></span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="error">
+    <h2>There was a problem loading the data from the server.</h2>
+  </div>
+
+  <div ng-if="!articles && !error">
+    <h2>Loading article data...</h2>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/module.html">
+<div ng-switch="::moduleData" class="namespace-container">
+  <div ng-switch-when="null">
+    <div ng-include="'./views/unavailable.html'"></div>
+  </div>
+
+  <div id="namespaceHeader">
+    <div id="docsHeaderTitle" class="header-content">
+      <div class="link-button-container">
+        <h1>{{::(moduleData.language === 'csharp' ? 'Assembly' : 'Module') + " '" + moduleData.moduleName+"'"}}
+          <link-button data-href="::'#'+currentPath"></link-button>
+        </h1>
+      </div>
+    </div>
+    <div class="member-link-and-filter-bar">
+      <div class="member-link-buttons">
+        <div ng-click="showNamespaceLinks=!showNamespaceLinks" class="member-link-button" id="namespacesMenuButton"
+            ng-class="{'member-link-button-disabled': !moduleData.namespaces, 'member-link-button-selected': showNamespaceLinks}"></div>
+      </div>
+      <namespace-linktable data-ng-show="showNamespaceLinks" class="angular-animate expand-linktable-animation" close-on-click="true" namespaces="moduleData.namespaces"></namespace-linktable>
+      <div class="member-filter-box">
+        <i class="fa fa-filter" aria-hidden="true"></i>
+        <input type="search" id="memberfilter" data-ng-model="search" placeholder="Filter">
+      </div>
+    </div>
+  </div>
+
+  <div id="namespaceContentContainer" ng-switch-default>
+    <div class="namespaceContent" ng-repeat="ns in moduleData.namespaces | orderBy:'id'">
+      <div id="class-summary">
+        <h2 id="{{::ns.id}}">Namespace <api-link data-type="{{::ns.id}}"></api-link></h2>
+        <div ng-if="moduleData.types[ns.id].class && moduleData.types[ns.id].class.length>0"><h3>Classes</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].class | filter:{name:search,group:'class'} | orderBy:'name'">
+              <span class="tree-icon tree-icon-class">C</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+        <div ng-if="moduleData.types[ns.id].delegate && moduleData.types[ns.id].delegate.length>0"><h3>Delegates</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].delegate | filter:{name:search,group:'delegate'} | orderBy:'name'">
+              <span class="tree-icon tree-icon-delegate">D</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+        <div ng-if="moduleData.types[ns.id].interface && moduleData.types[ns.id].interface.length>0"><h3>Interfaces</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].interface | filter:{name:search,group:'interface'}  | orderBy:'name'">
+              <span class="tree-icon tree-icon-interface">I</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+        <div ng-if="moduleData.types[ns.id].structure && moduleData.types[ns.id].structure.length>0"><h3>Structures</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].structure | filter:{name:search,group:'structure'} | orderBy:'name'">
+              <span class="tree-icon tree-icon-structure">S</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+        <div ng-if="moduleData.types[ns.id].struct && moduleData.types[ns.id].struct.length>0"><h3>Structures</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].struct | filter:{name:search,group:'struct'} | orderBy:'name'">
+              <span class="tree-icon tree-icon-structure">S</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+        <div ng-if="moduleData.types[ns.id].annotation && moduleData.types[ns.id].annotation.length>0"><h3>{{::ns.language==='csharp' ? 'Attributes' : 'Annotations'}}</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].annotation | filter:{name:search,group:'annotation'} | orderBy:'name'">
+              <span class="tree-icon tree-icon-annotation">A</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+        <div ng-if="moduleData.types[ns.id].enum && moduleData.types[ns.id].enum.length>0"><h3>Enumerations</h3>
+          <dl>
+            <dt ng-repeat-start="type in moduleData.types[ns.id].enum | filter:{name:search,group:'enum'} | orderBy:'name'">
+              <span class="tree-icon tree-icon-enum">E</span>
+              <api-link data-type="{{::type.id}}"></api-link>
+            </dt>
+            <dd ng-repeat-end data-ng-if="::type.summary">
+              <span data-bind-compiled='::type.summary'></span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/search.html">
+<div id="searchHeader">
+    <div class="header-content">
+        <div id="searchHeaderTitle">
+            <h1>Search results for <span class="search-terms">"{{::searchString}}"</span></h1>
+        </div>
+        <span ng-repeat="option in options" class="search-option">{{::option.name + ': ' + option.value}}<b
+                ng-click="removeOption(option)">x</b></span>
+    </div>
+    <div class="member-link-and-filter-bar">
+        <div class="filter-bar-buttons">
+            <div ng-if="::result.demos && result.demos.length>0" ng-click="scrollTo('demo-results')" class="filter-bar-button" id="demoResultMenuButton"></div>
+            <div ng-if="::result.types && result.types.length>0" ng-click="scrollTo('type-results')" class="filter-bar-button" id="typeResultMenuButton"></div>
+            <div ng-if="result.members && result.members.length>0" ng-click="scrollTo('member-results')" class="filter-bar-button" id="memberResultMenuButton"></div>
+            <div ng-if="result.sections && result.sections.length>0" ng-click="scrollTo('dguide-results')" class="filter-bar-button" id="dguideResultMenuButton"></div>
+            <div ng-if="result.articles && result.articles.length>0" ng-click="scrollTo('kb-results')" class="filter-bar-button" id="kbResultMenuButton"></div>
+        </div>
+    </div>
+</div>
+
+<div id="searchContentContainer">
+    <div id="docsContent">
+        <div ng-if="result.demos" class="member-container hide-overflow fade-right" id="demo-results">
+            <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#demo-results'}}" class="no-deco">Demos</a> <link-button data-href="::'#'+currentPath+'#demo-results'"></link-button></h2>
+            <div class="demo-grid" ng-if="hasDemoMetaData">
+                <div ng-if="result.demos.length === 0" style="margin-bottom: 1ex">
+                    No matches in demo meta data.
+                </div>
+                <div ng-repeat="hit in result.demos | limitTo: limits.demos" class="grid-item">
+                    <div class="thumbnail">
+                        <a href="https://live.yworks.com/demos/{{::hit.item.demoPath}}" style="background-image: url('{{::hit.item.thumbnailPath}}')" target="_blank">
+                            <video ng-if="::hit.item.thumbnailPath.indexOf('.mp4') === hit.item.thumbnailPath.length - 4" ng-src="{{::hit.item.thumbnailPath}}" loop="true" autoplay="true"></video>
+                        </a>
+                        <div class="actions">
+                            <a href="https://live.yworks.com/demos/{{::hit.item.demoPath}}" class="action-run" target="_blank"
+                               title="Run this demo"></a>
+                            <a href="{{::hit.item.githubSearchUrl}}" class="action-github" target="_blank"
+                               title="Search in the source code of this demo"></a>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h2 class="title"><a href="https://live.yworks.com/demos/{{::hit.item.demoPath}}" tabindex="2" target="_blank">{{hit.item.name}}</a></h2>
+                        <p class="details" ng-bind-html="hit.item.summary"></p>
+                        <div class="tags"><span ng-repeat="tag in hit.item.tags" class="tag">{{tag}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="limits.demos && result.demos.length > limits.demos" ng-click="limits.demos = undefined"
+                 class="btn" style="display: inline-block; margin-top: 10px; margin-right: 10px;">
+              Show remaining {{::result.demos.length - limits.demos}} demos
+            </div>
+            <a class="btn" href="{{githubSearchUrl}}" target="_blank" style="display: inline-block; margin-top: 10px;">
+              <i class="fa fa-github" style="margin-right: 5px;"></i>Find in demo sources
+            </a>
+        </div>
+        <div ng-if="::result.types && result.types.length>0" class="member-container hide-overflow fade-right" id="type-results">
+            <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#type-results'}}" class="no-deco">Types</a> <link-button data-href="::'#'+currentPath+'#type-results'"></link-button></h2>
+            <table>
+                <tr ng-repeat="type in result.types | limitTo : limits.types" id="{{::type.item.id}}" data-highlight-term="searchString" class="search-result-row {{::!!type.item.isExpert ? 'api-mod-expert' : ''}}">
+                    <td>
+                        <span class="search-result-icon search-result-icon-{{::type.kind}}"
+                        >{{::type.kind.charAt(0).toUpperCase()}}</span>
+                    </td>
+                    <td>
+                        <span class="hit-name">
+                            <api-link data-fqn="true" data-type="{{::type.item.id}}"></api-link>
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-if="::type.item.summary" data-bind-compiled="::type.item.summary"></span>
+                    </td>
+                </tr>
+            </table>
+            <div ng-if="result.types.length > resultLimit && limits.types" ng-click="limits.types = undefined" class="btn" style="display: inline-block; margin-top: 10px;">
+                Show remaining {{::result.types.length - resultLimit}} items
+            </div>
+        </div>
+        <div ng-if="result.members && result.members.length>0" class="member-container hide-overflow fade-right" id="member-results">
+            <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#member-results'}}" class="no-deco">Members</a> <link-button data-href="::'#'+currentPath+'#member-results'"></link-button></h2>
+            <table>
+                <tr ng-repeat="hit in result.members | limitTo : limits.members" id="{{::hit.item.id}}" data-highlight-term="searchString" class="search-result-row {{::!!hit.item.isExpert ? 'api-mod-expert' : ''}}">
+                    <td>
+                        <span class="search-result-icon search-result-icon-{{::hit.kind}}"
+                        >{{::hit.kind.charAt(0).toUpperCase()}}</span></td>
+                    <td>
+                        <span class="hit-name">
+                            <api-link data-type="{{::hit.type.id}}" data-name="{{getMemberName(hit.kind, hit.item)}}"
+                                      data-member="{{::hit.item.id}}"></api-link>
+                            <api-parameter-list ng-if="hit.item.parameters" data-member="::hit.item"
+                                                data-display-style="{{::hit.type.language}}"
+                                                data-show-names="false"></api-parameter-list>
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-if="::hit.type">in <api-link data-type="{{::hit.type.id}}"></api-link></span>
+                    </td>
+                    <td>
+                        <span ng-if="::hit.item.summary || (hit.item.add && hit.item.add.summary) || (hit.item.remove && hit.item.remove.summary)" data-bind-compiled="::hit.item.summary ? hit.item.summary : hit.item.add && hit.item.add.summary ? hit.item.add.summary : hit.item.remove && hit.item.remove.summary ? hit.item.remove.summary : ''"></span>
+                    </td>
+                </tr>
+            </table>
+            <div ng-if="result.members.length > resultLimit  && limits.members" ng-click="limits.members = undefined" class="btn" style="display: inline-block; margin-top: 10px;">
+                Show remaining {{::result.members.length - resultLimit}} items
+            </div>
+        </div>
+        <div ng-if="result.sections && result.sections.length>0" class="member-container hide-overflow fade-right" id="dguide-results">
+            <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#dguide-results'}}" class="no-deco">Developer's Guide</a> <link-button data-href="::'#'+currentPath+'#dguide-results'"></link-button></h2>
+            <table>
+                <tr ng-repeat-start="hit in result.sections | limitTo : limits.sections" data-highlight-term="searchString" id="{{::hit.item.id}}" class="search-result-row">
+                    <td><span class="search-result-icon search-result-icon-{{::hit.kind}}">{{::hit.kind.charAt(0).toUpperCase()}}</span></td>
+                    <td>
+                        <dguide-link data-section-id="{{::hit.item.id}}" data-name="{{::hit.item.title}}" data-breadcrumbs=">"></dguide-link>
+                    </td>
+                </tr>
+                <tr ng-repeat-end>
+                  <td></td>
+                  <td><div ng-if="::hit.hitInfo.textPreview" class="text-preview">{{::hit.hitInfo.textPreview}}</div></td>
+                </tr>
+            </table>
+            <div ng-if="result.sections.length > resultLimit && limits.sections" ng-click="limits.sections = undefined" class="btn" style="display: inline-block; margin-top: 10px;">
+                Show remaining {{::result.sections.length - resultLimit}} items
+            </div>
+        </div>
+        <div ng-if="result.articles && result.articles.length>0" class="member-container hide-overflow fade-right" id="kb-results">
+            <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#kb-results'}}" class="no-deco">Knowledge Base</a> <link-button data-href="::'#'+currentPath+'#kb-results'"></link-button></h2>
+            <table>
+                <tr ng-repeat-start="hit in result.articles | limitTo : limits.articles" data-highlight-term="searchString" id="{{::'article-' + hit.item.articleID}}" class="search-result-row">
+                    <td><span class="search-result-icon search-result-icon-{{::hit.kind}}">{{::hit.kind.charAt(0).toUpperCase()}}</span></td>
+                    <td>
+                        <a href="{{::'#kb/article/' + hit.item.articleID}}">{{::hit.item.name}}</a>
+                    </td>
+                </tr>
+                <tr ng-repeat-end>
+                    <td></td>
+                    <td><div ng-if="::hit.item.summary" class="text-preview" data-bind-compiled="::hit.item.summary"></div></td>
+                </tr>
+            </table>
+            <div ng-if="result.articles.length > resultLimit && limits.articles" ng-click="limits.articles = undefined" class="btn" style="display: inline-block; margin-top: 10px;">
+                Show remaining {{::result.articles.length - resultLimit}} items
+            </div>
+        </div>
+    </div>
+</div>
+
+</script>
+
+<script type="text/ng-template" id="./views/unavailable.html">
+<div id="unavailableText">We're sorry, but this page does not exist.</div>
+</script>
+
+<script type="text/ng-template" id="./views/usages.html">
+<div id="searchHeader" class="show-usages">
+  <div class="header-content">
+    <div id="searchHeaderTitle">
+      <h1>Usages of
+        <api-link data-fqn="true" data-type="{{::type.id}}"></api-link>
+      </h1>
+    </div>
+    <div data-ng-if="::extendsData.length > 0 || implementsData.length > 0" class="type-hierarchy">
+      <div class="header">Type Hierarchy</div>
+      <div class="type-name" data-ng-repeat="baseTypeData in ::extendsData">
+        <span class="tree-icon tree-icon-class">C</span>
+        <a href="{{::LinkService.fixUrl('#/usages/' + baseTypeData.id)}}">{{::baseTypeData.name}} usage</a>
+      </div>
+      <div class="type-name" data-ng-repeat="interfaceData in ::implementsData">
+        <span class="tree-icon tree-icon-interface">I</span>
+        <a href="{{::LinkService.fixUrl('#/usages/' + interfaceData.id)}}">{{::interfaceData.name}} usage</a>
+      </div>
+    </div>
+  </div>
+  <div class="member-link-and-filter-bar">
+    <div class="member-link-buttons">
+      <div ng-if="::usages.propertyTypeData && usages.propertyTypeData.length>0"
+           ng-click="scrollTo('properties-usages')" class="filter-bar-button" id="propertiesMenuButton"></div>
+      <div ng-if="::usages.fieldTypeData && usages.fieldTypeData.length>0" ng-click="scrollTo('fields-usages')"
+           class="filter-bar-button" id="fieldsMenuButton"></div>
+      <div ng-if="::usages.methodReturnTypeData && usages.methodReturnTypeData.length>0"
+           ng-click="scrollTo('method-return-values-usages')" class="filter-bar-button"
+           id="methodReturnValuesMenuButton"></div>
+      <div ng-if="::usages.methodParameterData&& usages.methodParameterData.length>0"
+           ng-click="scrollTo('method-parameters-usages')" class="filter-bar-button"
+           id="methodParametersMenuButton"></div>
+      <div ng-if="::usages.eventParameterData && usages.eventParameterData.length>0"
+           ng-click="scrollTo('event-parameters-usages')" class="filter-bar-button"
+           id="eventParametersMenuButton"></div>
+      <div ng-if="::usages.methodThrowsData&& usages.methodThrowsData.length>0" ng-click="scrollTo('in-throws-usages')"
+           class="filter-bar-button" id="inThrowsMenuButton"></div>
+      <div ng-if="::usages.typeExtendsData && usages.typeExtendsData.length>0"
+           ng-click="scrollTo('extending-types-usages')" class="filter-bar-button" id="extendingTypesMenuButton"></div>
+      <div ng-if="::usages.typeImplementsData && usages.typeImplementsData.length>0"
+           ng-click="scrollTo('implementing-types-usages')" class="filter-bar-button"
+           id="implementingTypesMenuButton"></div>
+      <div ng-if="::usages.dguideData && usages.dguideData.length>0" ng-click="scrollTo('dguide-usages')"
+           class="filter-bar-button" id="dguideMenuButton"></div>
+    </div>
+    <div class="member-filter-box">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+      <input type="search" placeholder="Filter these results" id="memberfilter" data-ng-model="search">
+    </div>
+  </div>
+</div>
+
+<div id="searchContentContainer" class="usagesContainer">
+  <div id="docsContent">
+    <div data-ng-if="::usageCount === 0">
+      <p>
+        There are no usages of {{::type.es6name || type.name}}.
+      </p>
+      <p data-ng-if="::extendsData.length > 0 || implementsData.length > 0">
+        Try searching for usages of a base class or implemented interface.
+      </p>
+    </div>
+
+    <div ng-if="::usages.propertyTypeData && usages.propertyTypeData.length>0" class="member-container" id="properties-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#properties-usages'}}" class="no-deco">Properties</a> <link-button data-href="::'#'+currentPath+'#properties-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.propertyTypeData | filter: {item:{name:search}}">
+          <td><span class="search-result-icon search-result-icon-property">P</span></td>
+          <td><api-link data-type="{{::hit.type.id}}" data-name="{{::hit.item.name}}" data-member="{{::hit.item.id}}"></api-link></td>
+          <td>in <api-link data-type="{{::hit.type.id}}"></api-link></td>
+          <td><span ng-if="::hit.item.summary" data-bind-compiled="::hit.item.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+    <div ng-if="::usages.fieldTypeData && usages.fieldTypeData.length>0" class="member-container" id="fields-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#fields-usages'}}" class="no-deco">Fields</a> <link-button data-href="::'#'+currentPath+'#fields-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.fieldTypeData | filter: {item:{name:search}}">
+          <td><span class="search-result-icon search-result-icon-field">F</span></td>
+          <td><api-link data-type="{{::hit.type.id}}" data-name="{{::hit.item.name}}" data-member="{{::hit.item.id}}"></api-link></td>
+          <td>in <api-link data-type="{{::hit.type.id}}"></api-link></td>
+          <td><span ng-if="::hit.item.summary" data-bind-compiled="::hit.item.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+    <div ng-if="::usages.methodReturnTypeData && usages.methodReturnTypeData.length>0" class="member-container" id="method-return-values-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#method-return-values-usages'}}" class="no-deco">Method Return Values</a> <link-button data-href="::'#'+currentPath+'#method-return-values-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.methodReturnTypeData | filter: {item:{name:search}}">
+          <td><span class="search-result-icon search-result-icon-method">M</span></td>
+          <td><api-link data-type="{{::hit.type.id}}" data-name="{{::hit.item.name}}" data-member="{{::hit.item.id}}"></api-link><api-parameter-list ng-if="::hit.item.parameters" data-member="::hit.item" data-display-style="{{::hit.type.language}}" data-show-names="false"></api-parameter-list></td>
+          <td>in <api-link data-type="{{::hit.type.id}}"></api-link></td>
+          <td><span ng-if="::hit.item.summary" data-bind-compiled="::hit.item.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+    <div ng-if="::usages.methodParameterData&& usages.methodParameterData.length>0" class="member-container" id="method-parameters-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#method-parameters-usages'}}" class="no-deco">Method Parameters</a> <link-button data-href="::'#'+currentPath+'#method-parameters-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.methodParameterData | filter: {item:{name:search}}">
+          <td><span class="search-result-icon search-result-icon-method">M</span></td>
+          <td><api-link data-type="{{::hit.type.id}}" data-name="{{::hit.item.name}}" data-member="{{::hit.item.id}}"></api-link><api-parameter-list ng-if="::hit.item.parameters" data-member="::hit.item" data-display-style="{{::hit.type.language}}" data-show-names="false"></api-parameter-list></td>
+          <td>in <api-link data-type="{{::hit.type.id}}"></api-link></td>
+          <td><span ng-if="::hit.item.summary" data-bind-compiled="::hit.item.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+    <div ng-if="::usages.eventParameterData && usages.eventParameterData.length>0" class="member-container" id="event-parameters-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#event-parameters-usages'}}" class="no-deco">Event Parameters</a> <link-button data-href="::'#'+currentPath+'#event-parameters-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.eventParameterData | filter: {item:{name:search}}">
+          <td><span class="search-result-icon search-result-icon-event">E</span></td>
+          <td><api-link data-type="{{::hit.type.id}}" data-name="{{::hit.item.name}}" data-member="{{::hit.item.id}}"></api-link><api-parameter-list ng-if="::hit.type.language == 'java' && hit.item.parameters" data-member="::hit.item" data-display-style="{{::hit.type.language}}" data-show-names="false"></api-parameter-list></td>
+          <td>in <api-link data-type="{{::hit.type.id}}"></api-link></td>
+          <td><span ng-if="::hit.item.add.summary || hit.item.remove.summary" data-bind-compiled="::hit.item.add.summary ? hit.item.add.summary : hit.item.remove.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+    <div ng-if="::usages.methodThrowsData&& usages.methodThrowsData.length>0" class="member-container" id="in-throws-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#in-throws-usages'}}" class="no-deco">In Throws</a> <link-button data-href="::'#'+currentPath+'#in-throws-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.methodThrowsData | filter: {item:{name:search}}">
+          <td><span class="search-result-icon search-result-icon-method">M</span></td>
+          <td><api-link data-type="{{::hit.type.id}}" data-name="{{::hit.item.name}}" data-member="{{::hit.item.id}}"></api-link><api-parameter-list ng-if="::hit.item.parameters" data-member="::hit.item" data-display-style="{{::hit.type.language}}" data-show-names="false"></api-parameter-list></td>
+          <td>in <api-link data-type="{{::hit.type.id}}"></api-link></td>
+          <td><span ng-if="::hit.item.summary" data-bind-compiled="::hit.item.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div ng-if="::usages.typeExtendsData && usages.typeExtendsData.length>0" class="member-container" id="extending-types-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#extending-types-usages'}}" class="no-deco">Extending Types</a> <link-button data-href="::'#'+currentPath+'#extending-types-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="type in usages.typeExtendsData | filter: {name:search}">
+          <td><span class="search-result-icon search-result-icon-{{::type.group}}">{{::type.group.charAt(0).toUpperCase()}}</span></td>
+          <td><api-link data-type="{{::type.id}}"></api-link></td>
+          <td>in <api-link data-ns="{{::type.id.substring(0, type.id.lastIndexOf('.'))}}"></api-link></td>
+          <td><span ng-if="::type.summary" data-bind-compiled="::type.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div ng-if="::usages.typeImplementsData && usages.typeImplementsData.length>0" class="member-container" id="implementing-types-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#implementing-types-usages'}}" class="no-deco">Implementing Types</a> <link-button data-href="::'#'+currentPath+'#implementing-types-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="type in usages.typeImplementsData | filter: {name:search}">
+          <td><span class="search-result-icon search-result-icon-{{::type.group}}">{{::type.group.charAt(0).toUpperCase()}}</span></td>
+          <td><api-link data-type="{{::type.id}}"></api-link></td>
+          <td>in <api-link data-ns="{{::type.id.substring(0, type.id.lastIndexOf('.'))}}"></api-link></td>
+          <td><span ng-if="::type.summary" data-bind-compiled="::type.summary"></span></td>
+        </tr>
+      </table>
+    </div>
+    <div ng-if="::usages.dguideData && usages.dguideData.length>0" class="member-container" id="dguide-usages">
+      <h2 class="link-button-container"><a href="{{::'#'+currentPath+'#dguide-usages'}}" class="no-deco">Developer's Guide</a> <link-button data-href="::'#'+currentPath+'#dguide-usages'"></link-button></h2>
+      <table>
+        <tr ng-repeat="hit in usages.dguideData | filter: {item:{title:search}}">
+          <td><span class="search-result-icon search-result-icon-section">S</span></td>
+          <td><dguide-link data-section-id="{{::hit.item.id}}" data-name="{{::hit.item.title}}" data-breadcrumbs=">"></dguide-link></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</script>
+<!-- End Templates -->
+
+
+<div id="loader-glasspane">
+  <div class="loader-content">
+    <div class="product">
+      <img class="logo" src="assets/loading.995fc5d0.svg" alt="loading spinner">
+      <div class="title">
+        <span class="main-title">documentation</span><br>
+        <span class="sub-title">for yFiles for HTML</span></div>
+    </div>
+    <div class="loading">Loading ...</div>
+  </div>
+</div>
+<div id="left" ng-controller="LinksCtrl">
+  <api-tree data-tree-options="treeOptions" id="apiTree"></api-tree>
+</div>
+<header id="header" class="main-header">
+  <a href="https://www.yworks.com" id="headerLogo" class="header-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 113.39 113.39"><path d="M12.39,47.29l.1,19.3a27.74,27.74,0,0,0,13.9,23.8l16.8,9.6a27.32,27.32,0,0,0,27.5-.2L87.39,90A27.44,27.44,0,0,0,101,66.09l-.1-19.4A27.86,27.86,0,0,0,87,22.89l-16.7-9.5a27.32,27.32,0,0,0-27.5.2l-16.7,9.8a27.5,27.5,0,0,0-13.7,23.9" style="fill:#00d8ff"></path><path d="M66.39,75.79a13.53,13.53,0,0,1,2,3.1,5.64,5.64,0,0,1-.9,6.2,5.54,5.54,0,0,1-7.4.7,6,6,0,0,1-2.2-5,10.86,10.86,0,0,1,1.1-3.9,25.54,25.54,0,0,0,1.4-3.5,14.12,14.12,0,0,0,.4-4.6c-.1-1.6-.3-3.1-.5-4.7a11.49,11.49,0,0,0-2.8-6,14.65,14.65,0,0,0-5.2-3.4c-.9-.4-1.7-.8-2.6-1.1a13.45,13.45,0,0,0-6.3-.9c-1.4.1-2.7.4-4.1.4a6.21,6.21,0,0,1-4.4-1.5,5.48,5.48,0,0,1-1.1-7,5.55,5.55,0,0,1,7.8-1.7,8,8,0,0,1,2.3,2.2c.6.8,1.1,1.5,1.7,2.3a12.94,12.94,0,0,0,3.3,3.3,14,14,0,0,0,3,1.5c1,.4,2,.9,3,1.3a11.55,11.55,0,0,0,5.5.8,12.46,12.46,0,0,0,4.6-1.5c1.2-.7,2.3-1.6,3.5-2.4a13.43,13.43,0,0,0,3.2-3.1,14.59,14.59,0,0,0,1.7-3,15.9,15.9,0,0,1,2.1-4.1,6.14,6.14,0,0,1,3.8-2.5,5.2,5.2,0,0,1,5,1.6,5.26,5.26,0,0,1,1.4,4.6,5.74,5.74,0,0,1-3,4.1,13.58,13.58,0,0,1-4.9,1.2,15.19,15.19,0,0,0-5.1,1.2c-.6.3-1.1.6-1.6.9a38.77,38.77,0,0,0-3.3,2.3,14.06,14.06,0,0,0-3.6,3.7,12.57,12.57,0,0,0-1.5,3.8,17,17,0,0,0,0,4.5,22.26,22.26,0,0,0,.5,3.6,13,13,0,0,0,1.8,4.6c.5.7,1,1.4,1.4,2" style="fill:#242265"></path><path d="M71.39,64a13.54,13.54,0,0,1,3.6.8,5.85,5.85,0,0,1,3.8,5,5.39,5.39,0,0,1-4.7,5.7,5.79,5.79,0,0,1-5.1-2,10,10,0,0,1-1.9-3.5,36.83,36.83,0,0,0-1.5-3.5,10.88,10.88,0,0,0-2.9-3.5c-1.2-1-2.4-2-3.7-2.9a11.46,11.46,0,0,0-6.2-2.3,13.93,13.93,0,0,0-6.1,1.3,27.73,27.73,0,0,1-2.6,1A13.93,13.93,0,0,0,39,64c-.9,1.1-1.7,2.2-2.6,3.2a7,7,0,0,1-4.2,2.1,5.47,5.47,0,0,1-5.7-4.2,5.54,5.54,0,0,1,4.3-6.7,8.55,8.55,0,0,1,3.2-.1c.9.1,1.9.3,2.8.4a18.48,18.48,0,0,0,4.7,0,19.66,19.66,0,0,0,3.2-1l3-1.2a12.23,12.23,0,0,0,4.5-3.3,11.72,11.72,0,0,0,2.2-4.3c.3-1.4.5-2.8.7-4.2a17,17,0,0,0,.1-4.5,17.83,17.83,0,0,0-.9-3.3,32.55,32.55,0,0,1-1.5-4.4,6.49,6.49,0,0,1,.9-4.5,5.19,5.19,0,0,1,4.7-2.4,5.36,5.36,0,0,1,4.3,2.3,5.56,5.56,0,0,1,.8,5,12.06,12.06,0,0,1-2.7,4.3,15.66,15.66,0,0,0-2.8,4.4,12.09,12.09,0,0,0-.5,1.8c-.3,1.3-.5,2.6-.7,4a13,13,0,0,0,.1,5.2,12.45,12.45,0,0,0,1.7,3.7,23.45,23.45,0,0,0,3.1,3.2,32.53,32.53,0,0,0,2.9,2.3,13,13,0,0,0,4.5,2,19.53,19.53,0,0,1,2.3.2" style="fill:#242265"></path></svg>
+  </a>
+  <a id="headerTitle" href="#/home" class="header-title link">
+    <div class="main-title">documentation</div>
+    <div class="sub-title">for yFiles for HTML 2.5.0.3</div>
+  </a>
+  <search data-data="apiData" id="search"></search>
+  <span class="dark-mode-toggle-container">
+    <i class="far fa-sun"></i>
+    <label class="toggle">
+      <input type="checkbox" ng-model="$root.docOptions.darkTheme">
+      <div class="toggle-track"></div>
+    </label>
+    <i class="far fa-moon"></i>
+  </span>
+  <side-nav></side-nav>
+</header>
+<div id="main">
+  <div id="content">
+    <div id="tabsContainer">
+      <tab-control></tab-control>
+    </div>
+
+    <div id="docsContainer" ng-view="" class="content-fade-animation angular-animate docs-container"></div>
+
+  </div>
+</div>
+
+<lightbox></lightbox>
+
+<inline-code-editor></inline-code-editor>
+
+<footer id="footer" title="Build time: 2023-03-02T02:13:36.744Z">
+  Copyright &copy; 2023 yWorks GmbH &middot; All rights reserved
+</footer>
+<script>
+
+  var url = window.location.href;
+
+  if(url.indexOf("index-offline")>0&&!window["angular"]) {
+    document.getElementById("docsContainer").innerHTML = "<div style='padding:20px'>The Documentation Viewer could not be loaded. For using the viewer without internet connection, " +
+        "first run <pre>npm install</pre> to download the required libraries before going offline.</div>";
+  }
+
+  (function() {
+    var query = /^\?api=(.*)/.exec(location.search);
+    if(query != null) {
+      var token = query[1];
+      location.replace(location.protocol + "//" + location.host + location.pathname + '#/api/' + token);
+    }
+  })();
+
+  // tell <=IE9 to go away
+  var myNav = navigator.userAgent.toLowerCase();
+  var ieVersion = (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+  if (ieVersion && ieVersion <= 9) {
+    document.body.innerHTML = "<div style='padding:20px'>The yFiles Documentation Viewer doesn't work correctly in Internet Explorer version 9 and below.\n"+
+        "Please use a different Browser to access the yFiles API Documentation and Developer's Guide.</div>";
+    throw "IE9";
+  }
+
+  // YJS-2702: When launched from the filesystem, IE will urlencode the second hash, which breaks the routing
+  if(/^file:\/\//.test(url) && /Trident/i.test(window.navigator.userAgent)) {
+    var msg = "The yFiles Documentation doesn't work correctly when it is launched from the filesystem "+
+        "in Internet Explorer.\n"+
+        "Please use \n"+
+        "- the online version\n"+
+        "- a different Browser or\n"+
+        "- the demo server included in this package\n"+
+        "to access the yFiles API Documentation and Developer's Guide.\n\n"+
+        "Confirming this dialog will take you to the online documentation.";
+    var redirect = window.confirm(msg);
+    if(redirect) {
+      window.location.href = "http://docs.yworks.com/yfileshtml/index.html";
+    }
+  }
+
+  requirejs.config({
+    "baseUrl": "./",
+    "waitSeconds": 0
+  });
+
+  require(
+      ["assets/api.8d805f77.js","assets/dguide.a828a7ff.js", "assets/readme-demo-data.8b96fd2f.js"],
+      function(dguide, api){
+    document.getElementById("loader-glasspane").hidden = true
+    angular.bootstrap(document.getElementsByTagName("body")[0],["yFilesAPI"], {strictDi: true});
+  });
+</script>
+
+<input type="text" id="clipboard-helper-input" style="position: absolute; opacity: 0; pointer-events: none;">
+</body>
+</html>

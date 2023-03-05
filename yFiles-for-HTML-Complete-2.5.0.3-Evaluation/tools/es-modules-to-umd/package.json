@@ -1,0 +1,15 @@
+{
+  "name": "convert-to-umd-tool-for-yfiles-for-html",
+  "description": "Script to convert source code from ES module imports to UMD",
+  "version": "25.0.3+eval",
+  "author": "yWorks GmbH <yfileshtml@yworks.com>",
+  "private": true,
+  "scripts": {
+    "generateMappings": "node generateMappings.js",
+    "pretransform": "npm run generateMappings",
+    "transform": "jscodeshift"
+  },
+  "dependencies": {
+    "jscodeshift": "^0.6.2"
+  }
+}

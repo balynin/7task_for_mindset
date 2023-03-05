@@ -1,0 +1,3534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- ////////////////////////////////////////////////////////////////////////
+     // @license
+     // This demo file is part of yFiles for HTML 2.5.0.3.
+     // Copyright (c) 2000-2023 by yWorks GmbH, Vor dem Kreuzberg 28,
+     // 72070 Tuebingen, Germany. All rights reserved.
+     //
+     // yFiles demo files exhibit yFiles for HTML functionalities. Any redistribution
+     // of demo files in source code or binary form, with or without
+     // modification, is not permitted.
+     //
+     // Owners of a valid software license for a yFiles for HTML version that this
+     // demo is shipped with are allowed to use the demo source code as basis
+     // for their own yFiles for HTML powered applications. Use of such programs is
+     // governed by the rights and conditions as set out in the yFiles for HTML
+     // license agreement.
+     //
+     // THIS SOFTWARE IS PROVIDED ''AS IS'' AND ANY EXPRESS OR IMPLIED
+     // WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+     // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+     // NO EVENT SHALL yWorks BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+     // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+     // TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+     // PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+     // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     // 
+     ////////////////////////////////////////////////////////////////////////-->
+
+    <title>yFiles for HTML Release notes 1.4 - 1.3</title>
+    <link rel="stylesheet" type="text/css" href="../../doc/readme-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <style>
+      code {
+        color: #2f4f9f;
+        background-color: transparent;
+        padding: 0;
+        border: 0;
+        font-family: Consolas, Monaco, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- populated by readme-style.js -->
+    <div id="header">Release notes 1.4 - 1.3</div>
+    <main>
+      <aside class="sidebar changelog-sidebar">
+        <ul class="changelog-toc">
+          <li><a href="changes.html">yFiles for HTML 2.x</a></li>
+          <li>
+            <a href="#v1_4">yFiles for HTML 1.4</a>
+            <ul>
+              <li>
+                <a href="#v1_4_0_1">1.4.0.1</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <div><a href="#v1_3">yFiles for HTML 1.3</a></div>
+            <ul>
+              <li><a href="#v1_3_0_7">1.3.0.7</a></li>
+              <li><a href="#v1_3_0_6">1.3.0.6</a></li>
+              <li><a href="#v1_3_0_5">1.3.0.5</a></li>
+              <li><a href="#v1_3_0_4">1.3.0.4</a></li>
+              <li><a href="#v1_3_0_3">1.3.0.3</a></li>
+              <li><a href="#v1_3_0_2">1.3.0.2</a></li>
+              <li><a href="#v1_3_0_1">1.3.0.1</a></li>
+            </ul>
+          </li>
+          <li>
+            <div><a href="changes-1-2.html#v1_2_1">yFiles for HTML 1.2.1</a></div>
+            <ul>
+              <li><a href="changes-1-2.html#v1_2_1_4">1.2.1.4</a></li>
+              <li><a href="changes-1-2.html#v1_2_1_3">1.2.1.3</a></li>
+              <li><a href="changes-1-2.html#v1_2_1_2">1.2.1.2</a></li>
+              <li><a href="changes-1-2.html#v1_2_1_1">1.2.1.1</a></li>
+            </ul>
+          </li>
+          <li>
+            <div><a href="changes-1-2.html#v1_2">yFiles for HTML 1.2</a></div>
+            <ul>
+              <li>
+                <a href="changes-1-2.html#v1_2_0_6">1.2.0.6</a>
+              </li>
+              <li><a href="changes-1-2.html#v1_2_0_5">1.2.0.5</a></li>
+              <li>
+                <a href="changes-1-2.html#v1_2_0_4">1.2.0.4</a>
+              </li>
+              <li><a href="changes-1-2.html#v1_2_0_3">1.2.0.3</a></li>
+              <li>
+                <a href="changes-1-2.html#v1_2_0_2">1.2.0.2</a>
+              </li>
+              <li><a href="changes-1-2.html#v1_2_0_1">1.2.0.1</a></li>
+            </ul>
+          </li>
+          <li>
+            <div><a href="changes-1-2.html#v1_1_1">yFiles for HTML 1.1.1</a></div>
+            <ul>
+              <li>
+                <a href="changes-1-2.html#v1_1_1_6">1.1.1.6</a>
+              </li>
+              <li><a href="changes-1-2.html#v1_1_1_5">1.1.1.5</a></li>
+              <li>
+                <a href="changes-1-2.html#v1_1_1_4">1.1.1.4</a>
+              </li>
+              <li><a href="changes-1-2.html#v1_1_1_3">1.1.1.3</a></li>
+              <li>
+                <a href="changes-1-2.html#v1_1_1_2">1.1.1.2</a>
+              </li>
+              <li><a href="changes-1-2.html#v1_1_1_1">1.1.1.1</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <div><a href="changes-1-2.html#v1_1">yFiles for HTML 1.1</a></div>
+            <ul>
+              <li>
+                <a href="changes-1-2.html#v1_1_0_1">1.1.0.1</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div><a href="changes-1-2.html#v1_0">yFiles for HTML 1.0</a></div>
+            <ul>
+              <li>
+                <a href="changes-1-2.html#v1_0_1">1.0.1</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+      <div class="content-centered">
+        <div class="content single-h1">
+          <h1>yFiles for HTML Release notes 1.4 - 1.3</h1>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_4_0_1">yFiles for HTML 1.4.0.1 - Changes Since 1.4</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <p>
+            This is the 1st bugfix release for 1.4. There are no incompatible changes since 1.4.
+          </p>
+
+          <p>
+            Note that the improvements and bugfixes of this release are part of yFiles for HTML 2.0.1.1,
+            too.
+          </p>
+
+          <h3 id="v1_4_0_1_improvements">Improvement</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-5172 -->
+              Input modes that use a combination of mouse gestures and modifier key(s) can now be
+              started by the key press. Previously, such an input mode was only started by the first
+              mouse event, e.g. a mouse move. The main benefit is that the cursor changes instantly
+              with the key down to the input mode's one.
+            </li>
+            <li>
+              <!-- YFI-3737 -->
+              <code>InteractiveOrganicLayouter</code>: Significant performance improvements during
+              interactive changes of the graph, for example when a user moves nodes.
+            </li>
+          </ul>
+
+          <h3 id="v1_4_0_1_bugfixes">Bugfixes</h3>
+
+          <h4>View</h4>
+
+          <ul>
+            <li>
+              <!-- YWPF-2716 -->
+              The event <code>StripeDropInputMode.StripeCreated</code> always returned a wrong
+              stripe instance.
+            </li>
+            <li>
+              <!-- YWPF-2620 -->
+              When manually creating groups and the folding view is configured to collapse group
+              nodes by default, folders were erroneously created with empty size.
+            </li>
+            <li>
+              <!-- YWPF-2718 -->
+              <code>TableLayoutConfigurator</code> erroneously considered left side labels as top
+              labels, and consequently might have created insets of incorrect size.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-3707 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug that caused node-edge overlaps
+              in conjunction with some complex edge grouping specifications.
+            </li>
+            <li>
+              <!-- YFI-3716 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug that led to too large group
+              nodes in graphs with grouped edges.
+            </li>
+            <li>
+              <!-- YFI-3726 -->
+              <code>SmartOrganicLayouter</code>, <code>OrganicLayouter</code> and
+              <code>InteractiveOrganicLayouter</code>: Fixed error that was triggered due to NaN
+              values that could occur in case the input graph had a very large number of nodes.
+            </li>
+            <li>
+              <!-- YFI-3631 -->
+              <code>EdgeRouter</code>: Fixed bug that caused violations of minimum first/last
+              segment lengths of grouped edges when using different edge layout descriptors and,
+              second, made the layout algorithm remove a user-registered
+              <code>DataProvider</code> with key
+              <code>EdgeRouter.EDGE_LAYOUT_DESCRIPTOR_DP_KEY</code>.
+            </li>
+            <li>
+              <!-- YFI-3728 -->
+              <code>EdgeRouter</code>: Fixed rare node overlaps in conjunction with monotonic path
+              restrictions.
+            </li>
+            <li>
+              <!-- YFI-3734 -->
+              <code>RecursiveGroupLayouter</code>: Fixed bug that caused edges to share the same
+              port even though they should have been assigned to different ports. Note that this
+              problem only appeared if the core layout algorithm was an instance of class
+              <code>IncrementalHierarchicLayouter</code>.
+            </li>
+            <li>
+              <!-- YFI-3724 -->
+              <code>IsolatedGroupComponentLayouter</code>: Fixed bug that caused edge labels that
+              intersected with group nodes even though option
+              <code>ComponentLayouter.considerLabels</code> was enabled.
+            </li>
+          </ul>
+
+          <h3 id="v1_4_0_1_docviewer_fixes">Documentation Viewer Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- JSD-358 -->
+              The detailed descriptions of the methods for event registration and de-registration
+              were not displayed.
+            </li>
+            <li>
+              <!-- JSD-359 -->
+              The inheritance hierarchy of a type was not properly displayed.
+            </li>
+            <li>
+              <!-- YJS-3545 -->
+              In the code generator, corrected the generated code for events.
+            </li>
+            <li>
+              <!-- JSD-364 -->
+              Fixed the display of the sidebar in pinned mode.
+            </li>
+            <li>
+              <!-- JSD-312 -->
+              The documentation viewer can now be opened from the file system even if third-party
+              cookies are disabled.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_4">yFiles for HTML 1.4 - Changes Since 1.3.0.7</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <p>
+            This release brings the new layout features of yFiles for HTML 2.0 to the yFiles for
+            HTML 1.x branch. Unlike version 2.0, the names of existing API are unchanged and have
+            not been harmonized. The view part is unchanged except for one improvement and a small
+            number of bugfixes.
+          </p>
+          <p>
+            Therefore, this release has no
+            <a href="#v1_4_incompatible">incompatible API changes</a> except minor changes in the
+            module dependencies. In addition, there are some behavior changes in the layout part.
+            Updating code from 1.3 will require only a very small number of changes, if at all.
+          </p>
+
+          <p>
+            Note that the new features and improvements of this release are part of yFiles for HTML 2.0,
+            too. Its bugfixes are part of yFiles for HTML 2.0.1.
+          </p>
+
+          <h3 id="v1_4_new">Major New Features</h3>
+
+          <dl class="header-like">
+            <dt>New Hierarchic Layout Features</dt>
+            <dd>
+              <p>
+                <!-- YFI-3313, YFI-3314, YFI-3316, YFI-3324 -->
+                <em>Improved incremental layouts of groups</em> with changing bounds. This is
+                especially useful for hierarchic layout of graphs with expandable and collapsible
+                groups. The new Hierarchic Grouping demo shows the improved behavior.
+              </p>
+              <p>
+                <!-- YFI-3429 -->
+                <em>Port grouping</em>. Edges can be bundled at their ports but routed
+                independently.
+              </p>
+              <p>
+                <!-- YFI-3504 -->
+                <em>Undirected edges</em>. This enables to, for example, support mixed graphs that
+                contain both directed and undirected edges. While directed edges typically point in
+                the main layout direction, the direction of undirected edges doesn't matter and such
+                edges may point to nodes in the same layer. This feature also enables to force some
+                edges to specifically point against the main layout direction.
+              </p>
+              <p>
+                <!-- YFI-3444 -->
+                <em>Edge thickness</em>. Edges can now have specified thickness values and minimum
+                distances in the layout will consider these thicknesses.
+              </p>
+              <p>
+                <!-- YFI-3315 -->
+                <em>Recursively routed edges</em>. With this routing style, edges that pass the
+                border of group nodes will always leave at the bottom side and enter at the top side
+                of the group node.
+              </p>
+            </dd>
+            <dt>Sankey Diagrams</dt>
+            <dd>
+              <!-- YFI-3437 -->
+              Sankey diagrams visualize flow quantity between entities, for example cost or energy
+              flow.
+            </dd>
+            <dt>Edge Bundling Routing Style</dt>
+            <dd>
+              <!-- YFI-3278, YFI-3296, YFI-3302 -->
+              <p>
+                Bundling multiple edges means that their common parts are to some degree merged into
+                a bundled part. Edge bundling is useful to increase the readability of graph
+                drawings with a high number of edges that connect a comparably small number of
+                nodes. Edge bundling is supported by
+              </p>
+              <ul>
+                <li>
+                  <code>Circular Layout</code>: Edge bundling is applied to edges of the same
+                  circle.
+                </li>
+                <li><code>Radial Layout</code>: Edge bundling is applied to non-tree edges.</li>
+                <li>
+                  <code>TreeReductionStage</code>: Edge bundling is applied to non-tree edges.
+                </li>
+              </ul>
+            </dd>
+            <dt>Regular Substructures in Organic Layouts</dt>
+            <dd>
+              <!-- YFI-3438 -->
+              Organic Layout now supports the detection of regular substructures in the graph and
+              applies a specific layout style to them such that they can be better recognized. These
+              substructures include chains, stars, cycles, and parallel structures.
+            </dd>
+            <dt>More Preferred Label Placement Specifiers</dt>
+            <dd>
+              <!-- YFI-3461 -->
+              The new preferred placement specifiers
+              <code>LabelLayoutConstants.PLACE_AT_SOURCE_PORT</code> and
+              <code>LabelLayoutConstants.PLACE_AT_TARGET_PORT</code> for edge labels express that
+              the label should be placed directly at the source/target port of the edge. Currently,
+              the specifiers are only considered by the integrated labeling of the hierarchic
+              layout.
+            </dd>
+            <dt>Automatic Label Placement</dt>
+            <dd>
+              <p>
+                <!-- YFI-3272 -->
+                If the new option <code>reduceAmbiguity</code> of <code>SALabeling</code> and
+                <code>GreedyMISLabeling</code> is enabled, these algorithms try to avoid placing
+                labels at positions where it is not clear to which graph element a label belongs.
+              </p>
+              <p>
+                <!-- YFI-3646 -->
+                <code>TreeReductionStage</code> now supports the automatic placement of labels of
+                non-tree edges. Users do not need to take care of such edge labels themselves after
+                using a tree layout algorithm on a non-tree input graph in conjunction with the
+                reduction stage.
+              </p>
+              <p>
+                Similarly, the series-parallel layout now supports the automatic placement of labels
+                of non-series-parallel edges.
+              </p>
+            </dd>
+            <dt>Planar Embeddings</dt>
+            <dd>
+              A new API for working with the planar embedding of planar graphs allows easy iteration
+              of the faces, darts, and consecutive edges of the embedding.
+            </dd>
+            <dt>Clustering</dt>
+            <dd>
+              <p>
+                <!-- YFI-3288 -->
+                Added a k-means clustering algorithm that partitions a given graph in k-clusters to
+                <code>Groups</code>.
+              </p>
+              <p>
+                <!-- YFI-3299 -->
+                Added a hierarchical clustering algorithm that partitions a given graph based on
+                agglomerative (i.e., bottom-up) strategy and some linkage function (single-,
+                complete- and average-linkage) to
+                <code>Groups</code>.
+              </p>
+            </dd>
+          </dl>
+
+          <p>We added settings for these new layout features to the Layout Styles demo.</p>
+
+          <h3 id="v1_4_improvements">Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-4945 -->
+              The prefix used by <code>DefsManager.generateUniqueDefsId</code> can now be changed.
+            </li>
+            <li>
+              <!-- YFI-3607 -->
+              <code>IncrementalHierarchicLayouter</code>: Improved support for
+              <code>PortCandidate</code>s at group nodes. Previously, they were only obeyed if there
+              was just a single candidate defined. Now, out of the given candidates, one is selected
+              and considered for the routing. Still, fixed candidates are treated like free ones and
+              are not supported at the side of group nodes.
+            </li>
+            <li>
+              <!-- YFI-3186 -->
+              <code>IncrementalHierarchicLayouter</code>: Routing of grouped edges that connect to
+              nodes of different groups now assures that the whole bus segment remains outside the
+              different group nodes. This avoids that group nodes get unnecessarily large and
+              potentially makes drawings more symmetric.
+            </li>
+            <li>
+              <!-- YFI-28 -->
+              <code>IncrementalHierarchicLayouter</code>: Improved edge grouping such that it is now
+              possible to group incoming/outgoing edges as well as same-layer/backloop edges with
+              common edges.
+            </li>
+            <li>
+              <!-- YFI-3698 -->
+              <code>IncrementalHierarchicLayouter</code>: Reduced the number of bends when
+              integrated edge labeling is enabled.
+            </li>
+            <li>
+              <!-- YFI-3396 -->
+              <code>IncrementalHierarchicLayouter</code> now takes the original edge route into
+              account to determine the route of a self-loop.
+            </li>
+            <li>
+              <!-- YFI-3218 -->
+              <code>IncrementalHierarchicLayouter</code>: Added properties that allow to stop the
+              layout algorithm after the layering or the sequencing phase while skipping the
+              subsequent phases. This may be useful when using two layout runs to collect layering
+              and/or sequencing information in the first run that will be used during the second
+              run.
+            </li>
+            <li>
+              <!-- YFI-1460 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed edges which have segments that
+              should be horizontal or vertical but are slightly non-orthogonal.
+            </li>
+            <li>
+              <!-- YFI-3327 -->
+              <code>IncrementalHierarchicLayouter</code>: Improved behavior in incremental mode that
+              moved normal nodes that were in different layers (in the initial layout) to the same
+              layer. This behavior occurred in case there were group nodes that extended into the
+              layer above or below to get a compact result.
+            </li>
+            <li>
+              <!-- YFI-3171 -->
+              <code>IncrementalHierarchicLayouter</code>: Added support for overlapping layers. The
+              strict layer structure can be compacted by moving layers up into the space of previous
+              layers. Layers are only moved if it won't produce overlaps with nodes or edges.
+            </li>
+            <li>
+              <!-- YFI-101 -->
+              <code>IncrementalHierarchicLayouter</code>: Added support for sequence constraints
+              between edges as well as nodes and edges, see <code>SequenceConstraintFactory</code>.
+            </li>
+            <li>
+              <!--YFI-3422-->
+              The following tree layouts now support custom selection of the root node of the tree:
+              <code>BalloonLayouter</code>, <code>GenericTreeLayouter</code>,
+              <code>TreeLayouter</code>, <code>ARTreeLayouter</code>, and
+              <code>HVTreeLayouter</code>
+            </li>
+            <li>
+              <!-- YFI-3424 -->
+              <code>BalloonLayouter</code>: Interleaved child placement now works in conjunction
+              with 'from sketch' mode and custom child order comparators. This means that the
+              settings <code>BalloonLayouter.fromSketchMode</code> and
+              <code>BalloonLayouter.comparator</code> are no longer ignored when enabling the
+              interleaved placement mode.
+            </li>
+            <li>
+              <!--YFI-128-->
+              <code>TreeLayouter</code> and <code>GenericTreeLayouter</code> now take into
+              consideration the minimum group node size specified by the user with a
+              <code>DataProvider</code> registered with the graph with key
+              <code>GroupingKeys.MINIMUM_NODE_SIZE_DP_KEY</code>.
+            </li>
+            <li>
+              <!-- YFI-2474 -->
+              <code>GenericTreeLayouter</code>: Improved <code>DefaultPortAssignment</code> to
+              consider <code>PortConstraint</code>s in all modes. If a distributed mode is selected,
+              then weak constraints will also be distributed on the according side.
+            </li>
+            <li>
+              <!-- YFI-3155 -->
+              <code>LayeredNodePlacer</code>: Improved spacing between labels and bends when
+              polyline labeling is enabled.
+            </li>
+            <li>
+              <!-- YFI-3115 -->
+              Improved the performance of <code>SALabeling</code> and
+              <code>GreedyMISLabeling</code>, especially for large graphs.
+            </li>
+            <li>
+              <!-- YFI-3199 -->
+              Improved support for <code>PreferredPlacementDescriptor</code> side preference (left,
+              on-edge, right) when using generic labeling algorithms <code>SALabeling</code> and
+              <code>GreedyMISLabeling</code>. Now, the side preference is considered for edge labels
+              with arbitrary <code>EdgeLabelModel</code> implementations.
+            </li>
+            <li>
+              <!-- YFI-3621 and YFI-3667 -->
+              Improved the performance of <code>EdgeRouter</code> when routing edges that have
+              <code>PortConstraint</code>s or <code>PortCandidate</code>s.
+            </li>
+            <li>
+              <!-- YFI-3105 -->
+              <code>EdgeRouter</code> will now consider the target group of an edge if this edge is
+              the only member of its source group.
+            </li>
+            <li>
+              <!-- YFI-2563 -->
+              <code>EdgeRouter</code>: Improved edge routes of self-loops to go around at least one
+              corner of the node. Only if both source and target port are restricted to the same
+              side (with a <code>PortConstraint</code> or <code>PortCandidate</code>), self-loops
+              may start and end at the same side of the node.
+            </li>
+            <li>
+              <!-- YFI-3245 -->
+              <code>InteractiveOrganicLayouter</code>: Fixed possible performance problem after
+              changing the inertia/stress of some nodes.
+            </li>
+            <li>
+              <!--YFI-3421-->
+              <code>SeriesParallelLayouter</code> now takes into consideration minimum node sizes
+              specified by the user.
+            </li>
+            <li>
+              <!-- YFI-3485 -->
+              <code>MultiPageLayouter</code>: Added new option
+              <code>MultiPageLayouter.strictClusterSeparation</code> that allows to specify whether
+              or not nodes with different cluster IDs may be placed onto the same page.
+            </li>
+            <li>
+              <!-- YFI-2905 -->
+              <code>DirectedOrthogonalLayouter</code>: Now always produces planar drawings for
+              trees.
+            </li>
+            <li>
+              <!-- YFI-3598 -->
+              Improved the performance of <code>OrthogonalSegmentDistributionStage</code> and thus
+              also <code>ChannelEdgeRouter</code> which by default uses the mentioned stage as edge
+              distribution strategy.
+            </li>
+            <li>
+              <!-- YFI-3564 -->
+              <code>ChannelRouter</code>: Improved order of segments to avoid edge crossings when
+              there are multiple segments that have one common end point.
+            </li>
+            <li>
+              <!-- YFI-3281 -->
+              Added layout stage <code>CurveFittingLayoutStage</code> which allows the approximation
+              of edge paths with cubic Bezier curve control points. The stage is especially useful
+              if curved edges are modeled using a large number of bends connected via straight
+              lines.
+            </li>
+            <li>
+              <!-- YFI-2668 -->
+              Added layout stage <code>HandleNaNCoordinatesStage</code> which prevents layout
+              algorithms that take initial coordinates for nodes and edges into account from failing
+              if some of those graph elements have <code>NaN</code>-coordinates.
+            </li>
+            <li>
+              <!--YFI-3641-->
+              Improved the performance of <code>PartialLayouter</code> for input graphs that feature
+              a high number of large subgraph components. Does not apply to component assignment
+              strategy <code>PartialLayouter.COMPONENT_ASSIGNMENT_STRATEGY_SINGLE</code>.
+            </li>
+            <li>
+              <!-- YFI-3250, YFI-3263, YFI-3260, YFI-3107, YFI-3251, YFI-3255, YFI-3260, YFI-3257 -->
+              Several smaller performance improvements for
+              <code>IncrementalHierarchicLayouter</code>, <code>SmartOrganicLayouter</code>,
+              <code>OrthogonalLayouter</code>, <code>CircularLayouter</code>,
+              <code>RadialLayouter</code>, <code>SeriesParallelLayouter</code>, and
+              <code>ChannelRouter</code>.
+            </li>
+          </ul>
+
+          <h3>Bugfixes</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-5027 -->
+              <code>SimpleLabelStyle</code>: Changing the <code>autoFlip</code> or
+              <code>trimming</code> properties had no visible effect until a visual was created anew
+              with the <code>createVisual</code> method.
+            </li>
+            <li>
+              <!-- YJS-5015 -->
+              The property <code>SizeChangedEventArgs.oldSize</code> contained the new size instead
+              of the old size in some cases.
+            </li>
+            <li>
+              <!-- YJS-5028 -->
+              <code>MouseHoverInputMode</code>: The tooltip of the very first hover did not appear.
+            </li>
+            <li>
+              <!-- YJS-5060 -->
+              Added the flag <code>yfiles.workaroundCR701075</code> that enables a workaround for
+              occasional render issues in Chrome 57. This is due to Chrome 57 not properly
+              <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=701075">
+                rendering the applied transform matrix</a
+              >. The workaround is automatically enabled in the yFiles demo applications when opened
+              in Chrome 57.
+            </li>
+          </ul>
+
+          <h3 id="v1_4_incompatible">Incompatible Changes</h3>
+
+          <h4 id="v1_4_incompatible_api">Breaking API Changes</h4>
+
+          <ul>
+            <li>
+              The module <code>yfiles/layout-circular</code> has been merged with the module
+              <code>yfiles/layout-organic</code>. If you have references to
+              <code>yfiles/layout-circular</code> replace them with
+              <code>yfiles/layout-organic</code>.
+            </li>
+            <li>
+              The module <code>yfiles/layout-planar</code> has been merged with the module
+              <code>yfiles/layout-orthogonal</code>
+              since it contained no public API and is only used from the latter module. If you have
+              references to
+              <code>yfiles/layout-planar</code> replace them with
+              <code>yfiles/layout-orthogonal</code>.
+            </li>
+          </ul>
+
+          <h4 id="v1_4_incompatible_behavior">Behavior Changes</h4>
+
+          <ul>
+            <li>
+              The following layout algorithms have more sensible default values.
+              <ul>
+                <li>
+                  <code>CanonicMultiStageLayouter</code> and <code>MultiPageLayouter</code>: The
+                  default <code>labelLayouter</code> is now set to an instance of
+                  <code>SALabeling</code>.
+                </li>
+                <li>
+                  <code>OrthogonalEdgeRouter.crossingCost</code>: The default value is now
+                  <code>1.5</code> instead of <code>0.0</code>.
+                </li>
+                <li>
+                  <code>CompactOrthogonalLayouter</code>: The
+                  <code>CompactOrthogonalLayouter.OrthogonalShortestPathPathFinder</code> which is
+                  used as default path finder strategy now uses value <code>1.5</code> as default
+                  for property <code>crossingCost</code> instead of <code>0</code>.
+                </li>
+                <li>
+                  <code>PartialLayouter.minimalNodeDistance</code>: The default value is now
+                  <code>10.0</code> instead of <code>0.0</code>.
+                </li>
+                <li>
+                  <code>MultiParentDescriptor.minimumNodeDistance</code>: The default value is now
+                  <code>15.0</code> instead of <code>10.0</code>.
+                </li>
+                <li>
+                  <code>BalloonLayouter.minimalNodeDistance</code>: The default value is now
+                  <code>10.0</code> instead of <code>0.0</code>.
+                </li>
+                <li>
+                  <code>SALabeling.deterministicMode</code>: The default value is now
+                  <code>true</code> instead of <code>false</code>.
+                </li>
+                <li>
+                  <code>SplitEdgeLayoutStage.proxyNodeSize</code>: The default value is now
+                  <code>1.0</code> instead of <code>0.0</code>.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Most of the property setters of the types of the layout part now throw an error if an
+              invalid, illegal, or
+              <code>null</code> argument is given as input.
+            </li>
+            <li>
+              <!-- YFI-3672 -->
+              <code>IncrementalHierarchicLayouter</code> may now place source/target labels in
+              layers that contain common nodes. In previous versions such labels were always placed
+              in separate layers which often led to less compact drawings with superfluous bends.
+            </li>
+            <li>
+              <!-- YFI-28 -->
+              <code>IncrementalHierarchicLayouter</code>: The edge grouping now supports to group
+              incoming and outgoing edges of a node. In previous versions incoming and outgoing
+              edges always defined separate groups even though the user specified the same group IDs
+              for such edges.
+            </li>
+            <li>
+              <!-- YFI-3623 -->
+              Method <code>IncrementalHierarchicLayouter.integratedEdgeLabeling</code> does now
+              always return <code>false</code> if the labeling algorithm is disabled. In previous
+              versions it was only required that an appropriate labeling algorithm was specified,
+              but it was not necessary that it is enabled. Therefore, the integrated labeling state
+              queried from the property might not have corresponded to what the layout algorithm
+              actually did. The same behavior change applies to the following methods:
+              <ul>
+                <li><code>IncrementalHierarchicLayouter.considerNodeLabels</code></li>
+                <li><code>DirectedOrthogonalLayouter.integratedEdgeLabeling</code></li>
+                <li><code>DirectedOrthogonalLayouter.considerNodeLabels</code></li>
+                <li><code>OrthogonalLayouter.integratedEdgeLabeling</code></li>
+                <li><code>OrthogonalLayouter.considerNodeLabels</code></li>
+                <li><code>OrthogonalGroupLayouter.integratedEdgeLabeling</code></li>
+                <li><code>OrthogonalGroupLayouter.considerNodeLabels</code></li>
+              </ul>
+            </li>
+            <li>
+              <!-- YFI-3675 -->
+              <code>IncrementalHierarchicLayouter</code>: Geometry information specified for
+              <code>IncrementalHierarchicLayouter.ALTERNATIVE_GROUP_BOUNDS_DP_KEY</code> and
+              <code>IncrementalHierarchicLayouter.ALTERNATIVE_EDGE_PATH_DP_KEY</code> is now
+              automatically rotated according to the specified layout orientation. This fixes
+              unstable from-sketch behavior in incremental layout mode when using an orientation
+              other than top-to-bottom.
+            </li>
+            <li>
+              <!-- YFI-3382 -->
+              <code>IncrementalHierarchicLayouter</code>: For input graphs with infeasible
+              <code>PortConstraint</code>s and
+              <code>PortCandidate</code>s/<code>PortCandidateSet</code>s (i.e., for edges that have
+              non-matching port constraints/candidates), the layout algorithm now always prefers
+              <code>PortConstraint</code>s. In previous versions, the behavior was not well-defined
+              for such cases.
+            </li>
+            <li>
+              <!-- YFI-3370 -->
+              <code>PortCandidateAssignmentStage</code>: Now, if an edge has registered
+              <code>PortCandidate</code>s and connects to nodes with <code>PortCandidateSet</code>s,
+              the stage will try to match both collections to find an appropriate port. In case
+              there is no matching port candidate, a <code>PortCandidate</code> specified for the
+              edge is preferred. Before, one of the <code>PortCandidate</code>s was selected without
+              trying to match with node port candidates.
+            </li>
+            <li>
+              <!-- YFI-3628 -->
+              <code>SmartOrganicLayouter</code> does no longer resize empty group nodes, possibly
+              ignoring a minimum group node size for them. The behavior with respect to empty group
+              nodes is now in line with the behavior of other common layout algorithms. The same
+              behavior change applies for <code>OrganicLayouter</code> with group policy setting
+              <code>OrganicLayouter.IGNORE_GROUPS_POLICY</code>, where previously empty groups were
+              resized too.
+            </li>
+            <li>
+              Method <code>CompositeLayoutStage.canLayout</code> now checks if all the
+              <code>LayoutStage</code>s of the pipeline can layout the given graph and does not
+              return always <code>true</code>.
+            </li>
+            <li>
+              Method <code>SingleCycleLayouter.canLayoutCore</code> now returns
+              <code>false</code> if <code>null</code> is given as input.
+            </li>
+            <li>
+              Method <code>Centrality.closenessCentrality</code> now sets the closeness of a node to
+              <code>Infinity</code> if the sum of the shortest path distances is <code>0</code>.
+              Before, it was set to <code>NaN</code> in such cases.
+            </li>
+            <li>
+              <!-- YFI-3691 -->
+              Method <code>SingleCycleLayouter.nodeSequencer</code> now allows to specify
+              <code>null</code> to return to the default sequencer. In previous versions, specifying
+              <code>null</code> led to an error.
+            </li>
+            <li>
+              Method <code>GraphTransformer.operation</code> now only sets the operation value and
+              does not disable the automatic selection of best fitting rotation angle if an
+              operation other than <code>ROTATE</code> is selected.
+            </li>
+            <li>
+              Method <code>OrthogonalLayouter.integratedEdgeLabeling</code> now throws an error if
+              the current label layouter is not of type <code>LabelLayoutTranslator</code>.
+            </li>
+            <li>
+              Constructor <code>TreeComponentLayouter</code> throws an error if <code>null</code> is
+              given as argument.
+            </li>
+            <li>
+              <code>Centrality</code>: The following methods can now take empty
+              <code>NodeMap</code>s and <code>EdgeMap</code>s as arguments for returning the
+              resulting centrality values.
+              <ul>
+                <li><code>Centrality.edgeBetweenness</code></li>
+                <li><code>Centrality.nodeBetweenness</code></li>
+                <li><code>Centrality.nodeEdgeBetweenness</code></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_7">yFiles for HTML 1.3.0.7 - Changes Since 1.3.0.6</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <p>
+            This is the 7th bugfix release for 1.3. There are no incompatible changes since 1.3.0.6.
+          </p>
+
+          <p>Note that the bugfixes of this release are part of yFiles for HTML 2.0.1, too.</p>
+
+          <h3>Bugfixes</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-4983 -->
+              <code>CanvasComponent</code>: Key events had no effect if the component was part of a
+              shadow DOM. The component's div element always lost the focus on keydown.
+            </li>
+            <li>
+              <!--YJS-4950-->
+              Instances of <code>GraphEditorInputMode</code> and
+              <code>GraphViewerInputMode</code> were not garbage collected due to a non-removed
+              event listener in the <code>clickInputMode</code>.
+            </li>
+            <li>
+              <!-- YWPF-2550 -->
+              Hiding <code>INodeSnapResultProvider</code> or
+              <code>IBendSnapResultProvider</code> from the lookup no longer leads to a crash when
+              nodes or bends are moved.
+            </li>
+            <li>
+              <!-- YJS-4957 -->
+              <code>PolylineEdgeStyle</code>: Toggling the pen between dashed and solid styles did
+              only work once. Then, the SVG path stayed at solid regardless of the pen's dash style.
+            </li>
+            <li>
+              <!-- YWPF-2556 -->
+              <code>SmartEdgeLabelModel</code>: Once again, labels at the first segment snap
+              properly at the layout of the source node. Since 1.3.0.6, some snap positions were
+              overlapping with the source node.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YWPF-2542 -->
+              Fixed a bug in <code>TableLayoutConfigurator</code> which altered the size of a column
+              or row if an edge routing algorithm was applied.
+            </li>
+            <li>
+              <!-- YFI-3677 -->
+              <code>MultiPageLayouter</code>: Fixed rare bug that caused straight-line edge routes
+              instead of orthogonal routes.
+            </li>
+            <li>
+              <!-- YFI-3663 -->
+              <code>SmartOrganicLayouter</code> and <code>OrganicLayouter</code>: Fixed bug that
+              caused the algorithm to not consider the specified custom
+              <code>GroupBoundsCalculator</code>.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_6">yFiles for HTML 1.3.0.6 - Changes Since 1.3.0.5</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <p>
+            This is the 6th bugfix release for 1.3. There are no incompatible changes since 1.3.0.5.
+          </p>
+
+          <p>Note that the bugfixes of this release are part of yFiles for HTML 2.0.0.1 or 2.0.1, too.</p>
+
+          <h3>Demo Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-4888 -->Made <code>demo-framework/require.js</code> able to deal with
+              <code>paths</code> syntax.
+            </li>
+            <li>
+              <!-- YJS-3810 -->Removed unused <code>LabelInsetsProvider</code> implementation in
+              <code>demo.yfiles.layout.layoutstyles</code>.
+            </li>
+          </ul>
+
+          <h3>Bugfixes</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-4383 -->Added the flag <code>yfiles.workaroundIE7766782</code> that enables a
+              workaround for the Internet Explorer JIT bug 7766782, which can cause class
+              initialization errors when using the yFiles for HTML GWT Overlay in Internet Explorer,
+              especially when the GWT Overlay is used in combination with Smart GWT.
+            </li>
+
+            <li>
+              <!-- YJS-4741 -->Made the <code>IEnumerable.getMultiProjection</code> and<code
+                >EnumerableExtensions.selectMany</code
+              >
+              implementations non-recursive to avoid stack overflows.
+            </li>
+            <li>
+              <!-- YJS-4234 -->Made <code>SvgExport</code> helper class more resilient against zero
+              sized exports.
+            </li>
+            <li>
+              <!-- YJS-3471 -->The <code>CreateEdgeInputMode.EdgeCreated</code> event triggered
+              before the corresponding undoable edit was committed. This could result in a broken
+              undo queue, if e.g. an animated layout was started during in the event listener. The
+              event now triggers after the edit has been committed. With automatic undo unit
+              merging, this should not make a difference for the end user, however from the
+              perspective of the code there will be two subsequent edits, rather than one compound,
+              if the code in the listener actually modifies the edge.
+            </li>
+
+            <li>
+              <!-- YJS-4228 -->
+              <p>
+                The license validation always failed for users of some (mostly older) browsers in
+                specific scenarios:
+              </p>
+
+              <table>
+                <tr>
+                  <th>Locale</th>
+                  <th>ISO 639 Code</th>
+                  <th>Affected Scenarios</th>
+                </tr>
+                <tr>
+                  <td>Estonian</td>
+                  <td>et</td>
+                  <td>Only Licenses with watermark</td>
+                </tr>
+                <tr>
+                  <td>Finnish</td>
+                  <td>fi</td>
+                  <td>Only License with watermark</td>
+                </tr>
+                <tr>
+                  <td>Swedish</td>
+                  <td>sv</td>
+                  <td>Only License with watermark</td>
+                </tr>
+                <tr>
+                  <td>Hawaiian</td>
+                  <td>haw</td>
+                  <td>Always</td>
+                </tr>
+                <tr>
+                  <td>Tamazight</td>
+                  <td>tzm</td>
+                  <td>Always</td>
+                </tr>
+              </table>
+
+              <p>The following browsers were affected:</p>
+
+              <ul>
+                <li>IE before version 11</li>
+                <li>Firefox before version 29</li>
+                <li>Chrome before version 24</li>
+                <li>Opera before version 15</li>
+                <li>Safari (all versions)</li>
+              </ul>
+            </li>
+            <li>
+              <!-- YJS-3717, YJS-4859 -->Prevent <code>null</code> exceptions when interacting with
+              a <code>GraphOverviewControl</code> before assigning a <code>GraphControl</code> to
+              the <code>OverviewInputMode</code>.
+            </li>
+            <li>
+              <!-- YWPF-2410, YWPF-2490 -->
+              <code>OverviewInputMode</code> could break the overview visualization if the overview
+              has a very small width or height.
+            </li>
+            <li>
+              <!-- YWPF-1930 -->
+              <code>SmartEdgeLabelModel</code>: Edge label snap lines have been too short for some
+              positions that are far apart from the edge path.
+            </li>
+            <li>
+              <!-- YWPF-2402 -->
+              <code>SmartEdgeLabelModel</code>: An exception was thrown if the path of the
+              corresponding edge contained bends that were close together or at the same location.
+            </li>
+            <li>
+              <!-- YWPF-2479 -->Folding: the view state of a port on a folder node was sometime
+              ignored when a folding edge was created.
+            </li>
+            <li>
+              <!-- YWPF-2492, YWPF-2493, YWPF-2494, YJS-4665 -->Fixed several issues with orthogonal
+              edge editing.
+              <ul>
+                <li>
+                  When dragging the source/target port/node of an orthogonal edge, the bends created
+                  during the drag were not cleaned up after canceling the gesture by pressing the
+                  ESC key.
+                </li>
+                <li>
+                  Orthogonal edges could be made non-orthogonal by re-connecting the source port to
+                  the target port location (creating a self-loop), or vice versa.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!-- YWPF-2342 -->Explicit <code>Arrow</code> elements in GraphML were sometimes read
+              back incorrectly. The new deserialization property
+              <code>SerializationProperties.ParseArrowElementAsDefaultArrow</code> can be used to
+              work around this issue.
+            </li>
+            <li><!-- YWPF-2363 -->GenericPortLocationModel wasn't serialized correctly.</li>
+            <li>
+              <!-- YWPF-2366 -->
+              <code>Table.setStyle(ILabel, ILabelStyle)</code> and
+              <code>Table.setLabelModelParameter</code> ignored the provided style resp. label model
+              parameter.
+            </li>
+            <li>
+              <!-- YWPF-2426 -->
+              <code>PathBasedEdgeStyleRenderer</code> could leave visual artifacts when switching to
+              an arrow that returned a null visual.
+            </li>
+            <li>
+              <!-- YWPF-2443 -->KeyboardInputMode now passes the original
+              <code>CompoundKeyEventArgs</code> to registered event handlers instead of
+              <code>EmptyArgs</code>.
+            </li>
+            <li>
+              <!-- YWPF-1937 -->Touch move events have an effect only if the corresponding touch
+              down event also happened within the GraphControl.
+            </li>
+            <li>
+              <!-- YWPF-1936 -->The <code>IsDown</code> property of a <code>Touch2DDevice</code> was
+              always <code>false</code>
+              after the first touch up event of that device, e.g. after the first tap of a double
+              tap.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-3584 -->
+              <code>IncrementalHierarchicLayouter</code>: fixed rare error triggered in
+              <code>AsIsSequencer</code> for edges incident to group nodes that have a sketch
+              without bend points as well as port constraints.
+            </li>
+            <li>
+              <!-- YFI-3565 -->
+              <code>IncrementalHierarchicLayouter</code>: fixed bug that may cause non-orthogonal
+              segments of grouped edges even though orthogonal edge routing is enabled.
+            </li>
+            <li>
+              <!-- YFI-3566 -->
+              <code>IncrementalHierarchicLayouter</code>: improved compactness of layouts that
+              feature group nodes with insets and (group) nodes with halos (<code>NodeHalo</code>).
+              Previously, the specification of halos could enlarge the insets of group nodes by an
+              unnecessary large amount.
+            </li>
+            <li>
+              <!-- YFI-3609 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug that sometimes caused the route
+              of back-loop edges with at least one endpoint incident to a group node to
+              unnecessarily enter this group node.
+            </li>
+            <li>
+              <!-- YFI-3606 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed rare bug that caused same-layer edge
+              to cross through their source or target node, e.g., the port was at the top of the
+              source node but the edge crossed through the source node to leave it at the bottom.
+            </li>
+            <li>
+              <!-- YFI-3594 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed rare bug that may caused overlaps
+              between labels and segments of edges with octilinear routes.
+            </li>
+            <li>
+              <!-- YFI-3590 -->
+              <code>IncrementalHierarchicLayouter</code>: fixed possible infinite loop if there are
+              critical edges (see <code>CRITICAL_EDGE_DP_KEY</code>).
+            </li>
+            <li>
+              <!-- YFI-3604 -->
+              <code>SimplexNodePlacer</code>: Fixed bug that caused overlaps between edges and nodes
+              when node compaction is enabled and edges have either strong
+              <code>PortConstraint</code>s or fixed <code>PortCandidate</code>s.
+            </li>
+            <li>
+              <!-- YFI-3629 -->
+              <code>SmartOrganicLayouter</code> and <code>OrganicLayouter</code>: Fixed bug that
+              caused group nodes with zero height/width in the layout result. The bug appeared when
+              having empty groups, group node insets smaller than one (defined
+              viaGroupingKeys#GROUP_NODE_INSETS_DP_KEY) and no minimum group node size specified
+              (GroupingKeys#MINIMUM_NODE_SIZE_DP_KEY).
+            </li>
+            <li>
+              <!-- YFI-3587 -->
+              <code>GenericTreeLayouter</code>: fixed possible group node overlaps in conjunction
+              with some node placers, for example <code>AssistantPlacer</code>.
+            </li>
+            <li>
+              <!-- YFI-3568 -->
+              <code>GenericTreeLayouter</code>: fixed bug that caused less compact layout results
+              when having node halos (see <code>NodeHalo</code>).
+            </li>
+            <li>
+              <!-- YFI-3554 -->
+              <code>PartialLayouter</code>: fixed error that appeared if no
+              <code>DataProvider</code> with key <code>PARTIAL_NODES_DP_KEY</code>
+              is registered with the input graph.
+            </li>
+            <li>
+              <!-- YFI-3631 -->
+              <code>EdgeRouter</code>: Fixed bug that caused violations of minimum first/last
+              segment lengths of grouped edges when using different edge layout descriptors and,
+              second, made the layout algorithm remove a user-registered
+              <code>DataProvider</code> with key
+              <code>EdgeRouter.EDGE_LAYOUT_DESCRIPTOR_DP_KEY</code>.
+            </li>
+            <li>
+              <!-- YFI-3612 -->
+              <code>EdgeRouter</code>: Fixed rare error that may appear if there are fixed and
+              grouped edges at the same time.
+            </li>
+            <li>
+              <!-- YFI-3603 -->
+              <code>ChannelEdgeRouter</code>: Fixed routing of self-loops that have both source and
+              target end point at the same side of the node. Previously, when multiple such
+              self-loops were present at the same node, the routing produced bad end points located
+              outside of the node.
+            </li>
+            <li>
+              <!-- YFI-3567 -->
+              <code>OrthogonalEdgeRouter</code>: Fixed error that appeared if there were node labels
+              with zero height/width.
+            </li>
+          </ul>
+
+          <h3>Documentation Viewer Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- JSD-134 -->
+              Improved page loading performance for large API pages.
+            </li>
+            <li>
+              The integrated code editor now shows correct argument names in delegate and callback
+              function signatures.
+            </li>
+            <li>
+              <!-- JSD-260 -->
+              Parameters of delegate functions (e.g. event handlers) are now part of the "Show
+              Usages" results.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_5">yFiles for HTML 1.3.0.5 - Changes Since 1.3.0.4</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <p>
+            This is the 5th bugfix release for 1.3. There are no incompatible changes since 1.3.0.4.
+          </p>
+
+          <h3>Demo Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-3697 -->
+              Added a flag to <code>demo.yfiles.layout.multipage</code> that prevents re-entrant
+              layout calls.
+            </li>
+            <li>
+              <!-- YJS-3693 -->
+              Feature <code>DefaultDummyNodeConverter.initialSize</code> in Getting Started tutorial
+              steps 11, 12 and 13.
+            </li>
+            <li>
+              <!-- YJS-3700, YJS-3771 -->
+              Added custom layout stage to the tree layouter of
+              <code>demo.yfiles.layout.layoutstyles</code> which handles edges to group nodes. Fixed
+              vertical preferred edge label placement setting of the label layout.
+            </li>
+            <li>
+              <!-- YJS-3806 -->
+              Updated <code>demo.yfiles.graph.pdfexport</code>'s references for the svg to pdf
+              libraries. Beside other bugfixes, the updated svg to pdf libraries now support svg
+              patterns and correct export of nodes that use <code>ImageNodeStyle</code>.
+            </li>
+            <li>
+              <!-- YJS-3720 -->
+              In some rare cases, the graph creation code in
+              <code>demo.yfiles.graph.orgchart</code> was called before the application was
+              initialized. Made sure that the application has been initialized before creating the
+              graph.
+            </li>
+            <li>
+              <!-- YJS-3698 -->
+              The graph in <code>demo.yfiles.graphml.graphml</code> is now updated lazily after the
+              GraphML source has not been modified for 1 second to prevent cumulative updates on
+              every keystroke.
+            </li>
+          </ul>
+
+          <h3>Bugfixes</h3>
+
+          <h4>Viewer</h4>
+          <ul>
+            <li>
+              <!-- YJS-3724 -->
+              Improved the performance of
+              <code>yfiles.drawing.TextRenderSupport.determineMeasureMode</code> for the first label
+              measure call.
+            </li>
+            <li>
+              <!-- YJS-3707 -->
+              Fixed 'not a finite floating-point value' exception which occurred when the size of
+              the <code>GraphControl</code>
+              is zero during an animation.
+            </li>
+            <li>
+              <!-- YJS-3743, YJS-3744 -->
+              Added the flag <code>yfiles.workaroundIE2337112</code> that enables a workaround for
+              disappearing 'use' elements
+              <a
+                href="https://connect.microsoft.com/IE/feedback/details/2337112/svg-use-elements-disappear-on-windows-10"
+                >in Internet Explorer 11 on Windows 10</a
+              >. The workaround is automatically enabled in yFiles demo applications that use the
+              demo framework for IE11 on Windows 10.
+            </li>
+            <li>
+              <!-- YJS-3710 -->
+              GraphML deserialization: Changed default value for arrows without an explicit
+              <code>ArrowType</code> from <code>ArrowType.NONE</code> to
+              <code>ArrowType.DEFAULT</code>.
+            </li>
+            <li>
+              <!-- YJS-3782 -->
+              GraphML serialization: Whitespace in XML attributes was not escaped correctly.
+            </li>
+            <li>
+              <!-- YJS-3784 -->
+              Specifying a <code>DesignerSerializationVisibility</code> for collection properties
+              did not work.
+            </li>
+            <li>
+              <!-- YJS-3765 -->
+              <code>TypeConverter</code> was erroneously part of the yFiles for HTML Layout package
+              and has been removed from it.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-3542 -->
+              <code>IncrementalHierarchicLayouter</code>: fixed error that could happen in
+              <code>AsIsSequencer</code> when incremental group hints are defined (see
+              <code>IncrementalHintsFactory.createIncrementalGroupHint</code>) along with specific
+              port constraints on edges incident to an incremental group node.
+            </li>
+            <li>
+              <!-- YFI-3497 -->
+              <code>IncrementalHierarchicLayouter</code>: Improved result if compact label placement
+              is enabled (which is the default), see <code>SimplexNodePlacer.labelCompaction</code>.
+              In previous versions the labels may have been placed in a stacked style even if this
+              did not make the result more compact (e.g. if all labels are placed to the right of
+              the edges).
+            </li>
+            <li>
+              <!-- YFI-3496 -->
+              <code>GraphPartitionManager</code>: fixed functionality to hide edges when using
+              methods <code>GraphPartitionManager.hide</code>,
+              <code>GraphPartitionManager.hide</code>. Previously, edges were actually not hidden
+              from the graph.
+            </li>
+            <li>
+              <!-- YFI-3484 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed distance between vertical (in a
+              top-to-bottom layout) segments of same layer edges that connect to group nodes. This
+              also applies to self-loops that connect to the top or bottom of a group node with both
+              ends as well as same layer parts of other edges like back-loops.
+            </li>
+            <li>
+              <!-- YFI-3478 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug that caused the minimum
+              edge-to-edge distance to be violated by edges with strong port constraints that cross
+              each other.
+            </li>
+            <li>
+              <!-- YFI-3447 -->
+              <code>ParallelEdgeLayouter</code>: Fixed bug that caused wrong (very large) edge port
+              coordinates. These coordinates could also lead to Exceptions when later processing the
+              graph, for example, when calculating placements of edge labels belonging to the edges
+              with bad coordinates using model <code>SmartEdgeLabelModel</code>.
+            </li>
+            <li>
+              <!-- YFI-3477 -->
+              <code>SeriesParallelLayouter</code>: Fixed violations of the minimum first and last
+              segment length and self-crossings of octilinear edges.
+            </li>
+            <li>
+              <!-- YFI-3476 -->
+              <code>SeriesParallelLayouter</code>: Fixed bug that caused node-to-node or
+              node-to-edge overlaps in the case where the graph contained group nodes and node/edge
+              labels.
+            </li>
+            <li>
+              <!-- YFI-3433 -->
+              <code>CircularLayouter</code>: Fixed a bug that could potentially cause an infinite
+              loop when encountering a node with a very high out-degree.
+            </li>
+            <li>
+              <!-- YFI-3458 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug that caused critical edges to
+              not be aligned (see <code>CRITICAL_EDGE_DP_KEY</code>).
+            </li>
+            <li>
+              <!-- YFI-3439 -->
+              <code>BusRouter</code>: Fixed rare error caused by non-orthogonal edge segments.
+            </li>
+            <li>
+              <!-- YFI-3434-->
+              <code>GenericTreeLayouter</code>: Fixed bug that caused edges which are reversed
+              during the layout and have a port constraint only to one endpoint (e.g., source) to
+              obtain the same port constraint also to the other endpoint (e.g., target).
+            </li>
+            <li>
+              <!-- YFI-3431 -->
+              <code>Polyline.EdgeRouter</code>: Fixed possible error that may appear if a specified
+              <code>PortCandidate</code> has multiple directions.
+            </li>
+            <li>
+              <!-- YFI-3416, YFI-3336 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug with some ignored any side
+              strong port constraints.
+            </li>
+            <li>
+              <!-- YFI-3410 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed bug that resulted in edges whose
+              segments are not on grid.
+            </li>
+            <li>
+              <!-- YFI-3395 -->
+              <code>Polyline.EdgeRouter</code>: Fixed bug that caused routed edges to sometimes
+              share the same port as fixed edges.
+            </li>
+            <li>
+              <!-- YFI-3406 -->
+              <code>Polyline.EdgeRouter</code>: fixed bug that caused incorrect routes for grouped
+              edges with intersecting source and target.
+            </li>
+            <li>
+              <!-- YFI-3405 -->
+              <code>FamilyTreeLayouter</code>: Fixed handling of grouping data providers so they are
+              not changed by the layout algorithm.
+            </li>
+            <li>
+              <!-- YFI-3389 -->
+              <code>IncrementalHierarchicalLayouter</code>: Fixed grid references to place the nodes
+              on grid correctly for each layout orientation.
+            </li>
+            <li>
+              <!-- YFI-3404 -->
+              <code>FamilyTreeLayouter</code>: Fixed possible error that may appear if the input
+              graph contains group nodes.
+            </li>
+          </ul>
+
+          <h3>Documentation Viewer Improvements</h3>
+
+          <ul>
+            <li>Improved page loading performance for large API types.</li>
+            <li>
+              Added an integrated code editor with smart code completion support for yFiles API
+              members.
+            </li>
+            <li>Integrated search for related knowledge base articles.</li>
+            <li>
+              Added a version that can be viewed offline (<code>index-offline.html</code> - run
+              <code>npm install</code> first).
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_4">yFiles for HTML 1.3.0.4 - Changes Since 1.3.0.3</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <h3>New and Improved Demos</h3>
+
+          <ul>
+            <li>
+              <!-- YJS-3646 -->
+              The demo <code>demo.yfiles.graph.largegraphs</code> illustrates different approaches
+              and their performance for rendering large graphs.
+            </li>
+            <li>
+              <!-- YJS-3646 -->
+              The demo <code>demo.yfiles.graphml.graphml</code> provides a live view of the graph's
+              GraphML representation to provide an insight into GraphML serialization.
+            </li>
+            <li>
+              <!-- YJS-3646 -->
+              The demo <code>demo.yfiles.graph.neighborhood</code> shows how to implement a
+              neighborhood view of the selected graph item.
+            </li>
+            <li>
+              <!-- YJS-3675 -->
+              The demo <code>demo.yfiles.toolkit.react</code> shows how to integrate the yFiles
+              graph control into a
+              <a target="_blank" href="https://facebook.github.io/react/">React</a> project.
+            </li>
+            <li>
+              <!-- YJS-3528, YJS-3529 -->
+              The <code>demo.yfiles.graph.svgexport</code> and
+              <code>demo.yfiles.graph.pdfexport</code> demos show how to export the diagram to SVG
+              or PDF, respectively.
+            </li>
+            <li>
+              <!-- YJS-3549, YJS-3550 -->
+              The demo <code>demo.yfiles.graph.tableeditor</code> shows a new, optimized table
+              style.
+            </li>
+            <li>
+              <!-- YJS-3525 -->
+              The <code>demo.yfiles.graph.imageexport</code> demo now also supports server-side
+              image export.
+            </li>
+          </ul>
+
+          <h3>Layout Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- YFI-3227 -->
+              <code>IncrementalHierarchicLayouter</code>: Reduced number of overlaps of group nodes
+              containing elements with head or tail sequence constraints.
+            </li>
+            <li>
+              <!-- YFI-3195 -->
+              Improved abort handling for algorithms that use
+              <code>ConstraintIncrementalLayerer</code>, <code>ConstraintLayerer</code> and
+              <code>TopologicalIncrementalLayerer</code>. For large graphs these classes may require
+              a long runtime that cannot be canceled by using an <code>AbortHandler</code>.
+            </li>
+          </ul>
+
+          <h3>Bugfixes</h3>
+
+          <h4>Viewer</h4>
+          <ul>
+            <li>
+              <!-- YJS-3670 -->
+              <code>TemplateNodeStyle</code> and <code>StringTemplateNodeStyle</code> no longer
+              throw an exception on template re-evaluation if a bound value is <code>null</code>.
+            </li>
+            <li>
+              <!-- YJS-3604 -->
+              Fixed an error that could occur when the graph control has no actual size but visible
+              scrollbars.
+            </li>
+            <li>
+              <!-- YWPF-2232 -->
+              Corrected the interactive resizing of selected nested group nodes. Previously, the
+              result was depended on the order in which the nodes were selected. Now,
+              <code>GraphCommands.ADJUST_GROUP_NODE_SIZE_COMMAND</code> now always processes the
+              nodes from innermost to outermost groups.
+            </li>
+            <li>
+              <!-- YWPF-2174 -->
+              <code>GraphClipboard</code>: Corrected the selection after a paste command for
+              clipboards which are shared among <code>GraphControls</code>.
+            </li>
+            <li>
+              <!-- YWPF-1939 -->
+              Fixed an error when resizing nodes in a filtered graph that contains tables.
+            </li>
+            <li>
+              <!--YWPF-1811 -->
+              Fixed an issue with <code>NodeDropInputMode</code> and filtered graphs.
+            </li>
+            <li>
+              <!-- YJS-3587 -->
+              Changed the default value of <code>GridVisualCreator.abberationTolerance</code> to 50
+              to switch off grid hiding by default.
+            </li>
+            <li>
+              <!-- YJS-3587 -->
+              Fixed the visualization of grids of the style <code>GridStyle.Crosses</code>.
+            </li>
+            <li>
+              <!-- YWPF-1502 -->
+              The property <code>CanvasControl.fitContentViewMargins</code> is now considered
+              correctly even if the values for left and right (or top and bottom) are different.
+              Previously, the content was always centered in the view.
+            </li>
+            <li>
+              <!-- YJS-3512 -->
+              GraphML deserialization errors are now ignored if the flag
+              <code>yfiles.graphml.SerializationProperties.IGNORE_XAML_DESERIALIZATION_ERRORS</code>
+              is set.
+            </li>
+            <li>
+              <!-- YJS-3639 -->
+              Fixed an error while loading GraphML files that were created with yFiles WPF and
+              contained labels.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-3292 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that caused
+              <code>PortCandidate</code>s to potentially be ignored or not handled correctly for
+              self-loops when having directions other than <code>PortCandidate.NORTH</code>,
+              <code>PortCandidate.SOUTH</code>, <code>PortCandidate.WEST</code> or
+              <code>PortCandidate.EAST</code>.
+            </li>
+            <li>
+              <!-- YFI-3244 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that caused that the layer
+              of an incremental group (see
+              <code>IncrementalHintsFactory.createIncrementalGroupHint</code>) depends on the
+              group's location if recursive layering is enabled (see
+              <code>IncrementalHierarchicLayouter.recursiveGroupLayering</code>). However, the
+              position of incremental groups should be freely chosen by the layouter.
+            </li>
+            <li>
+              <!-- YFI-3375 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that caused grouped edge
+              segments to overlap with one of the adjacent nodes if that is a group node.
+            </li>
+            <li>
+              <!-- YFI-3354 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that caused same layer
+              segments to be too short for the labels that should be placed at those segments.
+            </li>
+            <li>
+              <!-- YFI-3387 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that caused a violation of
+              minimum first/last segment length for edges that connect two neighboring nodes in the
+              same layer.
+            </li>
+            <li>
+              <!-- YFI-2974 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that caused a violation of
+              minimum first/last segment length for edges that connect to group nodes. Now, the
+              first/last segments of those edges will have at least the length of the largest
+              minimum first/last segment length of all edges connected to the same group node.
+            </li>
+            <li>
+              <!-- YFI-3379 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed rare error that was caused by an
+              inconsistent group node order that may appear for input graphs containing both
+              swimlanes and groups.
+            </li>
+            <li>
+              <!-- YFI-3336 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that prevented that fixed
+              any side port constraints were considered for edges between a group and a node within
+              this group.
+            </li>
+            <li>
+              <!-- YFI-3329 -->
+              <code>Polyline.EdgeRouter</code>: Fixed rare error that may appear during rerouting of
+              edges (see <code>Rerouting</code>) if the input graph contains overlapping nodes.
+            </li>
+            <li>
+              <!-- YFI-3341 -->
+              <code>Polyline.EdgeRouter</code>: Fixed possible error that may appear if there are
+              grouped edges consisting of both fixed and non-fixed edges (see
+              <code>EdgeRouter.SphereOfAction</code>).
+            </li>
+            <li>
+              <!-- YFI-3243 -->
+              <code>Polyline.EdgeRouter</code>: Fixed an error that caused violations of the minimum
+              first or last segment length for target grouped edges. This only happened when these
+              distances were defined in the default <code>EdgeLayoutDescriptor</code> instead of a
+              <code>DataProvider</code> with individual descriptors.
+            </li>
+            <li>
+              <!-- YFI-1650 -->
+              <code>Polyline.EdgeRouter</code>: Fixed side handling of external strong ports.
+            </li>
+            <li>
+              <!-- YFI-3279 -->
+              <code>Polyline.EdgeRouter</code>: Fixed rare bug that may cause a stack overflow.
+            </li>
+            <li>
+              <!-- YFI-3393 -->
+              <code>Polyline.EdgeRouter</code>: Fixed bug that may cause that some edges are not
+              considered during rerouting. It only appears if the graph contains grouped edges.
+            </li>
+            <li>
+              <!-- YFI-3293 -->
+              <code>GreedyMISLabeling</code> and <code>SALabeling</code>: Improved placement of edge
+              labels with preferred placement at source or target.
+            </li>
+            <li>
+              <!-- YFI-3394 -->
+              <code>GreedyMISLabeling</code> and <code>SALabeling</code>: Fixed bug that may cause
+              that the postprocessing step (see option
+              <code>AbstractLabelingAlgorithm.ApplyPostprocessing</code>) ignores some node labels
+              with model <code>FreeNodeLabelModel</code>.
+            </li>
+            <li>
+              <!-- YFI-3353 -->
+              <code>ParallelEdgeLayouter</code>: Fixed possible error that may appear if the
+              parallel edge is almost horizontal or vertical.
+            </li>
+            <li>
+              <!-- YFI-3280 -->
+              <code>ChannelEdgeRouter</code>: Fixed an error that may cause segments with infinite
+              coordinates for edges incident to group nodes if the path finder strategy is set to
+              <code>ChannelEdgeRouter.OrthogonalShortestPathPathFinder</code>.
+            </li>
+            <li>
+              <!-- YFI-3282 -->
+              <code>MultiPageLayouter</code>: Fixed possible error that may appear if an internal
+              layouter queries a DataProvider for an inserted dummy node.
+            </li>
+            <li>
+              <!-- YFI-3386 -->
+              <code>DirectedOrthogonalLayouter</code>: Fixed problem that may cause non-directed
+              routes for directed edges if option
+              <code>DirectedOrthogonalLayouter.alignDegreeOneNodes</code> is enabled.
+            </li>
+            <li>
+              <!-- YFI-3172 -->
+              <code>SimplexNodePlacer</code>: Fixed an error that disabled label compaction feature.
+            </li>
+            <li>
+              <!-- YFI-3124 -->
+              <code>BalloonLayouter</code>: Fixed an error that caused
+              <code>BalloonLayouter.CHILD_ORDERING_POLICY_SYMMETRIC</code>
+              not to work as desired.
+            </li>
+            <li>
+              <!-- YFI-3142 -->
+              <code>AssistantPlacer</code>: Fixed placement of assistant nodes. When all children of
+              a node are assistants, they are all placed left/right.
+            </li>
+            <li>
+              <!-- YFI-1181 -->
+              <code>TreeLayouter</code>: Fixed a stack overflow error that could occur for trees
+              with high depth.
+            </li>
+            <li>
+              <!-- YFI-3065 -->
+              <code>GenericTreeLayouter</code>: Fixed root alignments to only take the child node
+              bounds into account without considering edge segments in the subtree.
+            </li>
+            <li>
+              <!-- YFI-3156 -->
+              <code>DelegatingNodePlacer</code>: Constants
+              <code>DelegatingNodePlacer.VERTICAL</code> and
+              <code>DelegatingNodePlacer.HORIZONTAL</code> along with methods
+              <code>DelegatingNodePlacer.Orientation</code>
+              are deprecated since they had no effect.
+            </li>
+            <li>
+              <!-- YFI-3127 -->
+              <code>Trees</code>: fixed method <code>CenterRoot</code> that didn't always return the
+              correct center node of a tree.
+            </li>
+            <li>
+              <!-- YFI-3167 -->
+              <code>OrganicLayouter</code>: Fixed an error that caused tree-beautifier feature (see
+              <code>OrganicLayouter.ActivateTreeBeautifier</code>) to have no effect if activated
+              when the graph is actually flat (i.e., there is no group node that contains child
+              nodes) but data providers for groups (see <code>GroupingKeys</code>) are registered
+              with the graph.
+            </li>
+            <li>
+              <!-- YFI-3064 -->
+              <code>CircularLayouter</code>: Fixed an error that may cause node overlaps.
+            </li>
+            <li>
+              <!-- YFI-3173 -->
+              <code>SplitEdgeLayoutStage</code>: Fixed an error that caused the user's selection for
+              edges that have to be split to be ignored. Also, Fixed an error that caused an error
+              because of nodes with zero width/height.
+            </li>
+            <li>
+              <!-- YFI-3070 -->
+              <code>ShortestPaths</code>: Fixed error that occurred when applying the Dijkstra or
+              Bellman-Ford algorithm to an empty graph.
+            </li>
+          </ul>
+
+          <h3>Incompatible Changes</h3>
+
+          <ul>
+            <li>
+              <!-- YWPF-2174 -->
+              Paste Command: the selection is now updated before the method
+              <code>GraphClipboard.paste</code> exits.
+            </li>
+          </ul>
+
+          <h3>Documentation Viewer Improvements</h3>
+
+          <ul>
+            <li>
+              <!-- JSD-88 -->
+              Fixed the display of text-only "see also" references.
+            </li>
+            <li>
+              <!-- JSD-129 -->
+              Removed the filter text field of the api tree component, because it could easily be
+              mistaken as the main search box, but the search box provides a much better search
+              experience.
+            </li>
+            <li>
+              <!-- JSD-138 -->
+              When following a link to a type member, the target tab sometimes didn't scroll to the
+              documentation of that member.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_3">yFiles for HTML 1.3.0.3 - Changes Since 1.3.0.2</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <h3>Bugfixes and Demo Improvements</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3357 -->
+              Fixed cleanup of template style bindings, preventing memory leaks caused by
+              accumulating bindings.
+            </li>
+            <li>
+              <!-- YJS-3486 -->
+              Added an activatable workaround (<code>yfiles.workaroundEDGE2057021</code>) for the
+              <code>StringTemplateNodeStyle</code>. It converts attribute names consisting of only
+              upper case characters to lower case attribute names. This refers to Microsoft Edge's
+              <a href="https://connect.microsoft.com/IE/Feedback/Details/2057021" target="_blank"
+                >DOMParser issue</a
+              >.
+            </li>
+            <li>
+              <!-- YJS-3540 -->
+              Added an activatable workaround (<code>yfiles.workaroundCR570845</code>) for a
+              <a href="https://code.google.com/p/chromium/issues/detail?id=570845"
+                >Chrome problem</a
+              >
+              that can prevent queued display updates from being executed during touch/mouse
+              gestures. The <code>yfiles.workaroundCR570845</code> property can be set to a delay in
+              milliseconds that should be tolerated before running the queued functions using
+              <code>window.requestAnimationFrame()</code>. The default value of
+              <code>yfiles.workaroundCR570845</code> is <code>-1</code>, which disables the
+              workaround. The workaround is automatically enabled in yFiles demo applications that
+              use the demo framework for Chrome versions later than 46.
+            </li>
+            <li>
+              <!-- YJS-3510 -->
+              Fixed a dragging bug on IE9 where the node dragging stops if the item is dragged out
+              of the <code>GraphControl</code>
+              and back in.
+            </li>
+            <li>
+              <!-- YJS-3534 -->
+              Added <code>charCode</code> property to <code>yfiles.input.KeyEventArgs</code>, which
+              gets the charCode of the original event. Also fixed <code>keyValue</code> property in
+              <code>yfiles.input.CompoundKeyEventArgs</code>, which previously returned an empty
+              string.
+            </li>
+            <li>
+              <!-- YJS-3534 -->
+              Fixed <code>Control.onKeyPress</code>, that almost never was called. This also had the
+              effect that the <code>CanvasControl.CompoundKeyTyped</code> event was not fired.
+            </li>
+            <li>
+              <!-- YJS-3523 -->
+              Fixed a bug in IE11 on Windows 7 where mouse events were fired during dragging
+              although the mouse has not been moved.
+            </li>
+            <li>
+              <!-- YJS-3524 -->
+              Prevent IE from entering an event loop multiple times on the same coordinate when
+              using touch input in <code>DragDrop</code>. Thus touch input behaves the same as mouse
+              input, where this was already in place.
+            </li>
+            <li>
+              <!-- YJS-3515 -->
+              Fixed inconsistent input mode states when dragging the mouse out of an iframe
+              containing the graph control and releasing the mouse button outside the iframe.
+            </li>
+            <li>
+              <!-- YJS-3532 -->
+              Fixed a bug in browsers without deep <code>document.importNode</code> support (e.g.
+              IE9) where attributes of inlined images were wrong after exporting the graph with
+              <code>SvgExport</code>
+            </li>
+          </ul>
+
+          <h4>Demos</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3475 -->
+              Improved custom node and edge style color choices for the custom style tutorial.
+            </li>
+            <li>
+              <!-- YJS-3537 -->
+              Orgchart-Demo: Fixed exception in IE9.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_2">yFiles for HTML 1.3.0.2 - Changes Since 1.3.0.1</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <h3>Bugfixes and Demo Improvements</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3461 -->
+              Fixed null exceptions after <code>GraphControl.CleanUp</code>.
+            </li>
+            <li>
+              <!-- YJS-3456 -->
+              Fixed a bug in <code>TreeSource</code> and <code>AdjacentNodesGraphSource</code> where
+              nodes could get removed during <code>updateGraph</code>.
+            </li>
+            <li>
+              <!-- YJS-3462 -->
+              Fixed a bug where double clicks weren't delivered correctly when mouse move events
+              were fired between mouse down and release.
+            </li>
+            <li>
+              <!-- YJS-3467 -->
+              <code>CanvasControl.Mouse2DDragged</code> events are not delivered anymore if the
+              event coordinates are equal to the last mouse event.
+            </li>
+            <li>
+              <!-- YJS-3460 -->
+              Implemented non-functioning class <code>yfiles.drawing.PointSelectionInstaller</code>,
+              which adds a default port selection visualization.
+            </li>
+            <li>
+              <!-- YJS-3353 -->
+              Improved Scrollbar behavior when <code>ScrollBar.value</code> is changed from the
+              outside while dragging the slider, e.g. when changing the GraphControl's
+              <code>contentRect</code>. Previously, the scrollbar slider jumped to the new mouse
+              location, resulting in discontinuous scrolling. The new code keeps the difference
+              between the slider and the mouse location, that was caused by the external value
+              change.
+            </li>
+          </ul>
+
+          <h4>Demos</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-2797 -->
+              <code>Demo.yfiles.graph.mindmap</code>: Fixed various issues like re-ordering edges at
+              the root node, root node icon and expanding the root node on touch devices.
+            </li>
+            <li>
+              <!-- YJS-3085 -->
+              Fixed an issue in <code>demo.yfiles.layout.interactiveorganic</code> where the graph
+              suddenly froze when dragging a node shortly after application start.
+            </li>
+            <li>
+              <!-- YJS-3457 -->
+              New nodes in <code>demo.yfiles.binding.interactivegraphsource</code> et al. are not
+              placed into the top layer anymore, but are fitted nicely in the existing layout during
+              update.
+            </li>
+            <li>
+              <!-- YJS-3466 -->
+              Fixed an issue in <code>demo.yfiles.graph.orgchart</code> where an exception occurred
+              when changing node selection while no node was currently visible.
+            </li>
+            <li>
+              <!-- YJS-3401 -->
+              New design for social-network graph in <code>demo.yfiles.graph.viewer</code>.
+            </li>
+          </ul>
+
+          <h4>Class Framework</h4>
+          <ul>
+            <li>
+              <!-- YJS-3449 -->
+              <code>fixMethods</code> is now available in both namespaces,
+              <code>yfiles.util</code> and <code>yfiles.lang.util</code>.
+            </li>
+          </ul>
+
+          <h4>Demo Framework</h4>
+          <ul>
+            <li>
+              <!-- YJS-3450, YJS-3323 -->
+              Fixed possible overlapping and unintentional resize of the side panels.
+            </li>
+          </ul>
+
+          <h3>New Demos</h3>
+
+          <ul>
+            <li>
+              New <code>demo.yfiles.graph.networkmonitoring</code> shows a monitoring tool for a
+              network with simulated traffic and random failures.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3_0_1">yFiles for HTML 1.3.0.1 - Changes Since 1.3</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <h3>Bugfixes and Demo Improvements</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3428 -->
+              GraphML: Primitive data types such as <code>string</code> or <code>number</code> were
+              written to the wrong XAML namespace, thus breaking interoperability with other yFiles
+              platforms.
+            </li>
+            <li>
+              <!-- YJS-3382 -->
+              CSS classes set on the div element before calling <code>CanvasControl.ForDiv</code> or
+              <code>CanvasControl.ForId</code> are not overwritten anymore. Instead the class
+              <code>yfiles-canvascontrol</code>
+              is appended to the existing classes.
+            </li>
+            <li>
+              <!-- YJS-3406 -->
+              Added a dedicated class for the main <code>CanvasControl</code> SVG to prevent
+              implicit CSS styling of all SVGs inside the canvas (e.g. in graph item styles).
+            </li>
+            <li>
+              <!-- YJS-3407 -->
+              <code>OverviewInputMode</code> now uses the value 0.00000001 as minimum zoom, instead
+              of <code>Number.MIN_VALUE</code>, which is zero in Chrome on iOS.
+            </li>
+            <li>
+              <!-- YJS-3335 -->
+              Fixed a visual glitch where devices with touch input using the WebKit Javascript
+              engine (e.g. Android tablets, MacBook with TouchPad, Mac with MagicMouse etc.)
+              displayed scrollbars in the graph control that should not be visible.
+            </li>
+            <li>
+              <!-- YJS-3436 -->
+              Improved performance of <code>SimpleLabelStyleRenderer</code>. The label's text size
+              was calculated even if it was not needed subsequently.
+            </li>
+            <li>
+              <!-- YJS-3239 -->
+              Fixed a bug in <code>TextRenderSupport</code> where
+              <code>TextMeasureMode.SVG</code> was used instead of
+              <code>TextMeasureMode.CANVAS</code>.
+            </li>
+            <li>
+              <!-- YJS-3239 -->
+              Text height measurement with <code>TextMeasureMode.SVG</code> returned the wrong
+              height on single line string if the string only contained characters lower than full
+              line height, e.g. lower case characters, spaces etc.
+            </li>
+          </ul>
+
+          <h4>Demos</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3386, YJS-3322 -->
+              InteractiveOrganic Demo: Fixed a performance issue caused by newly created unconnected
+              nodes where the graph stuttered while moving the connected components. Also disallowed
+              label adding.
+            </li>
+            <li>
+              <!-- YJS-3410 -->
+              BPMN Editor Demo: The nodes with blue border are not treated as group nodes anymore.
+            </li>
+            <li>
+              <!-- YJS-3435 -->
+              Table Editor Demo: A flag prevents re-entrant layout execution.
+            </li>
+            <li>
+              <!-- YJS-3434 -->
+              Fixed an invalid line of code in the source code comments of step 24 of the Custom
+              Styles Tutorial.
+            </li>
+            <li>
+              <!-- YJS-3400, YJS-3387 -->
+              OrgChart Demo: Updated design and improved the viewport limiter settings.
+            </li>
+            <li>
+              <!-- YJS-3387 -->
+              MindMap Demo: Improved the viewport limiter settings.
+            </li>
+            <li>
+              <!-- YJS-3421 -->
+              Interactive data binding demos: Catch and display errors thrown by faulty binding
+              functions.
+            </li>
+            <li>
+              <!-- YJS-3420 -->
+              LayoutStyles Demo: Replaced <code>OrthogonalEdgeRouter</code> with the newer
+              <code>EdgeRouter</code> as router for non-tree edges for the
+              <code>BalloonLayouter</code>.
+            </li>
+            <li>
+              <!-- YJS-3427 -->
+              Tutorial 01, Step 16 (Grid Snapping): 'Show Grid' button now only toggles grid
+              visualization.
+            </li>
+            <li>
+              <!-- YJS-3388 -->
+              SimpleCustomStyle Demo and Tutorial 02, Step 19 (Animated Edge Selection): Minor
+              bugfix in the animated edge style where the time delta result was wrong for the first
+              frame request.
+            </li>
+          </ul>
+
+          <h4>Demo Framework</h4>
+          <ul>
+            <li>
+              <!-- YJS-3413 -->
+              The style panel, which is used in demos where nodes can be dragged into the graph
+              control, now displays nodes with large labels correctly.
+            </li>
+            <li>
+              <!-- YJS-3418 -->
+              Fixed touch input gestures on on Microsoft Surface devices.
+            </li>
+            <li>
+              <!-- YJS-3418 -->
+              Implemented auto-adjust of <code>GraphControl.dragSize</code> and
+              <code>GraphControl.hitTestRadius</code>
+              to improve user experience on different input devices (touch, pen and mouse).
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2 id="v1_3">yFiles for HTML 1.3 - Changes Since 1.2.1.4</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <h3>Major Features Added</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3182, YJS-3185 -->
+              <p>
+                <code>GraphControl</code> integrates itself much better into web pages since it no
+                longer stops the propagation of any keyboard, mouse, touch and pointer events that
+                passes through it. In addition, <code>preventDefault()</code> is now only called on
+                mouse events, touch events, pointer events, and on keyboard events that actually
+                trigger an interaction. Especially, it leaves all other keyboard events untouched.
+              </p>
+              <p>
+                If the default behavior doesn't fit your requirements, whether or not to call
+                <code>preventDefault()</code>
+                on events that pass the GraphControl can be separately specified for the three types
+                of events (keyboard, pointer, and context menu).
+              </p>
+              <p>
+                This makes it possible for example to call a default browser action even if the
+                GraphControl has the focus and to change the focus to and from a GraphControl with
+                the Tab key.
+              </p>
+            </li>
+            <li>
+              <!-- YJS-3011 -->
+              <p>
+                With the new property <code>GraphControl.mouseWheelBehavior</code>, customers can
+                specify when a <code>wheel</code>/<code>mousewheel</code> event should be handled:
+                never, always, or only when focused. In addition, it is now easily possible to
+                specify whether the mouse wheel scrolls or zooms the GraphControl.
+              </p>
+              <p>
+                Together with the less restrictive event prevention, this makes it possible to
+                scroll the whole web page even if the cursor is over a GraphControl.
+              </p>
+            </li>
+            <li>
+              <!-- YJS-3222 -->
+              Graphs can now be saved as file download in several recent browsers, namely Chrome
+              38+, Firefox 28+, IE 10+, Opera 25+, and recent versions of the related mobile
+              browsers. Saving can be done either with the method
+              <code>GraphControl.saveFile</code> or with custom code. The latter is shown in detail
+              in the File Operations demo and allows further customizations, for example adding
+              support for more browsers.
+            </li>
+            <li>
+              <!-- YJS-2748 -->
+              Improved the module file format. The yFiles modules now follow the
+              <a href="https://github.com/umdjs/umd" target="_blank"
+                >Universal Module Definition (UMD)</a
+              >
+              pattern, offering compatibility with the most popular script loaders and JavaScript
+              environments.
+              <p>
+                Using UMD, the yFiles modules easily support a variety of different loading schemes:
+                lazily using an AMD loader like
+                <a href="https://requirejs.org/" target="_blank">RequireJS</a>, with
+                <a href="http://wiki.commonjs.org/wiki/CommonJS" target="_blank">CommonJS</a> in
+                <a href="https://nodejs.org/" target="_blank">Node.js</a> applications or
+                <a href="http://browserify.org/" target="_blank">Browserify</a> web projects, or
+                simply via an object in the browser's global scope. Several new demos show examples
+                of how to use the different loading schemes.
+              </p>
+            </li>
+            <li>
+              <!-- YWPF-1186, YWPF-1187 -->
+              <code>GraphClipboard</code> now supports copying independent items. This allows the
+              user to copy labels, ports, bends, or edges to other elements without having to copy
+              their owners. Also this technique allows for copying an item (for example a label) to
+              multiple target elements at once.
+              <p>
+                In addition, the <code>GraphClipboard</code> now supports an optional target
+                location for pasting and the new method
+                <code>GraphEditorInputMode.pasteAtLocation</code> can be used to this end, too. In
+                addition, <code>ApplicationCommands.PASTE</code> now supports an optional parameter
+                of type <code>IPoint</code> to provide a target location.
+              </p>
+            </li>
+            <li>
+              <!-- YWPF-1279 -->
+              <p>
+                Node and edge labels can now snap to particular locations while moving them
+                interactively. Both types of labels can be aligned horizontally or vertically to
+                their original location. In addition, a node label can be aligned with the borders
+                or the center of its owner, and during resizing of that owner, smartly keeps its
+                relative location to the snapped position. An edge label can be snapped on the path
+                of its owner, or at particular distances of it.
+              </p>
+
+              <p>
+                This feature can be enabled and configured with a <code>LabelSnapContext</code> and
+                is available for labels with one of these label models:
+                <code>SmartEdgeLabelModel</code>, <code>FreeEdgeLabelModel</code>,
+                <code>FreeNodeLabelModel</code>, and <code>FreeLabelModel</code>.
+              </p>
+            </li>
+            <li>
+              <!-- YWPF-1310 -->
+              <p>Interactive label editing and creation has the following new features:</p>
+              <ul>
+                <li>
+                  The current label visual can be hidden while the text editor is shown to reduce
+                  visual clutter. This feature is enabled by default and can be controlled through
+                  the property <code>GraphEditorInputMode.hideLabelDuringEditing</code>.
+                </li>
+                <li>
+                  <code>GraphEditorInputMode</code> and <code>TableEditorInputMode</code> provide
+                  new events <code>LabelTextEditingStarted</code> and
+                  <code>LabelTextEditingCanceled</code> that are raised directly before the label
+                  text editor is shown and after the label editing has been canceled, respectively.
+                </li>
+                <li>
+                  <!-- YWPF-1372 -->
+                  Double clicking nodes and edges now opens the label editor. An existing label can
+                  be double clicked to edit the label text. This feature can be disabled with the
+                  property <code>GraphEditorInputMode.doubleClickLabelEditingAllowed</code>.
+                </li>
+                <li>
+                  <code>IEditLabelHelper</code> implementations provided by the
+                  <code>ILabel</code>'s lookup can now be used to forbid or customize the editing of
+                  individual labels. Class <code>LabelDecorator</code> provides a new property
+                  <code>editLabelHelperDecorator</code> to customize this feature.
+                </li>
+
+                <li>
+                  <!-- YWPF-1166 -->
+                  <code>GraphEditorInputMode.editLabel</code> and
+                  <code>TableEditorInputMode.editLabel</code> can now be used with
+                  <code>SimpleLabel</code> instances. This provides editing capabilities for dummy
+                  elements such as legends, page headers or other textual elements.
+                </li>
+              </ul>
+              In addition, label editing has been reworked for a more consistent user experience.
+              Especially, label editing now:
+              <ul>
+                <li>
+                  Uses the various callback methods on <code>GraphEditorInputMode</code>,
+                  <code>TableEditorInputMode</code> and
+                  <code>IEditLabelHelper</code> implementations in a consistent way, regardless of
+                  how many labels or labeled items are edited or added, and independent from how the
+                  editing/label creation process has been started (e.g. through a command or
+                  programmatically through the input mode convenience methods).
+                </li>
+                <li>
+                  Determines the actual labeled item that is modified when multiple elements are
+                  selected in a consistent way.
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <h4>Development Support</h4>
+
+          <p>
+            The documentation viewer got many improvements and corrections that make browsing the
+            API and the Developer's Guide much more convenient. The most notable additions are
+          </p>
+          <ul>
+            <li>
+              The new code generator provides a GUI for creating an implementation of any class and
+              interface and optionally adds stubs for methods, properties and events you want to
+              override
+            </li>
+            <li>Improved experience on small screens and touch devices</li>
+            <li>Added a selection of UI themes</li>
+            <li>Customizable keyboard shortcuts</li>
+            <li>Support for favorites</li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-2803 -->
+              Added new layout algorithm <code>SeriesParallelLayouter</code> for series-parallel
+              graphs. Such graphs are directed graphs with a single source (a node without incoming
+              edges) and a single sink (a node without outgoing edges) that are build using only the
+              following two rules:
+              <ul>
+                <li>
+                  Series composition: The source of a subgraph is merged with the sink of another
+                  subgraph.
+                </li>
+                <li>Parallel composition: The sources and sinks of two subgraphs are merged.</li>
+              </ul>
+            </li>
+            <li>
+              <!-- YFI-2772 -->
+              Added multi-parent support to <code>GenericTreeLayouter</code>. A tree node can have
+              multiple parents that are connected to all of its siblings and share the same parents.
+              This might come to use in organizational charts where a team answers to multiple
+              superiors.
+            </li>
+            <li>
+              <!-- YFI-559 -->
+              Added grid placement support for nodes and edges to
+              <code>IncrementalHierarchicLayouter</code>.
+            </li>
+          </ul>
+
+          <h3>Minor Features Added</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YWPF-1474 -->
+              <code>GraphEditorInputMode</code> got support for cyclic click selection. This helps
+              in conveniently selecting items that are hidden behind other items. By default, this
+              features is bound to the Alt key being pressed. It can be disabled by setting the
+              <code>cyclicSelectionRecognizer</code> property to
+              <code>EventRecognizers.NEVER</code>.
+            </li>
+            <li>
+              <!-- YWPF-1341 -->
+              <p>
+                <code>GraphEditorInputMode</code> now provides default action for duplicating single
+                graph items or whole subgraphs. This also works with incomplete subgraphs, for
+                example in a tree, it is possible to duplicate a subtree and the tree will never be
+                disconnected.
+              </p>
+
+              <p>
+                In addition, the new command <code>GraphCommands.DUPLICATE_COMMAND</code> (shortcut:
+                Ctrl-D) and the new method <code>GraphClipboard.duplicate</code> can be used to
+                duplicate selected items without altering the clipboard contents.
+              </p>
+            </li>
+            <li>
+              <!-- YWPF-1294 -->
+              <code>GraphEditorInputMode</code> now provides a default action for reversing edges.
+              To this end, the methods <code>reverseEdge</code> and <code>reverseEdges</code> have
+              been added to <code>GraphEditorInputMode</code>. Also, the new command
+              <code>GraphCommands.REVERSE_EDGES_COMMAND</code> (shortcut: Ctrl-R) has been added.
+            </li>
+            <li>Node ports can now be moved by dragging their <code>IHandle</code>.</li>
+            <li>
+              <code>GraphClipboard</code> has new properties <code>copyItems</code>,
+              <code>independentItems</code>, and <code>dependentItems</code>
+              that allow for restricting the types of items that can be copied at all, independently
+              from their owners, or implicitly through their owners, respectively.
+            </li>
+            <li>
+              <!-- YWPF-1181 -->
+              <code>GraphViewerInputMode</code>: The click hit test order can now be configured by
+              property <code>clickHitTestOrder</code>.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code> and <code>GraphViewerInputMode</code> provide an
+              explicit hit test order for double clicks that can be changed through the
+              <code>doubleClickHitTestOrder</code> property. By default, this hit test order prefers
+              labels over other graph elements.
+            </li>
+            <li>
+              Added new methods <code>ClickInputMode.preventNextDoubleClick</code> and
+              <code>TapInputMode.preventNextDoubleTap</code> that can be used in event handlers for
+              single clicks/taps to prevent that this click can become part of a double click event.
+            </li>
+            <li>
+              <code>NodeDropInputMode</code> can now optionally drop nodes onto leaf nodes and thus
+              convert the leaves into group nodes. Also it is possible to drop nodes into collapsed
+              folder nodes. For both use-cases, an opt-in property has been added and a predicate
+              property allows for fine-grained control over this feature.
+            </li>
+            <li>
+              <!-- YWPF-1172 -->
+              Similarly, leaf nodes can now be the target of a reparenting gesture if the property
+              <code>GraphEditorInputMode.reparentToLeavesAllowed</code> is enabled. In this case,
+              leaves are converted into group nodes.
+            </li>
+            <li>
+              <!-- YJS-3077 -->
+              <code>ItemDropInputMode</code> does now support touch gestures to Drag'n'Drop graph
+              items into a graph.
+            </li>
+            <li>
+              <!-- YWPF-1295, YWPF-302 -->
+              Added support for deleting bends in a way that an orthogonal edge remains orthogonal
+              after removing the bends. The new property
+              <code>GraphEditorInputMode.orthogonalBendRemoval</code> enables/disables this feature.
+            </li>
+            <li>
+              <!-- YWPF-1182, YWPF-1493, YWPF-1256, YWPF-1257 -->
+              <code>GraphViewerInputMode</code> now supports multi-selection with Ctrl+Click and
+              marquee selection. The latter is disabled by default.
+            </li>
+            <li>
+              <code>OverviewInputMode</code> and the <code>GraphOverviewControl</code> have been
+              optimized to improve the user experience when used on touch devices.
+            </li>
+            <li>
+              <p>
+                <!-- YJS-2692 -->
+                <code>SvgExport</code> can now correctly handle styles with external image
+                references. This requires an asynchronous approach and therefore, the API of this
+                class has been changed accordingly. The new API is shown in the Image Export demo.
+                The <a href="../../compatibility/README.html">compatibility layer</a> describes how
+                to map the previous API to the new one.
+              </p>
+              <p>
+                <!-- YJS-2518 -->
+                In addition, characters that are not part of the Unicode Basic Multilingual Plane
+                are now exported correctly.
+              </p>
+            </li>
+            <li>
+              <!-- YWPF-1208, YWPF-1283 -->
+              Improved <code>GraphModelManager</code> to allow for easier customizations. Property
+              <code>useHierarchicNesting</code> was added to allow for adding custom logic that uses
+              a different approach to hierarchic nesting. In addition, the return types of some of
+              the factory methods where made less restrictive to allow for further modifications.
+            </li>
+            <li>
+              <!-- YWPF-1497 -->
+              <code>FoldingManager</code> now offers two convenience methods,
+              <code>updateViewStatesForNode</code> and <code>updateViewStatesForEdge</code>, that
+              will trigger update calls on <code>IDummyNodeConverter</code> and
+              <code>IDummyEdgeConverter</code> for elements that are currently being displayed in a
+              view. This makes it easier to synchronize state between the master graph and the
+              folded graph views in case this is not automatically performed by the default
+              implementation.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-2900 -->
+              <code>AbortHandler</code>: Added the method <code>hasCheckFailed</code> that allows to
+              query whether a check method was called after a stop or cancel event.
+            </li>
+            <li>
+              <!-- YFI-2036 -->
+              Added the interface <code>ILabelLayoutFactory</code> that provides methods for
+              creating, adding and removing node/edge labels to a <code>LayoutGraph</code>.
+            </li>
+            <li>
+              <!-- YFI-2853 -->
+              <code>IncrementalHierarchicLayouter</code>: Added support for incremental group nodes
+              (see <code>IIncrementalHintsFactory.createIncrementalGroupHint</code>). Incremental
+              groups will be placed on a suitable position. The hints of their descendants are
+              interpreted relative to the group node.
+            </li>
+            <li>
+              <!-- YFI-2614 -->
+              <code>SimplexNodePlacer</code>: Added the property <code>nodeCompaction</code> that
+              allows to place adjacent nodes of a layer in a more compact, stacked style.
+            </li>
+            <li>
+              <!-- YFI-2785 -->
+              Added vertical alignment option for <code>DefaultNodePlacer</code> and
+              <code>SimpleNodePlacer</code>. In addition to the previous compact child placement,
+              siblings can now be aligned at top, center or bottom for example.
+            </li>
+            <li>
+              <!-- YFI-2521 -->
+              <code>GenericTreeLayouter</code>: Added support for critical edges in
+              <code>DefaultNodePlacer</code>, <code>DendrogramPlacer</code>,
+              <code>SimpleNodePlacer</code>, <code>LayeredNodePlacer</code> and
+              <code>DoubleLinePlacer</code>. Nodes connected to a critical edge will be center
+              aligned. This highlights the paths along critical edges in the tree.
+            </li>
+            <li>
+              <!-- YFI-2801 -->
+              <code>GenericTreeLayouter</code>: Added support for grouped edges in
+              <code>DefaultPortAssignment</code>. Grouped edges will share the same port location at
+              local root.
+            </li>
+            <li>
+              <!-- YFI-2801 -->
+              Added the class <code>GroupedNodePlacer</code> that allows
+              <code>GenericTreeLayouter</code> to place siblings into different groups.
+            </li>
+            <li>
+              <!-- YFI-2531 -->
+              <code>RecursiveGroupLayouter</code>: Added the property
+              <code>InterEdgeRouter</code> to specify the edge router that layouts the edges that
+              cross group node bounds. Thus, it is not necessary to subclass the layouter to change
+              inter-edge routing anymore.
+            </li>
+            <li>
+              <!-- YFI-2770 -->
+              Added the layout stage <code>KeepStrongPortConstraintsStage</code> which ensures that
+              layout algorithms that cannot handle port constraints keep the ports of edges with
+              strong port constraints.
+            </li>
+            <li>
+              <!-- YFI-2927 -->
+              Added the layout stage <code>PortCandidateAssignmentStage</code> which assigns edges
+              to the ports specified by <code>PortConstraint</code>s or <code>PortCandidate</code>s
+              after calling the core layout.
+            </li>
+          </ul>
+
+          <h3>Improvements</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-2794, YJS-3201 -->
+              Simplified the API related to context menus. Namely, custom context menus need no
+              longer implement the interface <code>yfiles.input.IContextMenu</code>, and thus that
+              interface and its usages in the API have been removed. See the
+              <a href="#yjs-2794-api-changes">API Changes</a> for details.
+              <p>
+                In addition, the context menu implementation of the demo framework was refactored
+                accordingly. It is now a short, standalone class that depicts the integration of a
+                custom context menu much clearer.
+              </p>
+              <p>
+                The new property <code>ContextMenuInputMode.swallowCloseClick</code> specifies
+                whether a mouse click in the canvas while a context menu is open should create a
+                node or just close the menu.
+              </p>
+            </li>
+            <li>
+              <!-- YJS-2881, YJS-3105 -->
+              Modernized the CSS styling of the scrollbars of the <code>GraphControl</code>. The new
+              styling was already part of the demo framework and thus used by various demos but it
+              was not included in the library's CSS file <code>lib/yfiles.css</code>. Since the CSS
+              class names have not been changed, custom styling will not be affected.
+              <p>In addition, the thumbs of the scrollbars now have a reasonable minimum size.</p>
+            </li>
+            <li>
+              <!-- YWPF-1363, YWPF-1395, YWPF-1420 -->
+              Various performance improvements for the rendering and the selection handling. This
+              affects, amongst others,
+              <code>ShapeNodeStyle</code> and styles that use a <code>GeneralPath</code>.
+            </li>
+            <li>
+              <code>GraphEditorInputMode.detailSelectionRecognizer</code> is now also applied for
+              double clicks to determine the clicked item.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code> and <code>GraphViewerInputMode</code> don't select
+              or focus graph items styled with a void style (<code>VoidNodeStyle</code>,
+              <code>VoidEdgeStyle</code>, <code>VoidLabelStyle</code>, and
+              <code>VoidPortStyle</code>). The new property <code>voidStylesIgnored</code> specifies
+              whether this feature is enabled.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code> and <code>GraphViewerInputMode</code>: the new
+              protected method <code>shouldSelect</code>
+              can be overridden to determine whether an item can be selected in general.
+            </li>
+            <li>
+              <!-- YWPF-1132 -->
+              <code>OverviewInputMode</code>: The new property <code>margins</code> specifies
+              margins for the visible area of the bound <code>GraphOverviewControl</code>. The new
+              protected method <code>updateVisibleArea</code> provides further means for customizing
+              the visible area.
+            </li>
+            <li>
+              <code>CompositePositionHandler</code>: Added methods
+              <code>getPositionHandler</code> and <code>getHandle</code> to retrieve an earlier
+              added <code>IPositionHandler</code> or <code>IHandle</code>.
+            </li>
+            <li>
+              <!-- YWPF-1362 -->
+              <code>PortRelocationHandle</code>s now triggers the
+              <code>EdgePortsChanged</code> event of the <code>GraphEditorInputMode</code>.
+            </li>
+            <li><code>TableLayoutConfigurator</code>: Improved support for routing algorithms.</li>
+            <li>
+              <!-- YWPF-705 -->
+              <code>IGraph</code>: The collection models of graph items returned by the properties
+              <code>nodes</code>, <code>edges</code>, etc. now support the methods
+              <code>remove</code> and <code>clear</code> to remove graph items from the graph. Note
+              that calling the method <code>add</code> is still not allowed.
+            </li>
+            <li>
+              <!-- YWPF-1300 -->
+              <code>GraphModelManager</code>: New callback method <code>onGraphChanged</code>.
+            </li>
+            <li>
+              <!-- YWPF-1193 -->
+              <code>LayoutExecutor</code>: The new property <code>considerViewportLimiter</code> can
+              be enabled to let the target viewport after a layout respect the
+              <code>ViewportLimiter</code> of the <code>GraphControl</code>.<br />
+              The <code>ViewportAnimation</code> has a new property
+              <code>considerViewportLimiter</code> for the same purpose.
+            </li>
+            <li>
+              <!-- YWPF-1309 -->
+              <code>LayoutGraphAdapter</code> now adds data providers that map each node, edge and
+              label of a <code>LayoutGraph</code> to their corresponding <code>IModelItem</code> in
+              the original <code>IGraph</code>. Especially, these data providers are available if a
+              layout is run with a <code>LayoutExecutor</code> or the convenience methods
+              <code>LayoutExtensions.morphLayout</code> and
+              <code>LayoutExtensions.applyLayout</code>.
+            </li>
+            <li>
+              <!-- YWPF-1353 -->
+              <code>GeomSupport</code>: The new method <code>createSmoothedPath</code> creates a new
+              path as copy of a given one but with smoothed bends.
+            </li>
+            <li>
+              <!-- YJS-2436 -->
+              <code>SimpleAbstractEdgeStyle</code>: The new method <code>updateArrows</code> can by
+              called from <code>updateVisual</code> to update the arrow visualisation if needed.
+              Previously, the arrows had to be created anew in this case.
+            </li>
+            <li>
+              <!-- YJS-3086 -->
+              A template style now automatically updates a visual it has created if the object in
+              the item's
+              <code>tag</code> is exchanged. Note that this check considers 'reference equality' not
+              'value equality'.
+            </li>
+            <li>
+              <!-- YJS-3280 -->
+              <code>CollapsibleNodeStyleDecoratorRenderer</code>: The method
+              <code>addToggleGroupStateCommand</code> is now public and static to make it easier to
+              use it from custom code. Due to this, its signature was slightly changed.
+            </li>
+            <li>
+              <!-- YWPF-1365 -->
+              <code>IconLabelStyle</code>: The icon is added to the hit test area for mouse clicks
+              and marquee selection. This can be switched off by overriding
+              <code>IconLabelStyleRenderer.shouldHitTestIcon</code>.
+            </li>
+            <li>
+              <!-- YWPF-1162 -->
+              <code>CanvasControl</code>: Method <code>fitContent</code> now respects the
+              <code>ViewportLimiter</code>. This might result in zoom levels greater than
+              <code>1.0</code>.
+            </li>
+            <li>
+              <!-- YJS-2904 -->
+              <code>CanvasControl</code>: The new size change detection technique
+              <code>SizeChangedDetectionMode.SENSOR</code> supersedes the previous timer-based
+              technique as default since it provides instant notification about size changes. The
+              property <code>sizeChangedDetection</code> can be used to specify the desired
+              technique explicitly.
+            </li>
+            <li>
+              <code>DefaultDummyEdgeConverter</code> now synchronizes the <code>tag</code> property
+              of the first label if label synchronization is enabled.
+            </li>
+            <li>
+              <!-- YWPF-1290 -->
+              <code>GraphCopier</code> has been improved to facilitate manipulation of the copied
+              items:
+              <ul>
+                <li>
+                  The new events <code>NodeCopied</code>, <code>EdgeCopied</code>,
+                  <code>LabelCopied</code>, and <code>PortCopied</code>
+                  are dispatched after a model item has been copied.
+                </li>
+                <li>
+                  The method <code>getOrCreateCopy</code> is now public to facilitate copying of,
+                  for example, node tags.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!-- YWPF-947, YWPF-1189 -->
+              <code>GraphClipboard</code>: In hierarchically organized graphs, nodes are now pasted
+              into their previous parent group, the group at their target position, or the root,
+              depending on the new property <code>parentNodeDetection</code>.
+            </li>
+            <li>
+              <!-- YJS-3089 -->
+              All data binding classes like <code>GraphSource</code> and <code>TreeSource</code> got
+              new methods to get the graph item for a business object and vice versa.
+            </li>
+            <li>
+              <!-- YJS-3088 -->
+              <code>GraphSource</code> and <code>AdjacentEdgesGraphSource</code> can now be used
+              with only an <code>edgesSource</code> (in other words, without a
+              <code>nodesSource</code>) if the property <code>lazyNodeDefinition</code> is enabled.
+            </li>
+            <li>
+              <!-- YJS-3138 -->
+              <code>TreeSource</code> got support for group and location bindings, similar to the
+              other data binding classes. Due to this, the signature of its methods
+              <code>createNode</code> and <code>updateNode</code> changed.
+            </li>
+            <li>
+              <!-- YJS-3145 -->
+              The HTML5 <code>WheelEvent</code> is now used as primary API for mouse wheel events.
+              This does not change the behavior and the previous <code>MouseEventWheel</code> and
+              <code>MouseScrollEvent</code> are still supported for older browsers.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-2878 -->
+              <code>IncrementalHierarchicLayouter</code>: The group transposition feature can now
+              also be used in incremental layout mode (see
+              <code>DefaultLayerSequencer.groupTranspositionEnabled</code>).
+            </li>
+            <li>
+              <!-- YFI-2789 -->
+              <code>ConstraintIncrementalLayerer</code>: Improved handling of same layer
+              constraints. In previous versions the layerer sometimes ignored same layer constraints
+              even though there was a valid layering.
+            </li>
+            <li>
+              <!-- YFI-2761, YFI-2754 -->
+              <code>IncrementalHierarchicLayouter</code>: More compact placement of rotated as well
+              as stacked labels.
+            </li>
+            <li>
+              <!-- YFI-2849 -->
+              <code>SmartOrganicLayouter</code>: Now also considers the group node compactness if
+              the property <code>nodeEdgeOverlapAvoided</code> is enabled (see property
+              <code>groupNodeCompactness</code>).
+            </li>
+            <li>
+              <!-- YFI-2851 -->
+              <code>SmartOrganicLayouter</code>: Improved node overlap removal (see property
+              <code>nodeOverlapsAllowed</code>). Now, if the scope is set to
+              <code>SCOPE_SUBSET</code> or <code>SCOPE_MAINLY_SUBSET</code>, the number of node
+              overlaps that cannot be removed is reduced.
+            </li>
+            <li>
+              <!--YFI-3276-->
+              <code>SmartOrganicLayouter</code> now hides temporarily <code>DataProvider</code> keys
+              specified by the user that are related to <code>RecursiveGroupLayouter</code> and
+              <code>LayoutMultiplexer</code> since their presence during the layout process may
+              cause corrupted results.
+            </li>
+            <li>
+              <!-- YFI-2760 -->
+              <code>LayeredNodePlacer</code>: Reduced overlaps between edges and node labels for all
+              routing styles.
+            </li>
+            <li>
+              <!-- YFI-2759 -->
+              <code>GridNodePlacer</code>: Corrected alignment of child nodes and edge routing when
+              there are node labels.
+            </li>
+            <li>
+              <!-- YFI-2473 -->
+              <code>AbstractRotatableNodePlacer.RootAlignment</code>,
+              <code>DefaultNodePlacer</code> and <code>DendrogramPlacer</code>: Instead of aligning
+              bounding boxes including nodes and their labels, nodes are aligned directly with other
+              nodes. Therefore a layout with node labels gets more compact and the alignment is
+              consistent with that of graphs without node labels.
+            </li>
+            <li>
+              <!-- YFI-2765 -->
+              <code>DelegatingNodePlacer</code>: Added support for a child comparator for children
+              of local root nodes.
+            </li>
+            <li>
+              <!-- YFI-2812 -->
+              <code>GenericTreeLayouter</code> now ignores labels with zero width or height in all
+              distance calculations.
+            </li>
+            <li>
+              <!-- YFI-2800 -->
+              <code>GenericTreeLayouter</code>: <code>NodePlacer</code> implementations now also use
+              the specified spacing as minimum distance between different subtrees.
+            </li>
+            <li>
+              <!-- YFI-2889 -->
+              <code>PartialLayouter</code>: Reduced the number of element overlaps if there are
+              partial group nodes.
+            </li>
+            <li>
+              <!-- YFI-2838 -->
+              <code>ParallelEdgeLayouter</code> now always separates parallel edges according to
+              their direction. In other words, edges (v,w) and (w,v) are never placed interleaved.
+            </li>
+            <li>
+              <!-- YFI-2794 -->
+              <code>SALabeling</code> and <code>GreedyMISLabeling</code>: Both algorithms now also
+              consider the node/edge overlap penalty specified by a <code>LabelCandidate</code>.
+            </li>
+            <li>
+              <!-- YFI-3195 -->
+              Improved abort handling for algorithms that use
+              <code>ConstraintIncrementalLayerer</code>, <code>ConstraintLayerer</code> and
+              <code>TopologicalIncrementalLayerer</code>. For large graphs these classes may require
+              a long runtime that cannot be canceled by using an <code>AbortHandler</code>.
+            </li>
+          </ul>
+
+          <h3>New Demos</h3>
+
+          <ul>
+            <li>
+              <!--YJS-3096 -->
+              The new demo <code>demo.yfiles.loading.browserify</code> shows how to use yFiles with
+              <a href="http://browserify.org/">Browserify</a>.
+            </li>
+            <li>
+              <!--YJS-3096 -->
+              The new demos <code>demo.yfiles.loading.amdbundle</code> and
+              <code>demo.yfiles.loading.scriptbundle</code>
+              explain how to create a single-file bundle of a yFiles-powered application.
+            </li>
+            <li>
+              <!--YJS-3184 -->
+              The new demo <code>demo.yfiles.loading.noglobals</code> shows how to use yFiles
+              without creating an object in the global namespace.
+            </li>
+            <li>
+              <!--YJS-3100 -->
+              Two new tutorial steps show the automatic text wrapping and clipping feature of the
+              classes
+              <code>TextRenderSupport</code> and <code>SimpleLabelStyle</code>.
+            </li>
+          </ul>
+
+          <h3>Demo Improvements and Bugfixes</h3>
+
+          <ul>
+            <li>
+              <!--YJS-3165 -->
+              New modern styles for the nodes, edges, groups, and tables in the demos. These new
+              styles show best practices with regards to both the various duties of a custom style
+              in yFiles and good rendering performance, and last but not least they provide a
+              contemporary look for the demos.
+            </li>
+            <li>
+              <!-- YJS-2794 -->
+              The context menu of the demo framework is now a short, standalone class that depicts
+              the main parts of the implementation and integration of a custom context menu much
+              clearer.
+            </li>
+            <li>
+              Improved the compatibility of the demo <code>require.js</code> implementation with the
+              one of <a href="https://requirejs.org/">RequireJS</a> and the AMD specification.
+              <ul>
+                <li>
+                  <!--YJS-3187 -->
+                  Return values are now passed to callbacks, as required by the AMD specification.
+                </li>
+                <li>
+                  <!--YJS-2960 -->
+                  The <code>baseUrl</code> can now be configured with the method
+                  <code>config</code> in the same way as RequireJS.
+                </li>
+                <li>
+                  <!--YJS-2865 -->
+                  Callbacks of the <code>require</code> function are now always executed
+                  asynchronously, like it is done by RequireJS.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!--YJS-3078, -YJS-3080, YJS-2985, YJS-2986 -->
+              The Layout Style demos got support for the new features of the layout part.
+              <ul>
+                <li>
+                  The hierarchic layout style now has settings for (overall) grid placement and
+                  stacked placement of the nodes within a layer.
+                </li>
+                <li>
+                  Added a settings panel and a sample graph for the new series-parallel layout
+                  style.
+                </li>
+                <li>
+                  The tree layout style automatically uses its new multi-parent feature if
+                  appropriate for the current graph.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <!--YJS-3148 -->
+              The File Operations demo now shows in detail how a graph can be saved as file
+              download.
+            </li>
+            <li>
+              <!--YJS-3128 -->
+              Reorganized the Incremental Hierarchic Grouping demo to make the relevant layout
+              configuration more clear. In addition, the demo now uses the
+              <code>FixNodeLayoutStage</code> that is part of the library instead of its custom
+              implementation.
+            </li>
+            <li>
+              <!--YJS-2424, -YJS-3010 -->
+              BPMN Editor demo: The <code>bpmn-layout</code> and <code>bpmn-viewer</code> modules
+              now list all of their dependencies to make AMD loading easier. To reduce startup time,
+              the layout module is now loaded lazily in the demo when the first layout is actually
+              calculated.
+            </li>
+            <li>
+              <!--YJS-3190, YJS-3263 -->
+              WebWorker and Node.js demos: The Graph-To-JSON converter now supports group nodes.
+              Moreover, the content rectangle is updated correctly after a layout calculation and
+              only a single undo step is created for each calculation.
+            </li>
+            <li>
+              <!--YJS-2798 -->
+              Performance improvements for the node styles in the Custom Styles tutorial. When
+              updating, these styles no longer set new <code>transform</code> if nothing actually
+              has changed. Setting a new transform can trigger a complete re-paint even if the
+              values of the transform remain the same.
+            </li>
+            <li>
+              <!--YJS-3189 -->
+              HTML Label Style demo: Corrected the placement of large labels.
+            </li>
+          </ul>
+
+          <h3>Incompatible Changes</h3>
+
+          <h4>Changes in Default Behavior</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3167 -->
+              <code>CanvasControl</code>: The events <code>Mouse2DEntered</code> and
+              <code>Mouse2DExited</code> have been erroneously fired when the mouse moved between
+              inner elements. Now, these events are only fired when the mouse enters or leaves the
+              bounds of the control, which is the intended and documented behavior.
+              <p>
+                In addition, if a mouse button is pressed while leaving the bounds of the control,
+                the
+                <code>Mouse2DExited</code> event is now deferred until the button was released. As a
+                result, this event does not interfere with the typical events of a mouse click and
+                custom click handling code typically needs no special handling for this event. See
+                the notes about
+                <a
+                  href="../api/index.html#/dguide/known_issues-workarounds#_mouse_events_all_browsers"
+                  >known issues with mouse events</a
+                >
+                for other peculiarities.
+              </p>
+
+              <p>
+                Similarly, the methods <code>onMouseEnter</code> and <code>onMouseLeave</code> of
+                <code>Control</code> were erroneously invoked in these cases. This has been
+                corrected, too.
+              </p>
+            </li>
+            <li>
+              <!-- YWPF-1732 -->
+              <code>TextEditorInputMode</code> now ensures that the TextBox is visible in the
+              viewport when starting editing. This behavior can be adjusted by creating a custom
+              subclass and overriding <code>ensureVisible()</code>.
+            </li>
+            <li>
+              <!-- YWPF-1724 -->
+              <code>FoldedGraph.isDummy</code> now throws an
+              <code>ArgumentOutOfRangeException</code> for labels and ports that are not part of
+              this view. Previously, this method returned <code>true</code> for such items. Since
+              this exception is already thrown for nodes, edges, and bends that are not part of this
+              view, the behavior is now the same for all types of graph items.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code> now by default supports the new
+              <code>GraphCommands.DUPLICATE_COMMAND</code> that is bound to keyboard shortcut
+              Ctrl-D. This new behavior can be turned off with the <code>duplicateAllowed</code>
+              property.
+            </li>
+            <li>
+              The clipboard now supports copying and pasting of items independently from their
+              owning elements. For example, single selected labels can be copied to other elements,
+              as well as edges without their source and target nodes. This behavior can be reverted
+              to the old behavior by setting <code>GraphClipboard</code>'s
+              <code>independentCopyItems</code> to <code>GraphItemTypes.NONE</code>.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code> now by default allows for reversing selected edges
+              using the Ctrl-R keyboard shortcut and the new
+              <code>GraphCommands.REVERSE_EDGE_COMMAND</code>. This new behavior can be turned off
+              with the <code>edgeReversalAllowed</code> property.
+            </li>
+            <li>
+              <!-- YWPF-1336 -->
+              <code>ClickInputMode</code>: If <code>activeButtons</code> includes
+              <code>MouseButtons.RIGHT</code>, the original right click event is marked as handled
+              if ClickInputMode's event handlers mark the higher level click event as handled.
+            </li>
+            <li>
+              <!-- YWPF-1343 -->
+              <code>GraphEditorInputMode</code> and <code>GraphViewerInputMode</code>: The default
+              click actions that change the selection and create new nodes are only triggered on
+              left mouse clicks now.
+            </li>
+            <li>
+              Previously, ports at nodes and edges that were copied and pasted to and from the
+              clipboard were all copied, even if there were no edges attached to them after the
+              operation. Now those empty ports are not copied/pasted anymore unless the
+              <code>PortDefaults</code>' <code>autoCleanup</code> property is set to false or they
+              were unoccupied before the operation already. In order to restore the old behavior,
+              where all ports were copied regardless of whether edges were adjacent to them, make
+              sure to include them in the core predicate, since this behavior change just affects
+              ports that had previously not been accepted by the core predicate function.
+            </li>
+            <li>
+              <!-- YWPF-1162 -->
+              <code>CanvasControl</code>: Method <code>fitContent</code> now respects the
+              <code>ViewportLimiter</code>. This might result in zoom levels greater than
+              <code>1.0</code>.
+            </li>
+            <li>
+              <!-- YJS-3185 -->
+              <code>CanvasControl</code>: The constructor sets the attribute
+              <code>tabindex="0"</code> on the HTML element of the control if no such attribute is
+              present. Previously, the value <code>1</code> was set which inadvertently resulted in
+              a high priority for keyboard focus changes. You can set any other priority at any
+              time.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code>'s <code>NodeCreated</code> event may now report
+              nodes that are not part of the graph, when the user has dropped a node via
+              <code>NodeDropInputMode</code> and its new <code>folderNodeParentsAllowed</code>
+              property is enabled. By default this feature is disabled, though.
+            </li>
+            <li>
+              <code>IReparentNodeHandler</code>'s <code>isValidParent</code> method may now also be
+              queried if the new property <code>reparentToLeavesAllowed</code> of
+              <code>GraphEditorInputMode</code> is enabled. By default this property is disabled,
+              though. Note that the method will also be queried if the reparent handler is used
+              outside of the context of <code>GraphEditorInputMode</code>.
+            </li>
+            <li>
+              <!-- YWPF-1212 -->
+              <code>IValueSerializerContext</code>: In GraphML-writing code, the property
+              <code>instance</code> now provides the object that should be converted, not the parent
+              object. If you need to access the actual parent object, you can use the
+              <code>owner</code> property on the
+              <code>GraphMLValueSerializerContext</code> implementation of this interface.
+            </li>
+            <li>
+              <!-- YWPF-1214 -->
+              The event <code>GraphMLIOHandler.QueryReferenceId</code> is no longer fired for
+              <code>MarkupExtensions</code>
+              and other proxy objects for serialization. Now, it is only fired for the original
+              object references.
+            </li>
+            <li>
+              <!-- YWPF-1297 -->
+              <code>GraphEditorInputMode</code> and <code>GraphViewerInputMode</code>: By default,
+              graph items styled with a void style (<code>VoidNodeStyle</code>,
+              <code>VoidEdgeStyle</code>, <code>VoidLabelStyle</code>, <code>VoidPortStyle</code>)
+              won't be selected and won't get the focus.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code>'s <code>clickHitTestOrder</code> property default
+              value has changed. Now it does not contain the redundant
+              <code>GraphItemTypes.ALL</code> as the last element in the array anymore.
+            </li>
+            <li>
+              <!-- YWPF-1373 -->
+              <code>GraphViewerInputMode</code>: By default, clipboard commands are now disabled.
+              This can be controlled with the new property <code>clipboardCommandsEnabled</code>.
+            </li>
+            <li>
+              The default keyboard shortcut for deselecting elements
+              (<code>GraphCommand.DESELECT_ALL_COMMAND</code>) has been changed to
+              <code>Ctrl+Shift+A</code>. <code>Ctrl+D</code> is now the default shortcut for
+              duplicating selected elements (<code>GraphCommand.DUPLICATE_COMMAND</code>). The
+              latter can be disabled via the <code>duplicateAllowed</code> property.
+            </li>
+            <li>
+              <code>GraphEditorInputMode.shouldBeMarqueeSelected</code> is no longer queried by the
+              <code>Paste</code> command to determine the items which should be selected after
+              paste. Instead, the new method
+              <code>GraphEditorInputMode.shouldBeSelectedAfterPaste</code> is queried. Note that
+              <code>GraphEditorInputMode.shouldBeMarqueeSelected</code> still is queried to
+              determine the items which should be selected by marquee selection.
+            </li>
+            <li>
+              Now, all pasted items are selected after a <code>paste</code> (previously: only nodes,
+              edges, and bends). This can be configured via the new
+              <code>pasteSelectableItems</code> property in <code>GraphEditorInputMode</code> and
+              the corresponding <code>shouldBeSelectedAfterPaste</code> method.
+            </li>
+            <li>
+              The hit test order for double clicks in <code>GraphEditorInputMode</code> and
+              <code>GraphViewerInputMode</code> is now controlled through the dedicated
+              <code>doubleClickHitTestOrder</code> property. By default, this hit test order prefers
+              labels over other graph elements.
+            </li>
+            <li>
+              If <code>ClickInputMode</code> is configured to deliver both single and double clicks,
+              double clicks are <b>not</b> reported if the first click has created a new node or if
+              cyclic selection is currently active. The same holds for <code>TapInputMode</code> and
+              single/double taps.
+            </li>
+            <li>
+              <!-- YWPF-1372 -->
+              The visualization of the <code>HandleType.ROTATE</code> is now a single circle, its
+              very thin central point has been removed.
+            </li>
+            <li>
+              <!-- YWPF-1523 -->
+              The segment index for label model parameters of <code>SliderEdgeLabelModel</code> and
+              <code>SideSliderEdgeLabelModel</code> now is related to the visible segments for edges
+              styled with <code>PolylineEdgeStyle</code>.
+            </li>
+            <li>
+              If an <code>IEditLabelHelper</code> implementation is present in an
+              <code>ILabel</code>'s lookup, its <code>editLabel</code>
+              method is now called in addition to an eventual owner's edit helper when the label
+              text is edited. If implementations are present for both the label and the owner,
+              editing is only allowed if both helpers return
+              <code>true</code>. Additionally, the predicate method
+              <code>GraphEditorInputMode.shouldLabelBeEdited</code> always has to return
+              <code>true</code>, whether edit helpers are present or not.
+            </li>
+            <li>
+              The label that is edited is now determined in the following order:
+              <ol>
+                <li>
+                  If a label is explicitly provided as a command parameter or through a convenience
+                  method or is the only selected element, it is edited if the previous condition is
+                  satisfied. No other candidates are tried in that case.
+                </li>
+                <li>
+                  If a label owner is explicitly provided as a command parameter or through a
+                  convenience method, or is the only selected element, the first label that
+                  satisfies the condition above is edited if the previous condition is satisfied. If
+                  no such label exists, a new label is added, provided that the owner allows adding.
+                  In either case, no other candidates are tried.
+                </li>
+                <li>The first selected label for which the previous condition is satisfied.</li>
+                <li>
+                  If multiple label owners are selected, the first owner that has a label for which
+                  the previous condition is satisfied (in which case that label is edited).
+                </li>
+                <li>
+                  If the method <code>IEditLabelHelper.editLabel</code> provides, for either an
+                  editable label or its owner, a different label instance, this instance is edited
+                  instead.
+                </li>
+
+                <li>Otherwise, a label is added if an eligible owner can be found (see below).</li>
+              </ol>
+            </li>
+            <li>
+              If an <code>IEditLabelHelper</code> implementation is present in an
+              <code>ILabeledItem</code>'s lookup, its <code>addLabel</code> method is called to
+              determine whether a label may be added and provide a suitable label instance.
+              Additionally, the predicate method
+              <code>GraphEditorInputMode.shouldLabelBeAdded</code> always has to return
+              <code>true</code>, whether edit helpers are present or not. If the new label should be
+              edited interactively after its creation (the default behavior), it must be editable,
+              too, following the rules above. Therefore an
+              <code>IEditLabelHelper</code> implementation usually should allow editing of label
+              instances that it has created itself in <code>addLabel</code>.
+            </li>
+            <li>
+              The label owner for which a label is added is now determined in the following order:
+              <ol>
+                <li>
+                  If a label owner is explicitly provided as a command parameter or through a
+                  convenience method, or is the only selected element, a label is added if the
+                  previous condition is satisfied. No other candidates are tried in that case.
+                </li>
+                <li>
+                  If multiple label owners are selected, the first one for which the previous
+                  condition is satisfied.
+                </li>
+              </ol>
+            </li>
+            <li>
+              <!-- YFI-2864 -->
+              <code>IncrementalHierarchicLayouter</code>: Creating layer constraints or sequence
+              constraints using a disposed of factory now throws an error (see
+              <code>LayerConstraintFactory</code> and <code>SequenceConstraintFactory</code>).
+            </li>
+            <li>
+              <!-- YFI-2794 -->
+              <code>SALabeling</code> and <code>GreedyMISLabeling</code>: Changed
+              <code>LabelCandidate</code>s default for overlap penalty of nodes and edges from 0 to
+              1. This means label overlaps are now considered more severe.
+            </li>
+          </ul>
+
+          <h4>API Changes</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-2904 -->
+              The event <code>SizeChanged</code> and related methods and properties have been moved
+              from <code>Control</code> to <code>CanvasControl</code>. In addition, some
+              <code>timer</code>-related properties have been replaced by more general variants to
+              account for the new <code>SizeChangedDetectionMode.SENSOR</code> size change detection
+              mode. Likely, customer code is not affected by neither change since the other classes
+              that extend <code>Control</code> did not use the size changed-feature anyways.
+            </li>
+            <li>
+              <!-- YJS-3182 -->
+              <code>Control</code>: Due to the improved event handling policy, the properties
+              <code>preventDefault</code>, <code>preventContextMenuPropagation</code>, and
+              <code>preventEventPropagation</code> are no longer needed and have been removed.
+              Instead, the new properties <code>preventKeyboardDefault</code>,
+              <code>preventPointerDefault</code>, and <code> preventContextMenuDefault</code> can be
+              enabled to prevent the default action of the respective types of events.
+            </li>
+            <li>
+              <p>
+                Changed <code>SnapLine</code> to support non-orthogonal snap lines as well: its
+                properties <code>from</code> and <code>to</code> have been changed from type
+                <code>number</code> to <code>PointD</code>, its property
+                <code>orientation</code> was removed, and its constructors have been changed
+                accordingly.
+              </p>
+              <p>
+                Orthogonal snap lines are now modeled by class <code>OrthogonalSnapLine</code>. It
+                extends <code>SnapLine</code> and provides the property <code>orientation</code>.
+                Existing API uses either <code>SnapLine</code> or <code>OrthogonalSnapLine</code>,
+                depending on whether it works only with orthogonal snap lines or not.
+              </p>
+              <p>
+                As a consequence, in class <code>SnapLineSnapResult</code>, the property
+                <code>snapLine</code> returns a non-orthogonal <code>SnapLine</code> and the
+                property <code>delta</code> returns a <code>PointD</code> instead of a
+                <code>number</code>. API related to <code>GraphSnapContext</code> still works only
+                with orthogonal snap lines and uses <code>OrthogonalSnapLine</code>.
+              </p>
+            </li>
+            <li>
+              The <code>key</code> property on <code>SingleLineSnapLineVisual</code>,
+              <code>FixedDistanceSnapLineVisual</code>, and <code>InBetweenSnapLineVisual</code>,
+              has been made read only.
+            </li>
+            <li>
+              <code>GraphModelManager</code>'s factory methods for creating the installers now have
+              a less restrictive return type. The default implementation still returns the same
+              types as before, though.
+            </li>
+            <li>
+              <code>GraphClipboard</code>'s factory methods for creating the predicates for the
+              various cut and copy operations now require a second argument that is the graph that
+              the predicate is working on. Usages typically use the graph in the graph control where
+              the selection is also being used. If the default graph selection implementation is
+              used. The graph instance can be obtained from its corresponding property.
+            </li>
+            <li>
+              <!-- YWPF-1301 -->
+              <code>GraphModelManager</code>'s installer related properties now use a weaker return
+              type to simplify subclassing with new functionality. The instances used are the same
+              and can be down-casted accordingly to the more specific types as documented.
+            </li>
+            <li><code>IItemFactory</code>: Added method <code>createRedirectedGroupEdge</code>.</li>
+            <li>
+              <code>GraphClipboard</code>'s protected method <code>copyGraphToRoot</code> which was
+              called by <code>cut</code>, <code>copy</code>, and <code>paste</code> to invoke the
+              <code>GraphCopier</code> has been split: <code>copyGraphToRoot</code> now is called
+              only by <code>cut</code> and <code>copy</code>. <code>paste</code> now invokes the new
+              method <code>pasteSubsetWithTargetAndCallback</code>.
+            </li>
+            <li>
+              <!-- YWPF-1191 -->
+              The type of <code>GraphMLAttribute</code>'s <code>serializable</code> property has
+              been changed from <code>boolean</code> to the enum
+              <code>GraphMLSerializationMode</code>.
+            </li>
+            <li>
+              <code>GraphEditorInputMode</code> and <code>TableEditorInputMode</code>: return type
+              of callback methods <code>onAddLabel</code> and <code>onEditLabel</code> has been
+              changed from <code>void</code> to <code>boolean</code>. The return value should
+              specify whether the operation in question was successful.
+            </li>
+            <li id="yjs-2794-api-changes">
+              Context menus need no longer implement any interface, and the interface
+              <code>yfiles.input.IContextMenu</code> was removed. The members using that interface,
+              namely the properties <code>ContextMenuInputMode.menu</code>,
+              <code>ContextMenuInputMode.clearMenu</code> and
+              <code>PopulateContextMenuEventArgs.contextMenu</code>, and the method
+              <code>ContextMenuInputMode.createMenu</code> were removed as well. Since users create
+              the context menu by themselves, there was no real need for these API members.
+              <p>
+                Note that you'll now have to explicitly set the property
+                <code>PopulateItemContextMenuEventArgs.showMenu</code> to <code>true</code> in your
+                listener for the event <code>PopulateItemContextMenu</code> to show your menu. This
+                was previously done automatically by the input mode if the property
+                <code>IContextMenu.isEmpty</code> returned <code>false</code>.
+              </p>
+            </li>
+            <li>
+              <!-- YJS-3280 -->
+              <code>CollapsibleNodeStyleDecoratorRenderer</code>: The method
+              <code>addToggleGroupStateCommand</code> is now public and static, and its signature
+              was slightly changed.
+            </li>
+            <li>
+              <!-- YJS-3138 -->
+              <code>TreeSource</code>: Due to the new support for group and location bindings, the
+              signature of its methods <code>createNode</code> and <code>updateNode</code> changed.
+            </li>
+            <li>
+              <!-- YJS-2389 -->
+              <code>ToolTip</code> does no longer extend the class <code>Control</code>. This has no
+              effect on its behavior.
+            </li>
+          </ul>
+
+          <h3>Bugfixes</h3>
+
+          <h4>Viewer</h4>
+
+          <ul>
+            <li>
+              <!-- YJS-3167 -->
+              <code>CanvasControl</code>: The events <code>Mouse2DEntered</code> and
+              <code>Mouse2DExited</code> have been erroneously fired when the mouse moved between
+              inner elements. Now, these events are only fired when the mouse enters or leaves the
+              bounds of the control, which is the intended and documented behavior.
+              <p>
+                Similarly, the methods <code>onMouseEnter</code> and <code>onMouseLeave</code> of
+                <code>Control</code> were erroneously invoked in these cases. This has been
+                corrected, too.
+              </p>
+            </li>
+            <li>
+              Properties <code>ShinyPlateNodeStyleRenderer.radius</code>,
+              <code>ShinyPlateNodeStyleRenderer.brush</code>,
+              <code>ShinyPlateNodeStyleRenderer.pen</code> and
+              <code>BevelNodeStyleRenderer.radius</code> were not used consistently.
+            </li>
+            <li>
+              Fixed memory leak that occurred when <code>CreateEdgeInputMode</code> was uninstalled.
+            </li>
+            <li>
+              <!-- YWPF-1234 -->
+              <code>CreateEdgeInputMode</code>: Fixed some problems with mixed mouse and touch
+              input.
+            </li>
+            <li>
+              When using an <code>IEditLabelHelper</code> and adding a label interactively, the
+              helper's <code>editLabel</code> callback was called instead of <code>addLabel</code>.
+            </li>
+            <li>
+              <!-- YWPF-1312 -->
+              Newly added labels could have had an empty size when an
+              <code>IEditLabelHelper</code> instance was registered.
+            </li>
+            <li>
+              <!-- YWPF-1241 -->
+              When a highlighted item was removed from the graph, the highlight was not cleaned up.
+            </li>
+            <li>
+              Reparenting an empty group node displayed the target node highlight around the
+              reparented node.
+            </li>
+            <li>
+              <!-- YWPF-1375 -->
+              The modified <code>MoveInputMode</code> created by
+              <code>MainInputMode.createMoveUnselectedInputMode</code> changed the cursor to
+              indicate a movable object even when the <code>modifierRecognizer</code> disabled
+              moving.
+            </li>
+            <li>
+              When both a group node and its child node were resized together the group node bounds
+              shrunk to its original bounds once the child had reached the original bounds.
+            </li>
+            <li>
+              <!-- YWPF-1530 -->
+              <code>CreateEdgeInputMode</code> now copies the dummy edge's tag to the created edge.
+              This could have caused issues when a listener for the event
+              <code>EdgeCreationStarted</code> set a custom tag on the dummy edge.
+            </li>
+            <li>
+              <!--  YWPF-1466 -->
+              When the pressed status of the Shift key changed during a reparenting gesture of a
+              node, the bounds of its containing group node were not immediately updated.
+            </li>
+            <li>
+              <!-- YWPF-1511 -->
+              The secondary multi-tap gesture was not recognized correctly.
+            </li>
+            <li>
+              <!-- YWPF-1523 -->
+              Labels whose positions were determined by <code>NinePositionsEdgeLabelModel</code>,
+              <code>SliderEdgeLabelModel</code>, and <code>SideSliderEdgeLabelModel</code> might
+              have disappeared when one or more edge segments were hidden under the source or target
+              node.
+            </li>
+            <li>
+              <!-- YWPF-1314 -->
+              <code>SnapContext</code>: Snap results with a <code>null</code> tag were erroneously
+              always discarded.
+            </li>
+            <li>
+              <code>BevelNodeStyle</code>: Fixed update of drop shadow after <code>radius</code> has
+              been changed.
+            </li>
+            <li>
+              <!-- YWPF-1387 -->
+              <code>IconLabelStyle</code>: Method <code>getBounds</code> in
+              <code>IconLabelStyleRenderer</code> returned a valid rectangle even if the label
+              layout was invalid. As a consequence, <code>isVisible</code> erroneously returned
+              <code>true</code> for labels with invalid bounds.
+            </li>
+            <li>
+              <!-- YWPF-1165 -->
+              The <code>name</code> property of the class <code>GraphMLAttribute</code> was not
+              considered during deserialization.
+            </li>
+            <li>
+              <!-- YWPF-1288 -->
+              Write events in <code>GraphML</code> were not always raised.
+            </li>
+            <li>
+              <!-- YWPF-1305 -->
+              After setting an <code>ICanvasObjectGroup</code>'s <code>visible</code> property to
+              <code>false</code> the group was still visible.
+            </li>
+            <li>
+              <!-- YWPF-1441 -->
+              <code>CanvasControl.ensureVisible</code> hasn't worked for bounds larger than the
+              current viewport.
+            </li>
+            <li>
+              <!-- YWPF-1510 -->
+              Setting the view point on a <code>CanvasControl</code> with a width or height of 0.0
+              could cause an exception if a <code>ViewportLimiter</code> was enabled.
+            </li>
+            <li>
+              <!-- YWPF-1271 -->
+              <code>GraphCopier</code> threw an error if the source and the target graph were
+              identical.
+            </li>
+            <li>
+              <!-- YWPF-1397 -->
+              When the <code>SelectionPaintManager</code> was disabled and a custom
+              <code>FocusPaintManager</code> was used nodes styled with
+              <code>TemplateNodeStyle</code> might not always have been updated after selection
+              changes.
+            </li>
+            <li>
+              <!-- YWPF-1486 -->
+              <code>GraphEditorInputMode</code> and <code>GraphViewerInputMode</code> now respect
+              their respective <code>multiSelectionRecognizer</code> for extending an existing
+              selection via marquee.
+            </li>
+            <li>
+              <!-- YWPF-1488 -->
+              Fixed <code>TableEditorInputMode</code> exhibiting problematic behavior under certain
+              circumstances when the <code>GraphControl</code>'s graph is replaced.
+            </li>
+            <li>
+              <!-- YWPF-1339 -->
+              GraphML could write incorrect values for bend tags.
+            </li>
+            <li>
+              <!-- YWPF-2550 -->
+              Hiding INodeSNapResultProvider or IBendSnapResultProvider from the lookup no longer
+              leads to a crash when nodes or bends are moved.
+            </li>
+          </ul>
+
+          <h4>Layout</h4>
+
+          <ul>
+            <li>
+              <!-- YFI-3172 -->
+              <code>SimplexNodePlacer</code> fixed bug that disabled label compaction feature.
+            </li>
+            <li>
+              <!-- YFI-3142 -->
+              <code>AssistantPlacer</code> fixed placement of assistant nodes. When all children of
+              a node are assistants, they are all placed left/right.
+            </li>
+            <li>
+              <!-- YFI-3204 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed an error that may cause an incorrect
+              order of elements if the graph contains sequence constraints.
+            </li>
+            <li>
+              <!-- YFI-2866 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed problem that may cause a very long
+              runtime if the layouter is applied in incremental mode and the graph contains sequence
+              constraints.
+            </li>
+            <li>
+              <!-- YFI-3076 -->
+              <code>IncrementalHierarchicLayoutModule</code>: Now also considers incremental group
+              nodes.
+            </li>
+            <li>
+              <!-- YFI-3098 -->
+              <code>IncrementalHierarchicalLayouter</code>: Fixed an error that caused the maximum
+              duration values specified for <code>Layerer</code>, <code>Sequencer</code> and
+              <code>NodePlacer</code> to be overridden and not considered during the hierarchic
+              layout.
+            </li>
+            <li>
+              <!-- YFI-3083 --><!-- YFI-3089 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed error that may appear in incremental
+              layout mode if there are group nodes that contain non-incremental elements.
+            </li>
+            <li>
+              <!-- YFI-3065 -->
+              <code>GenericTreeLayouter</code>: Fixed root alignments to only take the child node
+              bounds into account without considering edge segments in the subtree.
+            </li>
+            <li>
+              <!-- YFI-3074 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed orientation of edge labels on
+              self-loops connected to a group node.
+            </li>
+            <li>
+              <!-- YFI-3077 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed error that occurred if an
+              incremental group node has only incremental descendants.
+            </li>
+            <li>
+              <!-- YFI-3060 -->
+              <code>IncrementalHierarchicLayouter</code>: Fixed problem that caused bad results when
+              assigning top or bottom layer constraints (i.e.,
+              <code>LayerConstraintFactory.addPlaceNodeAtTopConstraint</code> or
+              <code>LayerConstraintFactory.addPlaceNodeAtBottomConstraint</code>) to fixed elements.
+            </li>
+            <li>
+              <!-- YFI-3068 -->
+              <code>IncrementalHierarchicalLayouter</code>: Fixed a bug that caused collinear bends
+              in some edge routes.
+            </li>
+            <li>
+              <!-- YFI-2804 -->
+              <code>DoubleLinePlacer</code>: Fixed the distance between the local root and the upper
+              line to match the specified spacing. The distance between the two lines can now be
+              defined in relation to the spacing.
+            </li>
+            <li>
+              <!-- YFI-1181 -->
+              <code>ClassicTreeLayouter</code>: Fixed StackOverflow exception occurred in trees with
+              high depth.
+            </li>
+            <li>
+              <!-- YFI-2811 -->
+              <code>TreeReductionStage</code>: Fixed wrong handling of group nodes which may cause a
+              <code>WrongGraphStructure</code> error as well as broken routes of edges incident to
+              group nodes.
+            </li>
+            <li>
+              <!-- YFI-2787 -->
+              <code>SimpleNodePlacer</code>: Fixed broken edge routes that may appear for edges on
+              nodes with external labels if integrated node labeling is enabled.
+            </li>
+            <li>
+              <!-- YFI-2748 -->
+              <code>CopiedLayoutGraph</code>: Fixed an error that occurs when nodes or edges are
+              added to the copied graph without removing them before calling
+              <code>commitLayoutToOriginalGraph</code>.
+            </li>
+            <li>
+              <!-- YFI-3070 -->
+              <code>ShortestPaths</code>: Fixed an error that occurred when applying the Dijkstra or
+              Bellman-Ford algorithm to an empty graph.
+            </li>
+          </ul>
+
+          <!--/////////////////////////////////////////////////////////////////////////-->
+          <h2>Previous yFiles for HTML Releases</h2>
+          <!--/////////////////////////////////////////////////////////////////////////-->
+
+          <p>Changes for <a href="changes-1-2.html">yFiles for HTML 1.2.1.4 and previous releases</a>.</p>
+
+          <div id="sidebar-overlay" class="overlay collapsed"></div>
+        </div>
+
+        <!-- populated by readme-style.js -->
+        <div id="footer-detailed"></div>
+      </div>
+    </main>
+    <script src="../readme-style.js"></script>
+  </body>
+</html>
